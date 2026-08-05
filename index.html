@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Mission Control</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script type="module">
+
+// Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+    // SUA CONFIG
+
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.db=db;
+
+</script>
+
+<style>
+
+html{
+transition:.25s;
+}
+
+.dark{
+background:#111;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body class="bg-white text-black transition-colors duration-300">
+
+<!-- HEADER -->
+
+<header class="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-black border-b flex items-center justify-between px-4 z-50">
+
+<button>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
+
+<path d="M4 6h16M4 12h16M4 18h16"/>
+
+</svg>
+
+</button>
+
+<h1 class="font-bold text-lg">
+
+Mission
+
+</h1>
+
+<button id="theme">
+
+🌙
+
+</button>
+
+</header>
+
+
+<!-- HOME -->
+
+<main class="pt-20 pb-24 px-4">
+
+<h2 class="text-3xl font-bold">
+
+Olá 👋
+
+</h2>
+
+<p class="opacity-60 mt-2">
+
+Seu painel pessoal.
+
+</p>
+
+</main>
+
+
+
+<!-- MENU -->
+
+<nav class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[92%] h-16 rounded-2xl border bg-white dark:bg-black shadow-lg flex justify-around items-center">
+
+<button>
+
+🏠
+
+</button>
+
+<button>
+
+📅
+
+</button>
+
+<button>
+
+➕
+
+</button>
+
+<button>
+
+👤
+
+</button>
+
+</nav>
+
+
+
+<script>
+
+const btn=document.getElementById("theme");
+
+btn.onclick=()=>{
+
+document.body.classList.toggle("dark");
+
+btn.innerHTML=document.body.classList.contains("dark")
+?"☀️":"🌙";
+
+}
+
+</script>
+
+</body>
+</html>
