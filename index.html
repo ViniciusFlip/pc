@@ -91,35 +91,27 @@ Seu painel pessoal.
 
 </main>
 
-
+<script src="https://unpkg.com/lucide@latest"></script>
 
 <!-- MENU -->
 
 <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[92%] h-16 rounded-2xl border bg-white dark:bg-black shadow-lg flex justify-around items-center">
 
-<button>
+    <button class="p-2">
+        <i data-lucide="house" class="w-6 h-6"></i>
+    </button>
 
-🏠
+    <button class="p-2">
+        <i data-lucide="calendar-days" class="w-6 h-6"></i>
+    </button>
 
-</button>
+    <button class="p-2">
+        <i data-lucide="plus" class="w-6 h-6"></i>
+    </button>
 
-<button>
-
-📅
-
-</button>
-
-<button>
-
-➕
-
-</button>
-
-<button>
-
-👤
-
-</button>
+    <button class="p-2">
+        <i data-lucide="user" class="w-6 h-6"></i>
+    </button>
 
 </nav>
 
@@ -139,6 +131,8 @@ btn.innerHTML=document.body.classList.contains("dark")
 }
 
 </script>
-
+<script>
+lucide.createIcons();
+</script>
 </body>
 </html>
