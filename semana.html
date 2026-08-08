@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <script src="https://cdn.tailwindcss.com"></script><script src="https://unpkg.com/lucide@latest"></script>
-<title>Semana</title>
+<title>Minha Semana</title>
 </head>
 <body class="bg-white text-black">
 <main class="max-w-3xl mx-auto p-5">
+
 <header class="flex justify-between items-center mb-5">
 <div><h1 class="text-2xl font-bold">Minha Semana</h1><p class="text-sm text-gray-500">Organize seu dia</p></div>
-<button onclick="form.classList.toggle('hidden')" class="bg-black text-white p-3 rounded-xl"><i data-lucide="plus"></i></button>
+<button type="button" onclick="toggleForm()" class="bg-black text-white p-3 rounded-xl"><i data-lucide="plus"></i></button>
 </header>
 
-<form id="form" onsubmit="add(event)" class="hidden border rounded-2xl p-4 mb-5 space-y-2">
+<form id="addForm" onsubmit="add(event)" class="hidden border rounded-2xl p-4 mb-5 space-y-2">
 <select id="day" class="w-full border rounded-xl p-3">
 <option>Segunda</option><option>Terça</option><option>Quarta</option><option>Quinta</option><option>Sexta</option><option>Sábado</option><option>Domingo</option>
 </select>
@@ -28,25 +29,47 @@
 </main>
 
 <script>
-let data=JSON.parse(localStorage.week||'[]');
+let data=JSON.parse(localStorage.getItem('week')||'[]');
 const days=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
 const colors={day:'bg-blue-100 text-blue-700',work:'bg-green-100 text-green-700',physical:'bg-orange-100 text-orange-700'};
-function save(){localStorage.week=JSON.stringify(data);render()}
-function add(e){e.preventDefault();data.push({day:day.value,time:time.value,task:task.value,type:type.value});e.target.reset();form.classList.add('hidden');save()}
+
+function toggleForm(){document.getElementById('addForm').classList.toggle('hidden')}
+
+function save(){localStorage.setItem('week',JSON.stringify(data));render()}
+
+function add(e){
+e.preventDefault();
+data.push({
+day:document.getElementById('day').value,
+time:document.getElementById('time').value,
+task:document.getElementById('task').value,
+type:document.getElementById('type').value
+});
+e.target.reset();
+document.getElementById('addForm').classList.add('hidden');
+save();
+}
+
 function del(i){data.splice(i,1);save()}
+
 function render(){
-week.innerHTML=days.map(d=>{let x=data.map((a,i)=>({...a,i})).filter(a=>a.day==d).sort((a,b)=>a.time.localeCompare(b.time));return`
-<section><h2 class="font-bold text-lg mb-2">${d}</h2>
+document.getElementById('week').innerHTML=days.map(d=>{
+let x=data.map((a,i)=>({...a,i})).filter(a=>a.day==d).sort((a,b)=>a.time.localeCompare(b.time));
+return `<section>
+<h2 class="font-bold text-lg mb-2">${d}</h2>
 <div class="space-y-2">${x.map(a=>`
 <div class="border rounded-xl p-3 flex gap-3 items-center">
 <b class="text-sm w-12">${a.time}</b>
 <span class="${colors[a.type]} px-2 py-1 rounded-lg text-xs">${a.type=='work'?'Trabalho':a.type=='physical'?'Físico':'Dia a dia'}</span>
 <p class="flex-1 text-sm">${a.task}</p>
-<button onclick="del(${a.i})"><i data-lucide="x" class="w-4 text-gray-400"></i></button>
-</div>`).join('')}</div></section>`}).join('');
-lucide.createIcons()
+<button type="button" onclick="del(${a.i})"><i data-lucide="x" class="w-4 text-gray-400"></i></button>
+</div>`).join('')}</div>
+</section>`;
+}).join('');
+lucide.createIcons();
 }
-render()
+
+render();
 </script>
 </body>
 </html>
