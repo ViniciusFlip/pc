@@ -3,125 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="color-scheme" content="light">
 
 <title>Mission Control</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <script type="module">
-
-// Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-
-    // SUA CONFIG
-
+  // SUA CONFIG
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-window.db=db;
-
+window.db = db;
 </script>
 
 <style>
-
-html{
-transition:.25s;
+html,body{
+  background:#fff!important;
+  color:#000!important;
+  color-scheme:light!important;
 }
-
-.dark{
-background:#111;
-color:white;
+button,input,textarea,select{
+  color-scheme:light!important;
 }
-
 </style>
-
 </head>
 
-<body class="bg-white text-black transition-colors duration-300">
+<body class="bg-white text-black min-h-screen">
 
 <!-- HEADER -->
+<header class="fixed top-0 left-0 right-0 h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 z-50">
 
-<header class="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-black border-b flex items-center justify-between px-4 z-50">
-
-<button>
-
-<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
-
-<path d="M4 6h16M4 12h16M4 18h16"/>
-
-</svg>
-
+<button class="text-black">
+<i data-lucide="menu" class="w-6 h-6"></i>
 </button>
 
-<h1 class="font-bold text-lg">
+<h1 class="font-bold text-lg">Mission</h1>
 
-Mission
-
-</h1>
-
-<button id="theme">
-
-🌙
-
-</button>
+<div class="w-6"></div>
 
 </header>
 
-
 <!-- HOME -->
-
 <main class="pt-20 pb-24 px-4">
 
 <h2 class="text-3xl font-bold">
-
 olá, <span class="text-blue-500">usuário</span>!
-
 </h2>
 
 <p class="opacity-60 mt-2">
-
 Seu painel pessoal.
-
 </p>
 
 </main>
 
-<script src="https://unpkg.com/lucide@latest"></script>
-
 <!-- MENU -->
+<nav class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[92%] h-16 rounded-2xl border border-gray-200 bg-white shadow-lg flex justify-around items-center">
 
-<nav class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[92%] h-16 rounded-2xl border bg-white dark:bg-black shadow-lg flex justify-around items-center">
+<button class="p-2 text-black" onclick="location.href='index.html'">
+<i data-lucide="chart-no-axes-combined" class="w-6 h-6"></i>
+</button>
 
-   <button class="p-2"><i data-lucide="chart-no-axes-combined" class="w-6 h-6"></i></button>
-<button class="p-2"><i data-lucide="calendar-clock" class="w-6 h-6"></i></button>
-<button class="p-2"><i data-lucide="list-checks" class="w-6 h-6"></i></button>
-<button class="p-2"><i data-lucide="briefcase-business" class="w-6 h-6"></i></button>
+<button class="p-2 text-black" onclick="location.href='semana.html'">
+<i data-lucide="calendar-clock" class="w-6 h-6"></i>
+</button>
+
+<button class="p-2 text-black">
+<i data-lucide="list-checks" class="w-6 h-6" onclick="location.href='task.html'"></i>
+</button>
+
+<button class="p-2 text-black" onclick="location.href='fin'">
+<i data-lucide="briefcase-business" class="w-6 h-6"></i>
+</button>
 
 </nav>
 
-
-
-<script>
-
-const btn=document.getElementById("theme");
-
-btn.onclick=()=>{
-
-document.body.classList.toggle("dark");
-
-btn.innerHTML=document.body.classList.contains("dark")
-?"☀️":"🌙";
-
-}
-
-</script>
+<script src="https://unpkg.com/lucide@latest"></script>
 <script>
 lucide.createIcons();
 </script>
+
 </body>
 </html>
