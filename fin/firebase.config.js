@@ -25,12 +25,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
   
 const firebaseConfig = {
- apiKey: "AIzaSyAChdrY05XhKerQvfjWl69BeEEqLKTfqC0",
-  authDomain: "finanhouse-bcf72.firebaseapp.com",
-  projectId: "finanhouse-bcf72",
-  storageBucket: "finanhouse-bcf72.firebasestorage.app",
-  messagingSenderId: "765310974104",
-  appId: "1:765310974104:web:949263b7197143c813f8ed"
+   apiKey: "AIzaSyA3T7yf8UDxuL36jCJjVnHAn2GqoGOtPAo",
+  authDomain: "venginehub.firebaseapp.com",
+  projectId: "venginehub",
+  storageBucket: "venginehub.firebasestorage.app",
+  messagingSenderId: "1074606785731",
+  appId: "1:1074606785731:web:1390b7d5756166e513ce76"
+
 }; 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app); 
