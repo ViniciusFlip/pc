@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promon | Relatório Anual 2026s</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Configuração do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        promon: {
+                            orange: '#E65100',
+                            orangeDark: '#CC4500',
+                            blue: '#003366',
+                            blueDark: '#002244',
+                            yellow: '#F5A623',
+                            green: '#009688',
+                            light: '#F5F5F5',
+                            gray: '#666666',
+                            dark: '#333333',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 2px 8px rgba(0,0,0,0.08)',
+                    }
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow-sm {
+                text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            }
+            .grid-destaques {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            @media (min-width: 768px) {
+                .grid-destaques {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (min-width: 1024px) {
+                .grid-destaques {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        .hero-gradient {
+            background: linear-gradient(90deg, #E65100 0%, #F57C00 100%);
+        }
+        .card {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .card-header {
+            padding: 1rem 1.5rem;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+        .card-body {
+            padding: 1.5rem;
+            background: white;
+        }
+        .esg-section {
+            padding: 3rem 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .esg-section {
+                padding: 4rem 2rem;
+            }
+        }
+        @media (min-width: 1280px) {
+            .esg-section {
+                padding: 5rem 4rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-promon-dark">
+    <!-- ===== HEADER / NAVBAR ===== -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-extrabold text-promon-orange">PROMON</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="#" class="text-promon-dark hover:text-promon-orange transition-colors font-medium">Relatório Anual 2026s</a>
+                <a href="#" class="text-promon-dark hover:text-promon-orange transition-colors font-medium">Demonstrações Financeiras 2026s</a>
+                <button class="bg-promon-light px-3 py-1 rounded text-sm font-medium flex items-center gap-1">
+                    <span>PT</span>
+                </button>
+            </nav>
+            <button class="md:hidden text-promon-dark text-2xl" id="menuToggle">☰</button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full absolute shadow-lg" id="mobileMenu">
+            <div class="container mx-auto px-4 py-3 flex flex-col gap-3">
+                <a href="#" class="text-promon-dark hover:text-promon-orange transition-colors py-2">Relatório Anual 2026s</a>
+                <a href="#" class="text-promon-dark hover:text-promon-orange transition-colors py-2">Demonstrações Financeiras 2026s</a>
+                <button class="bg-promon-light px-3 py-2 rounded text-sm font-medium w-fit">PT</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== HERO SECTION ===== -->
+        <section class="relative">
+            <div class="w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
+                <img src="https://picsum.photos/id/1048/1920/500" alt="Cidade e infraestrutura" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-promon-orange/90 to-promon-orangeDark/70 flex items-center">
+                    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+                        <h1 class="text-white text-[clamp(2rem,6vw,4rem)] font-extrabold leading-tight max-w-2xl">
+                            Relatório<br>Anual 2026s
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== A PROMON S.A. ===== -->
+        <section class="py-12 md:py-16">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="w-full md:w-2/5 lg:w-1/3">
+                        <img src="https://picsum.photos/id/1079/600/600" alt="Profissional da Promon com capacete" class="w-full h-auto object-cover rounded-lg shadow-md">
+                    </div>
+                    <div class="w-full md:w-3/5 lg:w-2/3">
+                        <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-promon-orange mb-4">A PROMON S.A.</h2>
+                        <p class="text-lg text-promon-gray leading-relaxed">
+                            A Promon S.A. é a holding empresarial que atua em engenharia e tecnologia, na definição de diretrizes estratégicas, na governança corporativa e na sustentabilidade das companhias que integram seu portfólio. Por meio dessa estrutura, mantém o alinhamento e a integração entre os diferentes negócios.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ESTRUTURA SOCIETÁRIA ===== -->
+        <section class="bg-promon-light py-12 md:py-16">
+            <div class="container mx-auto px-4 md:px-8">
+                <h2 class="text-[clamp(1.25rem,2.5vw,1.75rem)] font-bold text-center mb-10 text-promon-dark">A PROMON S.A. E SUAS EMPRESAS INVESTIDAS</h2>
+                <div class="max-w-4xl mx-auto">
+                    <!-- Diagrama simplificado -->
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="bg-promon-orange text-white px-8 py-3 rounded-lg font-bold text-xl">PROMON</div>
+                        <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 w-full">
+                            <div class="text-center">
+                                <div class="text-sm font-semibold text-promon-gray mb-2">Acionistas</div>
+                                <div class="w-16 h-16 rounded-full bg-promon-orange/20 flex items-center justify-center mx-auto">👥</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-semibold text-promon-gray mb-2">Fundação</div>
+                                <div class="bg-white px-4 py-2 rounded shadow-sm font-medium">Promon FPPS</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-semibold text-promon-gray mb-2">PHL Investimentos</div>
+                                <div class="bg-white px-4 py-2 rounded shadow-sm font-medium">PHL</div>
+                            </div>
+                        </div>
+                        <div class="w-full flex flex-col md:flex-row justify-center gap-4 mt-4">
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center flex-1 max-w-[200px] mx-auto">
+                                <div class="font-bold text-promon-orange">promon engenharia</div>
+                                <div class="text-xs text-promon-gray mt-1">100%</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center flex-1 max-w-[200px] mx-auto">
+                                <div class="font-bold text-promon-yellow">forzy</div>
+                                <div class="text-xs text-promon-gray mt-1">100%</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center flex-1 max-w-[200px] mx-auto">
+                                <div class="font-bold text-promon-blue">PETL Educação e Treinamento</div>
+                                <div class="text-xs text-promon-gray mt-1">100%</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm text-center flex-1 max-w-[200px] mx-auto">
+                                <div class="font-bold text-promon-blueDark">LOGICALIS</div>
+                                <div class="text-xs text-promon-gray mt-1">31,58%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DESTAQUES DE 2026s ===== -->
+        <section class="py-12 md:py-16">
+            <div class="container mx-auto px-4 md:px-8">
+                <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-center mb-3 text-promon-dark">DESTAQUES DE 2026s*</h2>
+                <p class="text-center text-sm text-promon-gray mb-10">*2026s se refere ao ano-social iniciado em 1º de abril de 2025 e encerrado em 31 de março de 2026.</p>
+                
+                <div class="grid-destaques max-w-6xl mx-auto">
+                    <!-- Card 1: Promon S.A. -->
+                    <div class="card">
+                        <div class="card-header bg-promon-orange text-white">Promon S.A.</div>
+                        <div class="card-body">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-orange text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">R$ 1,1 bilhão</span>
+                                        <p class="text-sm text-promon-gray">de receita bruta gerencial</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-orange text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">3.184 profissionais</span>
+                                        <p class="text-sm text-promon-gray">incluindo as pessoas da Promon S.A., Promon Engenharia, Forzy e Logicalis</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Promon Engenharia -->
+                    <div class="card">
+                        <div class="card-header bg-promon-blue text-white">Promon Engenharia</div>
+                        <div class="card-body">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-blue text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">R$ 272 milhões</span>
+                                        <p class="text-sm text-promon-gray">em vendas, segundo maior resultado em 10 anos e aumento de 62% em relação ao ano anterior</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-blue text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">R$ 201 milhões</span>
+                                        <p class="text-sm text-promon-gray">em receita bruta</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-blue text-xl">●</span>
+                                    <div>
+                                        <p class="text-sm">Reestruturação da abordagem ao mercado, concentrando esforços em segmentos nos quais possui maior competitividade, como energia, preparando-se para expansão em novos segmentos estratégicos, como data centers, saneamento e rodovias</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-blue text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">Aumento do NPI: 89 em 2026s ante 64 em 2025s</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-blue text-xl">●</span>
+                                    <div>
+                                        <p class="text-sm">Avanço na incorporação de tecnologias digitais nas operações, com destaque para o uso de inteligência artificial (IA) em processos internos e atividades de engenharia e no uso de ferramentas com IA embarcada</p>
+                                    </div>
+                                </li>
+                                <li class="text-xs text-promon-gray italic mt-2">*NPI: número de projetos em desenvolvimento; a avaliação se baseia na metodologia de maturidade de portfólio da empresa.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Forzy -->
+                    <div class="card">
+                        <div class="card-header bg-promon-yellow text-white">Forzy</div>
+                        <div class="card-body">
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-yellow text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">R$ 12,7 milhões</span>
+                                        <p class="text-sm text-promon-gray">em vendas, crescimento de aproximadamente 195% em comparação com 2025s</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-yellow text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">R$ 11,8 milhões</span>
+                                        <p class="text-sm text-promon-gray">em receita bruta</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-yellow text-xl">●</span>
+                                    <div>
+                                        <p class="text-sm">Seu segmento foi o mais impactado pela estruturação e pelo fortalecimento das bases de crescimento e consolidação da empresa, com foco na consolidação de processos, equipes e capacidades necessárias para sustentar o crescimento e sua evolução no mercado</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-yellow text-xl">●</span>
+                                    <div>
+                                        <p class="text-sm"><strong>Desenvolvimento do CoreControl</strong>, ferramenta digital voltada para a gestão de projetos, que integra dados e apoia decisões</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-yellow text-xl">●</span>
+                                    <div>
+                                        <p class="text-sm">Projetos de destaque nas ofertas de gêmeos digitais, inteligência artificial e eficiência operacional e energética</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: FPPS -->
+                    <div class="card">
+                        <div class="card-header bg-promon-green text-white">Fundação Promon de Previdência Social (FPPS)*</div>
+                        <div class="card-body">
+                            <p class="text-xs text-promon-gray mb-4">*Resultados de 1º de janeiro a 31 de dezembro de 2025.</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-green text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">R$ 2,0 bilhões</span>
+                                        <p class="text-sm text-promon-gray">em investimentos totais nos dois planos previdenciários</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-green text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">R$ 21,5 milhões</span>
+                                        <p class="text-sm text-promon-gray">de contribuições recebidas</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-green text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">R$ 127,7 milhões</span>
+                                        <p class="text-sm text-promon-gray">em benefícios de prestação continuada pagos a 754 aposentados e pensionistas, além do pagamento de R$ 4,3 milhões em benefícios de prestação única</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-green text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">1.279 participantes</span>
+                                        <p class="text-sm text-promon-gray">ativos e autopatrocinados</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-promon-green text-xl">●</span>
+                                    <div>
+                                        <span class="font-bold">50 anos de atuação em 2025</span>
+                                        <p class="text-sm text-promon-gray">a mais antiga entidade fechada de previdência complementar de empresa privada em operação no Brasil</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Logicalis -->
+                    <div class="card md:col-span-2">
+                        <div class="card-header bg-promon-blueDark text-white">Logicalis Latin America*</div>
+                        <div class="card-body">
+                            <p class="text-xs text-promon-gray mb-4">*Ano-social da Logicalis compreende o período entre março de 2025 e fevereiro de 2026.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span class="text-promon-blueDark text-xl">●</span>
+                                        <div>
+                                            <span class="font-bold">R$ 2,5 bilhões</span>
+                                            <p class="text-sm text-promon-gray">em vendas</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="text-promon-blueDark text-xl">●</span>
+                                        <div>
+                                            <span class="font-bold">R$ 2,8 bilhões</span>
+                                            <p class="text-sm text-promon-gray">em receita bruta</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="text-promon-blueDark text-xl">●</span>
+                                        <div>
+                                            <p class="text-sm">Avanço na estratégia de transformação do negócio, orientada pela busca de maior diversificação, melhora da qualidade do portfólio e fortalecimento da eficiência operacional</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span class="text-promon-blueDark text-xl">●</span>
+                                        <div>
+                                            <p class="text-sm">Recuperação do resultado de lucro operacional em todas as regiões da América Latina, apesar do cenário desafiador no México, com volume de negócios abaixo do planejado</p>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="text-promon-blueDark text-xl">●</span>
+                                        <div>
+                                            <p class="text-sm">Fortalecimento de parcerias estratégicas, com destaque para a parceria com a IBM e o reconhecimento como parceiro Elite da plataforma de software Splunk</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ESG SECTION ===== -->
+        <section class="py-12 md:py-16 bg-promon-light">
+            <div class="container mx-auto px-4 md:px-8">
+                <h2 class="text-[clamp(1.5rem,3vw,2.25rem)] font-bold text-center mb-3 text-promon-dark">ESG NA PROMON EM 2026s</h2>
+                <p class="text-center text-promon-gray mb-12 max-w-3xl mx-auto">Conheça as práticas e iniciativas ambientais, sociais e de governança das empresas da Promon S.A. no ano-social.</p>
+
+                <div class="space-y-0 md:space-y-0">
+                    <!-- ESG Promon S.A. -->
+                    <div class="bg-promon-orange text-white">
+                        <div class="container mx-auto px-4 md:px-8 py-10">
+                            <div class="flex flex-col md:flex-row items-center gap-8">
+                                <div class="w-full md:w-1/2 lg:w-2/5">
+                                    <h3 class="text-2xl font-bold mb-6">Promon S.A.</h3>
+                                    <ul class="space-y-3 text-white/90">
+                                        <li>• Realização do Censo de Diversidade com profissionais da Promon S.A., da Promon Engenharia e da Forzy</li>
+                                        <li>• Promoção do diálogo entre os grupos de diversidade: Afinidade LGBTQIAPN+, Conexões, Gerações, Equidade Racial e de Gênero, Pessoas com Deficiência e Práticas de Escuta</li>
+                                        <li>• Troca de experiências e construção coletiva de iniciativas</li>
+                                        <li>• Avanço do nível de maturidade da empresa ESG na organização, com evolução da pontuação nos indicadores Ethos, passando de 4,3 em 2025s para 5,1 em 2026s</li>
+                                    </ul>
+                                </div>
+                                <div class="w-full md:w-1/2 lg:w-3/5">
+                                    <img src="https://picsum.photos/id/1082/800/500" alt="Equipe Promon S.A." class="w-full h-auto object-cover rounded-lg shadow-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ESG Promon Engenharia -->
+                    <div class="bg-promon-blue text-white">
+                        <div class="container mx-auto px-4 md:px-8 py-10">
+                            <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                                <div class="w-full md:w-1/2 lg:w-2/5">
+                                    <h3 class="text-2xl font-bold mb-6">Promon Engenharia</h3>
+                                    <ul class="space-y-3 text-white/90">
+                                        <li>• Evolução na implementação de ferramentas de gestão de indicadores ESG e no desenvolvimento do inventário de emissões de gases de efeito estufa</li>
+                                        <li>• Incorporação de critérios de sustentabilidade e uso de recursos nos seus projetos</li>
+                                        <li>• Programa de parentalidade para conscientização dos líderes sobre o tema</li>
+                                    </ul>
+                                </div>
+                                <div class="w-full md:w-1/2 lg:w-3/5">
+                                    <img src="https://picsum.photos/id/1067/800/500" alt="Equipe Promon Engenharia" class="w-full h-auto object-cover rounded-lg shadow-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ESG Forzy -->
+                    <div class="bg-promon-yellow text-white">
+                        <div class="container mx-auto px-4 md:px-8 py-10">
+                            <div class="flex flex-col md:flex-row items-center gap-8">
+                                <div class="w-full md:w-1/2 lg:w-2/5">
+                                    <h3 class="text-2xl font-bold mb-6">Forzy</h3>
+                                    <ul class="space-y-3 text-white/90">
+                                        <li>• Atuação na digitalização de ativos e na melhoria da gestão operacional, contribuindo para a otimização do uso de recursos dos clientes, com impactos positivos em dimensões como a redução de emissões e pegada de carbono</li>
+                                        <li>• Apoio a clientes no planejamento produtivo, com otimização da capacidade instalada e no rebalanceamento, com impactos relevantes no uso de recursos</li>
+                                    </ul>
+                                </div>
+                                <div class="w-full md:w-1/2 lg:w-3/5">
+                                    <img src="https://picsum.photos/id/1083/800/500" alt="Equipe Forzy" class="w-full h-auto object-cover rounded-lg shadow-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ESG Logicalis -->
+                    <div class="bg-promon-blueDark text-white">
+                        <div class="container mx-auto px-4 md:px-8 py-10">
+                            <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                                <div class="w-full md:w-1/2 lg:w-2/5">
+                                    <h3 class="text-2xl font-bold mb-6">Logicalis Latin America</h3>
+                                    <ul class="space-y-3 text-white/90">
+                                        <li>• 100% das operações da América Latina com gestão de emissões de gases de efeito estufa</li>
+                                        <li>• Fortalecimento da diversidade e equidade, com inclusão de grupos de afinidade, programas de capacitação e ações estruturantes de engajamento, reforçando o compromisso com um ambiente de trabalho mais inclusivo</li>
+                                        <li>• Lançamento da Plataforma de Voluntariado, que reúne iniciativas em toda a região e já conta com mais de 500 participantes</li>
+                                    </ul>
+                                </div>
+                                <div class="w-full md:w-1/2 lg:w-3/5">
+                                    <img src="https://picsum.photos/id/1076/800/500" alt="Equipe Logicalis" class="w-full h-auto object-cover rounded-lg shadow-lg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA FINAL ===== -->
+        <section class="py-12 md:py-16 bg-white text-center">
+            <div class="container mx-auto px-4 md:px-8">
+                <h2 class="text-[clamp(1.25rem,2.5vw,1.75rem)] font-bold mb-4 text-promon-orange">SAIBA MAIS SOBRE A PROMON S.A. E SUAS EMPRESAS</h2>
+                <p class="text-promon-gray mb-8 max-w-2xl mx-auto">Acesse o relatório completo de 2026s da Promon S.A.</p>
+                <a href="#" class="inline-block bg-promon-orange hover:bg-promon-orangeDark text-white font-semibold px-8 py-3 rounded-lg transition-all transform hover:scale-105 shadow-md">
+                    Ver Relatório Completo
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-promon-dark text-white py-10">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <p class="text-xl font-bold mb-4">PROMON</p>
+            <p class="text-white/60 text-sm">© 2026 Promon S.A. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // Menu mobile toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fechar menu ao clicar em um link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Animação suave de rolagem
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação de entrada dos elementos ao rolar
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animação aos cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
