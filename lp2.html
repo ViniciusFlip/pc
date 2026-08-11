@@ -21,62 +21,70 @@
     body {
       margin: 0;
       overflow-x: hidden;
-      background: #fff;
-      color: #333;
+      background: #ffffff;
+      color: #333333;
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    .clip-title {
+    .diagonal-right {
       clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
     }
 
-    .clip-photo {
-      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+    .diagonal-photo {
+      clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
     }
 
-    .clip-orange-bottom {
+    .diagonal-bottom {
       clip-path: polygon(0 0, 82% 0, 100% 100%, 0 100%);
     }
 
-    @media (max-width: 767px) {
-      .clip-title {
-        clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%);
+    @media (max-width: 640px) {
+
+      .diagonal-right {
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          94% 100%,
+          0 100%
+        );
       }
 
-      .clip-photo {
-        clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+      .diagonal-photo {
+        clip-path: polygon(
+          8% 0,
+          100% 0,
+          100% 100%,
+          0 100%
+        );
       }
 
-      .clip-orange-bottom {
-        clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+      .diagonal-bottom {
+        clip-path: polygon(
+          0 0,
+          88% 0,
+          100% 100%,
+          0 100%
+        );
       }
     }
   </style>
 </head>
 
+
 <body>
 
-<main>
+  <main class="min-h-screen overflow-hidden bg-white">
 
-  <!-- =====================================================
-       HERO
-  ====================================================== -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-  <section
-    class="relative min-h-screen overflow-hidden bg-white"
-    aria-labelledby="hero-title"
-  >
-
-    <div
-      class="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col px-5 py-5 sm:px-8 sm:py-7 lg:px-14 xl:px-20"
+    <header
+      class="mx-auto w-full max-w-[1600px] px-6 pt-7 sm:px-10 lg:px-16 xl:px-20"
     >
 
-      <!-- =================================================
-           HEADER
-      ================================================== -->
-
-      <header
-        class="relative z-30 flex flex-col gap-5 lg:flex-row lg:items-center lg:gap-8"
+      <div
+        class="flex flex-col gap-6 lg:flex-row lg:items-center"
       >
 
         <!-- LOGO -->
@@ -84,12 +92,12 @@
         <a
           href="#"
           aria-label="PROMON"
-          class="flex w-fit shrink-0 items-center text-[30px] font-light tracking-[-2px] text-[#3b3b3b] sm:text-[38px]"
+          class="flex w-fit items-center text-[34px] font-light leading-none tracking-[-2.5px] text-[#3b3b3b] sm:text-[40px]"
         >
           PROMON
 
           <span
-            class="ml-1 flex h-6 w-[8px] items-center justify-center bg-[#ed4813] sm:h-8 sm:w-[9px]"
+            class="ml-1 flex h-[28px] w-[9px] items-center justify-center bg-[#ed4813] sm:h-[32px]"
             aria-hidden="true"
           >
             <span class="text-[10px] text-white">
@@ -99,28 +107,28 @@
         </a>
 
 
-        <!-- NAV MOBILE / DESKTOP -->
+        <!-- NAVEGAÇÃO -->
 
         <nav
+          class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] text-[#d95a39] sm:text-[12px] lg:ml-10 lg:flex-1"
           aria-label="Navegação principal"
-          class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[9px] leading-tight text-[#e74816] sm:gap-x-5 sm:text-[11px] lg:ml-8 lg:flex-1"
         >
 
           <a
             href="#relatorio"
-            class="hover:opacity-70"
+            class="whitespace-nowrap transition-opacity hover:opacity-60"
           >
             Relatório Anual 2026s versões
           </a>
 
           <span
-            class="h-3 w-px bg-[#cfcfcf]"
+            class="h-4 w-px bg-[#cccccc]"
             aria-hidden="true"
           ></span>
 
           <a
             href="#demonstracoes"
-            class="hover:opacity-70"
+            class="whitespace-nowrap transition-opacity hover:opacity-60"
           >
             Demonstrações Financeiras 2026s.
           </a>
@@ -132,15 +140,16 @@
 
         <button
           type="button"
-          class="flex h-9 w-[76px] shrink-0 items-center justify-between rounded-lg border border-[#d5d5d5] bg-white px-3 text-xs text-[#444] transition hover:border-[#ed4813] sm:h-10 sm:w-[88px]"
+          class="flex h-12 w-[138px] items-center justify-between rounded-xl border border-[#dddddd] bg-white px-5 text-[16px] text-[#444444] lg:h-11 lg:w-[96px] lg:text-sm"
           aria-label="Selecionar idioma"
         >
+
           <span>Pt</span>
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="14"
-            height="14"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -151,90 +160,101 @@
           >
             <path d="m6 9 6 6 6-6"></path>
           </svg>
+
         </button>
 
-      </header>
+      </div>
+
+    </header>
 
 
-      <!-- =================================================
-           HERO PRINCIPAL
-      ================================================== -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section
+      id="relatorio"
+      class="mx-auto mt-16 w-full max-w-[1600px] px-6 sm:mt-20 sm:px-10 lg:relative lg:mt-24 lg:px-16 xl:px-20"
+      aria-labelledby="hero-title"
+    >
+
+      <!-- ===================================================
+           TÍTULO
+      ==================================================== -->
 
       <div
-        class="relative flex flex-1 flex-col justify-center"
+        class="relative z-20 w-full lg:w-[59%]"
       >
 
-        <!-- =================================================
-             TÍTULO
-        ================================================== -->
-
         <div
-          class="relative z-20 mt-10 w-full sm:mt-14 lg:mt-0 lg:w-[59%]"
+          class="diagonal-right bg-[#ed4813] px-7 py-9 sm:px-12 sm:py-12 lg:px-16 lg:py-14 xl:px-20"
         >
 
-          <div
-            id="relatorio"
-            class="clip-title w-full bg-[#ed4813] px-7 py-8 sm:px-10 sm:py-10 md:px-14 md:py-12 lg:max-w-[790px] lg:px-16 lg:py-14 xl:px-20"
+          <h1
+            id="hero-title"
+            class="text-[48px] font-light leading-[0.94] tracking-[-2.5px] text-white sm:text-[62px] md:text-[70px] lg:text-[76px] xl:text-[88px]"
           >
-
-            <h1
-              id="hero-title"
-              class="text-[44px] font-light leading-[0.94] tracking-[-2px] text-white sm:text-[56px] md:text-[66px] lg:text-[76px] xl:text-[88px]"
-            >
-              Relatório
-              <br>
-              Anual 2026s
-            </h1>
-
-          </div>
-
-        </div>
-
-
-        <!-- =================================================
-             IMAGEM
-        ================================================== -->
-
-        <div
-          class="relative z-10 mt-[-10px] ml-auto h-[230px] w-[94%] overflow-hidden sm:h-[330px] sm:w-[92%] md:h-[400px] lg:absolute lg:right-[-80px] lg:top-[8%] lg:mt-0 lg:h-[530px] lg:w-[52%] xl:right-[-120px] xl:h-[590px]"
-        >
-
-          <div
-            class="clip-photo absolute inset-0 overflow-hidden bg-[#ed4813]"
-          >
-
-            <img
-              src="assets/promon-hero.png"
-              alt="Vista urbana com trânsito e arquitetura da cidade"
-              class="h-full w-full object-cover object-center"
-              loading="eager"
-              fetchpriority="high"
-            >
-
-            <div
-              class="pointer-events-none absolute inset-0 bg-[#ed4813]/15"
-              aria-hidden="true"
-            ></div>
-
-          </div>
+            Relatório
+            <br>
+            Anual 2026s
+          </h1>
 
         </div>
 
       </div>
 
 
-      <!-- =================================================
-           PARTE INFERIOR
-      ================================================== -->
+      <!-- ===================================================
+           IMAGEM
+      ==================================================== -->
 
       <div
-        class="relative z-20 mt-[-5px] min-h-[145px] sm:min-h-[175px] lg:mt-0 lg:min-h-[180px]"
+        class="relative z-10 mt-[-1px] h-[260px] w-full overflow-hidden sm:h-[360px] md:h-[430px] lg:absolute lg:right-0 lg:top-[5%] lg:mt-0 lg:h-[530px] lg:w-[52%] xl:h-[590px]"
+      >
+
+        <div
+          class="diagonal-photo relative h-full w-full overflow-hidden bg-[#ed4813]"
+        >
+
+          <img
+            src="assets/promon-cidade.jpg"
+            alt="Vista urbana com trânsito e arquitetura da cidade"
+            class="absolute inset-0 h-full w-full object-cover object-center"
+            loading="eager"
+            fetchpriority="high"
+          >
+
+          <div
+            class="pointer-events-none absolute inset-0 bg-[#ed4813]/20"
+            aria-hidden="true"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================
+           ESPAÇAMENTO / COMPOSIÇÃO
+      ==================================================== -->
+
+      <div
+        class="relative h-16 sm:h-20 lg:h-[350px]"
+      ></div>
+
+
+      <!-- ===================================================
+           RODAPÉ DO HERO
+      ==================================================== -->
+
+      <div
+        class="relative min-h-[150px] sm:min-h-[180px] lg:min-h-[190px]"
       >
 
         <!-- FORMA LARANJA -->
 
         <div
-          class="clip-orange-bottom absolute bottom-0 left-[-20px] h-[90px] w-[67%] bg-[#ed4813] sm:left-[-32px] sm:h-[120px] sm:w-[58%] lg:left-[-56px] lg:h-[150px] lg:w-[50%]"
+          class="diagonal-bottom absolute bottom-0 left-[-24px] h-[90px] w-[70%] bg-[#ed4813] sm:left-[-40px] sm:h-[125px] lg:left-[-64px] lg:h-[155px]"
           aria-hidden="true"
         ></div>
 
@@ -243,11 +263,11 @@
 
         <div
           id="demonstracoes"
-          class="relative flex h-full min-h-[145px] items-end justify-end pb-7 sm:min-h-[175px] sm:pb-9 lg:min-h-[180px] lg:pb-10"
+          class="relative flex min-h-[150px] items-end justify-end pb-7 sm:min-h-[180px] sm:pb-9 lg:min-h-[190px] lg:pb-10"
         >
 
           <p
-            class="text-right text-[23px] font-bold tracking-[-0.7px] text-[#e74816] sm:text-[30px] md:text-[36px] lg:text-[42px] xl:text-[48px]"
+            class="text-right text-[24px] font-bold tracking-[-0.8px] text-[#e74816] sm:text-[32px] md:text-[38px] lg:text-[44px] xl:text-[50px]"
           >
             A PROMON S.A.
           </p>
@@ -256,11 +276,9 @@
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
-
-</main>
+  </main>
 
 </body>
 </html>
