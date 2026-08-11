@@ -109,44 +109,280 @@
 </head>
 <body class="bg-white font-sans text-promon-dark">
     <!-- ===== HEADER / NAVBAR ===== -->
-    <header class="sticky top-0 z-50 bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="text-2xl font-extrabold text-promon-orange">PROMON</span>
-            </div>
-            <nav class="hidden md:flex items-center gap-6">
-                <a href="#" class="text-promon-dark hover:text-promon-orange transition-colors font-medium">Relatório Anual 2026s</a>
-                <a href="#" class="text-promon-dark hover:text-promon-orange transition-colors font-medium">Demonstrações Financeiras 2026s</a>
-                <button class="bg-promon-light px-3 py-1 rounded text-sm font-medium flex items-center gap-1">
-                    <span>PT</span>
-                </button>
-            </nav>
-            <button class="md:hidden text-promon-dark text-2xl" id="menuToggle">☰</button>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white w-full absolute shadow-lg" id="mobileMenu">
-            <div class="container mx-auto px-4 py-3 flex flex-col gap-3">
-                <a href="#" class="text-promon-dark hover:text-promon-orange transition-colors py-2">Relatório Anual 2026s</a>
-                <a href="#" class="text-promon-dark hover:text-promon-orange transition-colors py-2">Demonstrações Financeiras 2026s</a>
-                <button class="bg-promon-light px-3 py-2 rounded text-sm font-medium w-fit">PT</button>
-            </div>
-        </div>
-    </header>
+    <header class="mx-auto w-full max-w-[1600px] px-6 pt-7 sm:px-10 lg:px-16 xl:px-20">
 
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-center">
+
+        <!-- LOGO -->
+
+        <a href="#" aria-label="PROMON" class="flex w-fit items-center text-[34px] font-light leading-none tracking-[-2.5px] text-[#3b3b3b] sm:text-[40px]">
+          PROMON
+
+          <span class="ml-1 flex h-[28px] w-[9px] items-center justify-center bg-[#ed4813] sm:h-[32px]" aria-hidden="true">
+            <span class="text-[10px] text-white">
+              ▮
+            </span>
+          </span>
+        </a>
+
+
+        <!-- NAVEGAÇÃO -->
+
+        <nav class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] text-[#d95a39] sm:text-[12px] lg:ml-10 lg:flex-1" aria-label="Navegação principal">
+
+          <a href="#relatorio" class="whitespace-nowrap transition-opacity hover:opacity-60">
+            Relatório Anual 2026s versões
+          </a>
+
+          <span class="h-4 w-px bg-[#cccccc]" aria-hidden="true"></span>
+
+          <a href="#demonstracoes" class="whitespace-nowrap transition-opacity hover:opacity-60">
+            Demonstrações Financeiras 2026s.
+          </a>
+
+        </nav>
+
+
+        <!-- IDIOMA -->
+
+        <button type="button" class="flex h-12 w-[138px] items-center justify-between rounded-xl border border-[#dddddd] bg-white px-5 text-[16px] text-[#444444] lg:h-11 lg:w-[96px] lg:text-sm" aria-label="Selecionar idioma">
+
+          <span>Pt</span>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+
+        </button>
+
+      </div>
+
+    </header>
     <main>
-        <!-- ===== HERO SECTION ===== -->
-        <section class="relative">
-            <div class="w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
-                <img src="https://picsum.photos/id/1048/1920/500" alt="Cidade e infraestrutura" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-promon-orange/90 to-promon-orangeDark/70 flex items-center">
-                    <div class="container mx-auto px-4 md:px-8 lg:px-12">
-                        <h1 class="text-white text-[clamp(2rem,6vw,4rem)] font-extrabold leading-tight max-w-2xl">
-                            Relatório<br>Anual 2026s
-                        </h1>
-                    </div>
-                </div>
-            </div>
-        </section>
+         <!-- =========================================================
+     HERO / CAPA — PROMON
+     HEADER NÃO INCLUÍDO
+     ========================================================= -->
+
+<section style="
+    position: relative;
+    width: 100%;
+    height: 470px;
+    overflow: hidden;
+    background: #ffffff;
+">
+
+    <!-- =====================================================
+         FUNDO CINZA DIAGONAL
+         ===================================================== -->
+    <div style="
+        position: absolute;
+        top: 0;
+        left: 42%;
+        width: 24%;
+        height: 100%;
+        background: #dedede;
+        clip-path: polygon(28% 0, 100% 0, 62% 100%, 0 100%);
+        z-index: 1;
+    "></div>
+
+
+    <!-- =====================================================
+         IMAGEM LATERAL DIREITA
+         ===================================================== -->
+    <div style="
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 44%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 2;
+        clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+    ">
+
+        <img
+            src="bg.png"
+            alt="Cidade e infraestrutura"
+            style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+                filter: sepia(25%) saturate(125%);
+            "
+        >
+
+        <!-- Overlay laranja sobre a imagem -->
+        <div style="
+            position: absolute;
+            inset: 0;
+            background: rgba(237, 63, 15, 0.48);
+        "></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FAIXA LARANJA INFERIOR
+         ===================================================== -->
+    <div style="
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 44%;
+        height: 73px;
+        background: #ed3f0f;
+        clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+        z-index: 3;
+    "></div>
+
+
+    <!-- =====================================================
+         CONTAINER PRINCIPAL
+         ===================================================== -->
+    <div style="
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+        z-index: 5;
+    ">
+
+
+        <!-- =================================================
+             BLOCO LARANJA DO TÍTULO
+             ================================================= -->
+        <div style="
+            position: absolute;
+            top: 82px;
+            left: 34px;
+            width: 786px;
+            height: 264px;
+            background: #ed3f0f;
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                87.5% 100%,
+                0 100%
+            );
+            display: flex;
+            align-items: center;
+            padding-left: 78px;
+            box-sizing: border-box;
+        ">
+
+            <!-- =================================================
+                 TÍTULO
+                 ================================================= -->
+            <h1 style="
+                margin: 0;
+                padding: 0;
+                color: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 92px;
+                font-weight: 400;
+                line-height: 0.96;
+                letter-spacing: -4px;
+            ">
+                Relatório<br>
+                Anual 2026s
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         RESPONSIVIDADE
+         ===================================================== -->
+
+    <style>
+        @media (max-width: 1400px) {
+
+            section[style*="height: 470px"] {
+                height: 430px !important;
+            }
+
+            section[style*="height: 470px"] h1 {
+                font-size: 76px !important;
+            }
+
+            section[style*="height: 470px"] div[style*="width: 786px"] {
+                width: 680px !important;
+                height: 230px !important;
+            }
+        }
+
+
+        @media (max-width: 1000px) {
+
+            section[style*="height: 470px"] {
+                height: 420px !important;
+            }
+
+            section[style*="height: 470px"] div[style*="width: 44%"] {
+                width: 50% !important;
+            }
+
+            section[style*="height: 470px"] div[style*="width: 786px"] {
+                left: 20px !important;
+                width: 620px !important;
+                height: 220px !important;
+                padding-left: 55px !important;
+            }
+
+            section[style*="height: 470px"] h1 {
+                font-size: 68px !important;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            section[style*="height: 470px"] {
+                height: 500px !important;
+            }
+
+            section[style*="height: 470px"] div[style*="width: 44%"] {
+                top: auto !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                height: 220px !important;
+                clip-path: none !important;
+            }
+
+            section[style*="height: 470px"] div[style*="width: 786px"] {
+                top: 45px !important;
+                left: 20px !important;
+                width: calc(100% - 40px) !important;
+                height: 220px !important;
+                padding-left: 35px !important;
+                clip-path: polygon(
+                    0 0,
+                    100% 0,
+                    88% 100%,
+                    0 100%
+                ) !important;
+            }
+
+            section[style*="height: 470px"] h1 {
+                font-size: clamp(48px, 12vw, 68px) !important;
+                letter-spacing: -3px !important;
+            }
+
+            section[style*="height: 470px"] div[style*="height: 73px"] {
+                width: 100% !important;
+                height: 45px !important;
+                clip-path: none !important;
+            }
+        }
+    </style>
+
+</section>
 
         <!-- ===== A PROMON S.A. ===== -->
         <section class="py-12 md:py-16">
