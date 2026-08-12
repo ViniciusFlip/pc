@@ -1,811 +1,1890 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Promon S.A. — Relatório Anual 2026</title>
-    <meta
-        name="description"
-        content="Relatório Anual 2026 da Promon S.A."
-    >
+<title>Promon — Relatório Anual 2026</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{
+    --orange:#ed4b0b;
+    --orange-dark:#d83f07;
+    --blue:#004b78;
+    --yellow:#f5a914;
+    --royal:#244cff;
+    --green:#43a487;
+    --ink:#22252a;
+    --muted:#74777c;
+    --soft:#f3f3f5;
+    --line:rgba(20,25,30,.12);
+}
+
+*{box-sizing:border-box}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#fff;
+    color:var(--ink);
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    overflow-x:hidden;
+}
+
+::selection{
+    background:var(--orange);
+    color:white;
+}
+
+/* =========================================================
+   TIPOGRAFIA
+========================================================= */
+
+.display{
+    font-size:clamp(44px,6vw,82px);
+    line-height:.88;
+    letter-spacing:-.055em;
+    font-weight:300;
+}
+
+.kicker{
+    font-size:9px;
+    line-height:1.2;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    font-weight:800;
+}
+
+.body-small{
+    font-size:10px;
+    line-height:1.7;
+}
+
+.micro{
+    font-size:8px;
+    line-height:1.55;
+}
+
+/* =========================================================
+   GEOMETRIA PROMON
+========================================================= */
+
+.diag-left{
+    clip-path:polygon(12% 0,100% 0,88% 100%,0 100%);
+}
+
+.diag-right{
+    clip-path:polygon(0 0,88% 0,100% 100%,12% 100%);
+}
+
+.diag-photo{
+    clip-path:polygon(15% 0,100% 0,85% 100%,0 100%);
+}
+
+.slash{
+    transform:skewX(-17deg);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header-line{
+    height:1px;
+    background:rgba(0,0,0,.08);
+}
+
+/* =========================================================
+   IMAGENS
+========================================================= */
+
+.hero-image{
+    background:
+        linear-gradient(
+            110deg,
+            rgba(0,0,0,.02),
+            rgba(0,0,0,.22)
+        ),
+        url("https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1800&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+.person{
+    background-image:
+        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+.engineering{
+    background-image:
+        url("https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+.team{
+    background-image:
+        url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+.tech{
+    background-image:
+        url("https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1200&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+.woman{
+    background-image:
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=90");
+    background-size:cover;
+    background-position:center;
+}
+
+/* =========================================================
+   ANIMAÇÕES
+========================================================= */
+
+.reveal{
+    animation:reveal .8s ease both;
+}
+
+@keyframes reveal{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.card{
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+    border-color:rgba(0,0,0,.2);
+}
+
+.photo{
+    transition:transform .6s ease;
+}
+
+.photo:hover{
+    transform:scale(1.025);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:640px){
+
+    .display{
+        font-size:46px;
+    }
+
+    .desktop-nav{
+        display:none;
+    }
+
+}
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
 
-    <!-- HERO -->
-    <!-- HERO -->
-    <section class="relative min-h-[720px] overflow-hidden bg-[#f2f2f4] lg:min-h-[820px]">
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-      <div class="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=85"
-          alt="Arquitetura contemporânea"
-          class="h-full w-full object-cover"
-        >
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/10"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
-      </div>
+<header class="absolute z-50 top-0 left-0 right-0">
 
-      <div class="relative mx-auto flex min-h-[720px] max-w-7xl items-end px-5 pb-16 pt-32 lg:min-h-[820px] lg:px-10 lg:pb-24">
+    <div class="
+        max-w-[1180px]
+        mx-auto
+        px-6
+        h-[70px]
+        flex
+        items-center
+    ">
 
-        <div class="max-w-2xl">
-
-          <div class="mb-6 flex items-center gap-3">
-            <span class="h-1 w-12 bg-promon-orange"></span>
-            <span class="text-xs font-bold uppercase tracking-[0.25em] text-gray-600">
-              Relatório Anual
-            </span>
-          </div>
-
-          <h1 class="text-5xl font-black leading-[0.9] tracking-[-0.04em] text-gray-900 sm:text-6xl lg:text-8xl">
-            Relatório<br>
-            <span class="text-promon-orange">Anual</span>
-            <br>2026
-          </h1>
-
-          <p class="mt-7 max-w-lg text-base leading-7 text-gray-700 sm:text-lg">
-            Um olhar sobre nossas empresas, nossos negócios,
-            nossas conquistas e os caminhos que estamos construindo
-            para o futuro.
-          </p>
-
-          <a
-            href="#promon"
-            class="mt-8 inline-flex items-center gap-3 rounded-full bg-promon-orange px-7 py-4 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#d93f06]"
-          >
-            Conheça o relatório
-            <i data-lucide="arrow-down" class="h-4 w-4"></i>
-          </a>
-
+        <!-- LOGO -->
+        <div class="
+            text-[15px]
+            font-semibold
+            tracking-[-.03em]
+            text-gray-500
+        ">
+            PROMON<span class="text-[#ed4b0b]">▮</span>
         </div>
 
-      </div>
 
-      <div class="absolute bottom-0 right-0 hidden h-24 w-[42%] bg-promon-orange lg:block"
-           style="clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);">
-      </div>
-
-    </section>
-
-    <!-- INTRO -->
-    <section id="promon" class="relative overflow-hidden bg-white">
-
-      <div class="mx-auto grid max-w-7xl lg:grid-cols-2">
-
-        <div class="flex flex-col justify-center px-5 py-20 sm:px-10 lg:px-16 lg:py-28">
-
-          <div class="mb-6 flex items-center gap-3">
-            <span class="h-1 w-10 bg-promon-orange"></span>
-            <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">
-              Apromon S.A.
-            </span>
-          </div>
-
-          <h2 class="max-w-xl text-4xl font-black leading-tight tracking-tight text-gray-900 sm:text-5xl">
-            Construindo o futuro
-            <span class="text-promon-blue">juntos.</span>
-          </h2>
-
-          <p class="mt-6 max-w-xl text-base leading-8 text-gray-600">
-            A Promon é uma organização de engenharia e tecnologia
-            que atua na construção de soluções relevantes para o
-            desenvolvimento do Brasil e da América Latina.
-          </p>
-
-          <p class="mt-4 max-w-xl text-base leading-8 text-gray-600">
-            Nosso compromisso é criar valor de longo prazo,
-            combinando conhecimento, inovação e responsabilidade.
-          </p>
-
-          <a
-            href="#empresas"
-            class="mt-8 inline-flex w-fit items-center gap-3 text-sm font-bold text-promon-blue transition hover:text-promon-orange"
-          >
-            Conheça a Promon
-            <i data-lucide="arrow-right" class="h-4 w-4"></i>
-          </a>
-
-        </div>
-
-        <div class="relative min-h-[420px] overflow-hidden lg:min-h-[620px]">
-
-          <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85"
-            alt="Edifício moderno"
-            class="h-full w-full object-cover"
-          >
-
-          <div
-            class="absolute bottom-0 left-0 h-32 w-32 bg-promon-orange"
-            style="clip-path: polygon(0 0, 100% 100%, 0 100%);">
-          </div>
-
-          <div
-            class="absolute right-0 top-0 h-40 w-40 bg-promon-blue"
-            style="clip-path: polygon(100% 0, 100% 100%, 0 0);">
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- APROMON S.A. -->
-
-    <!-- EMPRESAS INVESTIDAS -->
-    <!-- EMPRESAS INVESTIDAS -->
-    <section id="empresas" class="relative overflow-hidden bg-promon-blue text-white">
-
-      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-10 lg:px-16 lg:py-28">
-
-        <div class="max-w-3xl">
-          <div class="mb-6 flex items-center gap-3">
-            <span class="h-1 w-12 bg-promon-orange"></span>
-            <span class="text-xs font-bold uppercase tracking-[0.25em] text-white/60">
-              Nosso ecossistema
-            </span>
-          </div>
-
-          <h2 class="text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            Empresas<br>
-            <span class="text-promon-yellow">investidas</span>
-          </h2>
-
-          <p class="mt-6 max-w-2xl text-base leading-8 text-white/75 sm:text-lg">
-            Um ecossistema formado por empresas que compartilham
-            conhecimento, experiência e a visão de construir soluções
-            para um futuro melhor.
-          </p>
-        </div>
-
-        <div class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-
-          <article class="group relative overflow-hidden bg-white p-8 text-gray-900 transition hover:-translate-y-1">
-            <div class="mb-12 flex h-14 w-14 items-center justify-center bg-promon-orange text-white">
-              <i data-lucide="building-2" class="h-7 w-7"></i>
-            </div>
-
-            <span class="text-xs font-bold uppercase tracking-widest text-gray-400">
-              Empresa
-            </span>
-
-            <h3 class="mt-2 text-2xl font-black">
-              Promon
-            </h3>
-
-            <p class="mt-4 text-sm leading-6 text-gray-500">
-              Engenharia, tecnologia e soluções para projetos de grande impacto.
-            </p>
-
-            <div class="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-promon-blue">
-              Saiba mais
-              <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-            </div>
-          </article>
-
-          <article class="group relative overflow-hidden bg-promon-yellow p-8 text-gray-900 transition hover:-translate-y-1">
-            <div class="mb-12 flex h-14 w-14 items-center justify-center bg-promon-blue text-white">
-              <i data-lucide="factory" class="h-7 w-7"></i>
-            </div>
-
-            <span class="text-xs font-bold uppercase tracking-widest text-gray-700/60">
-              Empresa
-            </span>
-
-            <h3 class="mt-2 text-2xl font-black">
-              Promon Engenharia
-            </h3>
-
-            <p class="mt-4 text-sm leading-6 text-gray-700/70">
-              Engenharia integrada para projetos complexos e estratégicos.
-            </p>
-
-            <div class="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-promon-blue">
-              Saiba mais
-              <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-            </div>
-          </article>
-
-          <article class="group relative overflow-hidden bg-promon-orange p-8 text-white transition hover:-translate-y-1">
-            <div class="mb-12 flex h-14 w-14 items-center justify-center bg-white text-promon-orange">
-              <i data-lucide="zap" class="h-7 w-7"></i>
-            </div>
-
-            <span class="text-xs font-bold uppercase tracking-widest text-white/60">
-              Empresa
-            </span>
-
-            <h3 class="mt-2 text-2xl font-black">
-              Forzy
-            </h3>
-
-            <p class="mt-4 text-sm leading-6 text-white/75">
-              Tecnologia e inovação para transformar negócios e gerar impacto.
-            </p>
-
-            <div class="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white">
-              Saiba mais
-              <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-            </div>
-          </article>
-
-          <article class="group relative overflow-hidden bg-white p-8 text-gray-900 transition hover:-translate-y-1">
-            <div class="mb-12 flex h-14 w-14 items-center justify-center bg-promon-blue text-white">
-              <i data-lucide="network" class="h-7 w-7"></i>
-            </div>
-
-            <span class="text-xs font-bold uppercase tracking-widest text-gray-400">
-              Empresa
-            </span>
-
-            <h3 class="mt-2 text-2xl font-black">
-              Logicalis
-            </h3>
-
-            <p class="mt-4 text-sm leading-6 text-gray-500">
-              Soluções digitais e infraestrutura para organizações conectadas.
-            </p>
-
-            <div class="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-promon-blue">
-              Saiba mais
-              <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-
-      <div
-        class="absolute bottom-0 right-0 h-32 w-48 bg-promon-orange"
-        style="clip-path: polygon(35% 100%, 100% 0, 100% 100%);">
-      </div>
-
-    </section>
-    <!-- DESTAQUES DE 2025 -->
-    <!-- DESTAQUES DE 2025 -->
-    <section id="destaques" class="relative overflow-hidden bg-white">
-
-      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-10 lg:px-16 lg:py-28">
-
-        <div class="mb-14 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-
-          <div>
-            <div class="mb-6 flex items-center gap-3">
-              <span class="h-1 w-12 bg-promon-orange"></span>
-              <span class="text-xs font-bold uppercase tracking-[0.25em] text-gray-500">
-                Resultados
-              </span>
-            </div>
-
-            <h2 class="text-4xl font-black leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-              Destaques
-              <span class="text-promon-orange">de 2025</span>
-            </h2>
-          </div>
-
-          <p class="max-w-md text-sm leading-7 text-gray-500">
-            Um ano marcado por novos projetos, evolução dos negócios,
-            inovação e resultados construídos por nossas equipes.
-          </p>
-
-        </div>
-
-        <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-
-          <article class="group relative min-h-[390px] overflow-hidden bg-gray-100">
-
-            <img
-              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=85"
-              alt="Projeto de engenharia"
-              class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-            <div class="absolute bottom-0 left-0 right-0 p-7 text-white">
-
-              <span class="text-xs font-bold uppercase tracking-[0.2em] text-promon-yellow">
-                Promon
-              </span>
-
-              <h3 class="mt-2 text-3xl font-black">
-                Engenharia
-              </h3>
-
-              <p class="mt-3 max-w-sm text-sm leading-6 text-white/75">
-                Projetos e soluções de engenharia que transformam
-                desafios complexos em resultados concretos.
-              </p>
-
-              <a href="#" class="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider">
-                Conheça
-                <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-              </a>
-
-            </div>
-
-          </article>
-
-          <article class="group relative min-h-[390px] overflow-hidden bg-promon-orange">
-
-            <div class="absolute right-0 top-0 h-40 w-40 bg-promon-yellow"
-                 style="clip-path: polygon(100% 0, 100% 100%, 0 0);">
-            </div>
-
-            <div class="relative flex h-full flex-col justify-between p-8 text-white">
-
-              <div class="flex h-14 w-14 items-center justify-center bg-white text-promon-orange">
-                <i data-lucide="trending-up" class="h-7 w-7"></i>
-              </div>
-
-              <div>
-
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-white/60">
-                  Performance
-                </span>
-
-                <h3 class="mt-3 text-4xl font-black leading-none">
-                  Crescimento
-                  <br>
-                  sustentável
-                </h3>
-
-                <p class="mt-5 text-sm leading-6 text-white/80">
-                  Evolução consistente dos negócios e fortalecimento
-                  das nossas empresas.
-                </p>
-
-                <a href="#" class="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider">
-                  Ver resultados
-                  <i data-lucide="arrow-right" class="h-4 w-4"></i>
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <article class="group relative min-h-[390px] overflow-hidden bg-promon-blue">
-
-            <div class="absolute -bottom-16 -right-16 h-56 w-56 rounded-full border-[30px] border-promon-yellow/30"></div>
-
-            <div class="relative flex h-full flex-col justify-between p-8 text-white">
-
-              <div class="flex h-14 w-14 items-center justify-center bg-promon-yellow text-promon-blue">
-                <i data-lucide="lightbulb" class="h-7 w-7"></i>
-              </div>
-
-              <div>
-
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-white/60">
-                  Inovação
-                </span>
-
-                <h3 class="mt-3 text-4xl font-black leading-none">
-                  Novos
-                  <br>
-                  caminhos
-                </h3>
-
-                <p class="mt-5 text-sm leading-6 text-white/75">
-                  Tecnologia e inovação como motores para criar
-                  novas possibilidades.
-                </p>
-
-                <a href="#" class="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider">
-                  Descubra
-                  <i data-lucide="arrow-right" class="h-4 w-4"></i>
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <article class="group relative min-h-[300px] overflow-hidden bg-promon-yellow text-gray-900 md:col-span-2 lg:col-span-2">
-
-            <div class="grid h-full lg:grid-cols-2">
-
-              <div class="flex flex-col justify-between p-8 lg:p-10">
-
-                <div class="flex h-14 w-14 items-center justify-center bg-promon-blue text-white">
-                  <i data-lucide="users" class="h-7 w-7"></i>
-                </div>
-
-                <div class="mt-10">
-
-                  <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-700/60">
-                    Pessoas
-                  </span>
-
-                  <h3 class="mt-2 text-3xl font-black">
-                    Pessoas que fazem acontecer
-                  </h3>
-
-                  <p class="mt-4 max-w-md text-sm leading-6 text-gray-700/75">
-                    Uma cultura construída por pessoas, colaboração,
-                    conhecimento e propósito.
-                  </p>
-
-                </div>
-
-              </div>
-
-              <div class="min-h-[260px] overflow-hidden">
-
-                <img
-                  src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85"
-                  alt="Equipe trabalhando em conjunto"
-                  class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                >
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <article class="group relative min-h-[300px] overflow-hidden bg-gray-100">
-
-            <img
-              src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=85"
-              alt="Ambiente corporativo"
-              class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
-            >
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent"></div>
-
-            <div class="absolute bottom-0 left-0 p-7 text-white">
-
-              <span class="text-xs font-bold uppercase tracking-[0.2em] text-promon-yellow">
-                2025
-              </span>
-
-              <h3 class="mt-2 text-2xl font-black">
-                Um ano de conquistas
-              </h3>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-    <!-- PROMON EM 2026 -->
-    <!-- PROMON EM 2026 -->
-    <section id="2026" class="relative overflow-hidden bg-gray-100">
-
-      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-10 lg:px-16 lg:py-28">
-
-        <div class="mb-16">
-          <div class="mb-6 flex items-center gap-3">
-            <span class="h-1 w-12 bg-promon-orange"></span>
-            <span class="text-xs font-bold uppercase tracking-[0.25em] text-gray-500">
-              Próximos passos
-            </span>
-          </div>
-
-          <h2 class="text-4xl font-black leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-            Promon
-            <span class="text-promon-blue">em 2026</span>
-          </h2>
-
-          <p class="mt-6 max-w-2xl text-base leading-8 text-gray-600 sm:text-lg">
-            Conheça as empresas, as pessoas e os projetos que estão
-            construindo o próximo capítulo da Promon.
-          </p>
-        </div>
-
-        <div class="space-y-6">
-
-          <!-- PROMON S.A. -->
-          <article class="group grid overflow-hidden bg-white lg:grid-cols-2">
-
-            <div class="relative min-h-[360px] overflow-hidden lg:min-h-[480px]">
-
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=85"
-                alt="Escritório moderno"
-                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-              >
-
-              <div
-                class="absolute bottom-0 left-0 h-28 w-28 bg-promon-orange"
-                style="clip-path: polygon(0 0, 100% 100%, 0 100%);">
-              </div>
-
-            </div>
-
-            <div class="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
-
-              <span class="text-xs font-bold uppercase tracking-[0.25em] text-promon-orange">
-                Promon S.A.
-              </span>
-
-              <h3 class="mt-3 text-3xl font-black text-gray-900 sm:text-4xl">
-                Uma visão de futuro
-              </h3>
-
-              <p class="mt-6 text-base leading-8 text-gray-600">
-                Seguimos fortalecendo nossa atuação e buscando novas
-                oportunidades para criar valor sustentável para nossos
-                negócios, parceiros e sociedade.
-              </p>
-
-              <a
-                href="#"
-                class="mt-8 inline-flex w-fit items-center gap-3 rounded-full bg-promon-blue px-6 py-3 text-sm font-bold text-white transition hover:bg-[#003b5a]"
-              >
-                Saiba mais
-                <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-              </a>
-
-            </div>
-
-          </article>
-
-          <!-- PROMON ENGENHARIA -->
-          <article class="group grid overflow-hidden bg-promon-orange text-white lg:grid-cols-2">
-
-            <div class="order-2 flex flex-col justify-center p-8 sm:p-10 lg:order-1 lg:p-14">
-
-              <span class="text-xs font-bold uppercase tracking-[0.25em] text-white/60">
-                Promon Engenharia
-              </span>
-
-              <h3 class="mt-3 text-3xl font-black sm:text-4xl">
-                Engenharia que transforma
-              </h3>
-
-              <p class="mt-6 text-base leading-8 text-white/80">
-                Experiência, conhecimento e capacidade de execução
-                para desenvolver projetos cada vez mais relevantes
-                e conectados às necessidades do mercado.
-              </p>
-
-              <a
-                href="#"
-                class="mt-8 inline-flex w-fit items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-bold text-promon-orange transition hover:bg-gray-100"
-              >
-                Conheça
-                <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-              </a>
-
-            </div>
-
-            <div class="order-1 min-h-[360px] overflow-hidden lg:order-2 lg:min-h-[480px]">
-
-              <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=85"
-                alt="Profissional em projeto de engenharia"
-                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-              >
-
-            </div>
-
-          </article>
-
-          <!-- FORZY -->
-          <article class="group grid overflow-hidden bg-promon-yellow text-gray-900 lg:grid-cols-2">
-
-            <div class="min-h-[360px] overflow-hidden lg:min-h-[480px]">
-
-              <img
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85"
-                alt="Equipe em reunião"
-                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-              >
-
-            </div>
-
-            <div class="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
-
-              <span class="text-xs font-bold uppercase tracking-[0.25em] text-gray-700/60">
-                Forzy
-              </span>
-
-              <h3 class="mt-3 text-3xl font-black sm:text-4xl">
-                Inovação para novos negócios
-              </h3>
-
-              <p class="mt-6 text-base leading-8 text-gray-700/75">
-                Novas ideias, tecnologia e empreendedorismo criando
-                oportunidades para transformar desafios em negócios.
-              </p>
-
-              <a
-                href="#"
-                class="mt-8 inline-flex w-fit items-center gap-3 rounded-full bg-promon-blue px-6 py-3 text-sm font-bold text-white transition hover:bg-[#003b5a]"
-              >
-                Conheça
-                <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-              </a>
-
-            </div>
-
-          </article>
-
-          <!-- LOGICALIS -->
-          <article class="group grid overflow-hidden bg-promon-blue text-white lg:grid-cols-2">
-
-            <div class="order-2 flex flex-col justify-center p-8 sm:p-10 lg:order-1 lg:p-14">
-
-              <span class="text-xs font-bold uppercase tracking-[0.25em] text-promon-yellow">
-                Logicalis Latin America
-              </span>
-
-              <h3 class="mt-3 text-3xl font-black sm:text-4xl">
-                Tecnologia conectando possibilidades
-              </h3>
-
-              <p class="mt-6 text-base leading-8 text-white/75">
-                Soluções digitais, conectividade e inovação para
-                organizações que precisam evoluir em um mundo
-                cada vez mais conectado.
-              </p>
-
-              <a
-                href="#"
-                class="mt-8 inline-flex w-fit items-center gap-3 rounded-full bg-promon-yellow px-6 py-3 text-sm font-bold text-promon-blue transition hover:bg-yellow-300"
-              >
-                Conheça
-                <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-              </a>
-
-            </div>
-
-            <div class="order-1 min-h-[360px] overflow-hidden lg:order-2 lg:min-h-[480px]">
-
-              <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=85"
-                alt="Equipe de tecnologia trabalhando"
-                class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-              >
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-    <!-- FOOTER -->
-    <!-- CTA FINAL -->
-    <section class="relative overflow-hidden bg-promon-orange">
-
-      <div class="absolute inset-0 opacity-10">
-        <div
-          class="absolute -right-20 -top-20 h-96 w-96 rounded-full border-[60px] border-white">
-        </div>
-        <div
-          class="absolute -bottom-40 -left-20 h-96 w-96 rounded-full border-[40px] border-white">
-        </div>
-      </div>
-
-      <div class="relative mx-auto max-w-5xl px-5 py-20 text-center sm:px-10 lg:py-28">
-
-        <span class="text-xs font-bold uppercase tracking-[0.3em] text-white/70">
-          Relatório Anual 2026
-        </span>
-
-        <h2 class="mx-auto mt-5 max-w-3xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-          Conheça nossa história,
-          <br>
-          nossos negócios e nosso futuro.
-        </h2>
-
-        <p class="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">
-          Explore o Relatório Anual 2026 e descubra os caminhos
-          que estamos construindo juntos.
-        </p>
-
-        <a
-          href="#"
-          class="mt-9 inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-wide text-promon-orange shadow-xl transition hover:-translate-y-1 hover:shadow-2xl"
-        >
-          Saiba mais
-          <i data-lucide="arrow-up-right" class="h-5 w-5"></i>
-        </a>
-
-      </div>
-
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-gray-950 text-white">
-
-      <div class="mx-auto max-w-7xl px-5 py-14 sm:px-10 lg:px-16">
-
-        <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-
-          <div class="lg:col-span-2">
-
-            <div class="text-3xl font-black tracking-tight">
-              PROMON<span class="text-promon-orange">®</span>
-            </div>
-
-            <p class="mt-5 max-w-md text-sm leading-7 text-gray-400">
-              Engenharia, tecnologia e inovação para construir
-              soluções que transformam negócios e sociedade.
-            </p>
-
-          </div>
-
-          <div>
-
-            <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-white">
-              Navegação
-            </h3>
-
-            <nav class="mt-5 flex flex-col gap-3 text-sm text-gray-400">
-              <a href="#promon" class="transition hover:text-white">Promon S.A.</a>
-              <a href="#empresas" class="transition hover:text-white">Empresas</a>
-              <a href="#destaques" class="transition hover:text-white">Destaques de 2025</a>
-              <a href="#2026" class="transition hover:text-white">Promon em 2026</a>
-            </nav>
-
-          </div>
-
-          <div>
-
-            <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-white">
-              Relatório
-            </h3>
-
-            <p class="mt-5 text-sm leading-7 text-gray-400">
-              Relatório Anual 2026
-            </p>
-
-            <a
-              href="#"
-              class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-promon-orange"
-            >
-              Acessar relatório
-              <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+        <!-- NAV -->
+        <nav class="
+            desktop-nav
+            ml-14
+            flex
+            gap-8
+            text-[8px]
+            uppercase
+            tracking-[.1em]
+            font-bold
+            text-gray-500
+        ">
+
+            <a href="#grupo" class="hover:text-[#ed4b0b] transition">
+                O grupo
             </a>
 
-          </div>
+            <a href="#destaques" class="hover:text-[#ed4b0b] transition">
+                Destaques
+            </a>
+
+            <a href="#empresas" class="hover:text-[#ed4b0b] transition">
+                Empresas
+            </a>
+
+            <a href="#final" class="hover:text-[#ed4b0b] transition">
+                Saiba mais
+            </a>
+
+        </nav>
+
+
+        <!-- ANO -->
+
+        <div class="ml-auto flex items-center gap-3">
+
+            <span class="hidden md:block text-[8px] text-gray-400">
+                RELATÓRIO ANUAL
+            </span>
+
+            <span class="
+                text-[8px]
+                font-bold
+                text-[#ed4b0b]
+            ">
+                2026
+            </span>
 
         </div>
 
-        <div class="mt-12 flex flex-col justify-between gap-4 border-t border-white/10 pt-7 text-xs text-gray-500 sm:flex-row">
+    </div>
 
-          <span>
-            © 2026 Promon S.A. Todos os direitos reservados.
-          </span>
+    <div class="header-line"></div>
 
-          <div class="flex items-center gap-5">
-            <a href="#" class="transition hover:text-white">Privacidade</a>
-            <a href="#" class="transition hover:text-white">Contato</a>
-          </div>
+</header>
+
+
+
+<!-- =========================================================
+     01 — CAPA
+========================================================= -->
+
+<section class="
+    relative
+    min-h-[720px]
+    bg-[#f4f4f5]
+    overflow-hidden
+">
+
+    <!-- FOTO -->
+
+    <div class="
+        absolute
+        right-0
+        top-0
+        w-[57%]
+        h-[500px]
+        hero-image
+        diag-left
+    "></div>
+
+
+    <!-- ORANGE OVERLAYS -->
+
+    <div class="
+        absolute
+        right-[27%]
+        top-0
+        w-[115px]
+        h-[145px]
+        bg-[#ed4b0b]/80
+        rotate-[17deg]
+    "></div>
+
+    <div class="
+        absolute
+        right-[22%]
+        top-[65px]
+        w-[52px]
+        h-[85px]
+        bg-white/35
+        rotate-[17deg]
+    "></div>
+
+    <div class="
+        absolute
+        right-[30%]
+        top-[105px]
+        w-[30px]
+        h-[50px]
+        bg-white/30
+        rotate-[17deg]
+    "></div>
+
+
+    <!-- LABEL -->
+
+    <div class="
+        absolute
+        top-[105px]
+        left-1/2
+        -translate-x-1/2
+        w-full
+        max-w-[1180px]
+        px-6
+        z-20
+    ">
+
+        <span class="
+            kicker
+            text-gray-400
+        ">
+            Promon S.A. · 2026
+        </span>
+
+    </div>
+
+
+    <!-- TÍTULO -->
+
+    <div class="
+        relative
+        z-20
+        max-w-[1180px]
+        mx-auto
+        px-6
+        pt-[190px]
+    ">
+
+        <div class="
+            inline-block
+            bg-[#ed4b0b]
+            text-white
+            px-9
+            py-7
+            diag-left
+            shadow-[0_20px_50px_rgba(237,75,11,.16)]
+            reveal
+        ">
+
+            <h1 class="display">
+                Relatório<br>
+                <strong>Anual 2026</strong>
+            </h1>
 
         </div>
 
-      </div>
+    </div>
 
-    </footer>
 
-  </main>
+    <!-- LINHA ORANGE -->
 
-  <script>
-    lucide.createIcons();
-  </script>
+    <div class="
+        absolute
+        right-0
+        top-[472px]
+        w-[57%]
+        h-[30px]
+        bg-[#ed4b0b]
+        diag-left
+    "></div>
 
-</body>
-</html>
+
+    <!-- =====================================================
+         INSTITUCIONAL
+    ====================================================== -->
+
+    <div class="
+        absolute
+        bottom-0
+        left-0
+        right-0
+        h-[245px]
+        bg-white
+    ">
+
+        <div class="
+            max-w-[1000px]
+            mx-auto
+            h-full
+            px-6
+            flex
+            items-end
+        ">
+
+
+            <!-- FOTO -->
+
+            <div class="
+                hidden sm:block
+                w-[250px]
+                h-[275px]
+                person
+                bg-cover
+                bg-center
+                relative
+                -mb-1
+                photo
+            ">
+
+                <div class="
+                    absolute
+                    top-0
+                    right-0
+                    w-[30px]
+                    h-full
+                    bg-white
+                    -mr-1
+                    diag-right
+                "></div>
+
+            </div>
+
+
+            <!-- TEXTO -->
+
+            <div class="
+                pb-[55px]
+                pl-10
+                max-w-[500px]
+            ">
+
+                <div class="flex items-center gap-3 mb-3">
+
+                    <span class="
+                        w-8
+                        h-[2px]
+                        bg-[#ed4b0b]
+                    "></span>
+
+                    <span class="
+                        kicker
+                        text-[#ed4b0b]
+                    ">
+                        Sobre o grupo
+                    </span>
+
+                </div>
+
+                <h2 class="
+                    text-[17px]
+                    font-bold
+                    tracking-[-.02em]
+                ">
+                    PROMON S.A.
+                </h2>
+
+                <p class="
+                    body-small
+                    text-gray-500
+                    mt-3
+                    max-w-[440px]
+                ">
+                    A Promon S.A. é uma holding brasileira que atua
+                    na construção e desenvolvimento de negócios,
+                    investimentos e soluções estratégicas.
+                    Este relatório reúne os principais acontecimentos,
+                    resultados e iniciativas do período.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     02 — ESTRUTURA
+========================================================= -->
+
+<section id="grupo" class="
+    relative
+    bg-[#f1f1f5]
+    py-[85px]
+    overflow-hidden
+">
+
+
+    <!-- DECORAÇÃO -->
+
+    <div class="
+        absolute
+        right-[-30px]
+        top-0
+        w-[180px]
+        h-full
+        bg-white/70
+        diag-left
+    "></div>
+
+
+    <div class="
+        max-w-[900px]
+        mx-auto
+        px-6
+        relative
+    ">
+
+
+        <!-- CABEÇALHO -->
+
+        <div class="text-center">
+
+            <span class="
+                kicker
+                text-[#ed4b0b]
+            ">
+                Estrutura
+            </span>
+
+            <h2 class="
+                mt-3
+                text-[18px]
+                font-bold
+                tracking-[-.025em]
+            ">
+                A PROMON S.A. E SUAS EMPRESAS INVESTIDAS
+            </h2>
+
+            <p class="
+                micro
+                text-gray-400
+                mt-2
+            ">
+                Estrutura societária e principais empresas do grupo
+            </p>
+
+        </div>
+
+
+        <!-- ORGANOGRAMA -->
+
+        <div class="
+            max-w-[720px]
+            mx-auto
+            mt-14
+        ">
+
+
+            <!-- HOLDING -->
+
+            <div class="flex justify-center">
+
+                <div class="
+                    w-[155px]
+                    h-[58px]
+                    bg-white
+                    border
+                    border-gray-200
+                    shadow-[0_8px_30px_rgba(0,0,0,.04)]
+                    flex
+                    flex-col
+                    items-center
+                    justify-center
+                ">
+
+                    <span class="
+                        text-[12px]
+                        font-bold
+                        text-gray-600
+                    ">
+                        PROMON
+                    </span>
+
+                    <span class="micro text-gray-400">
+                        S.A.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONECTOR -->
+
+            <div class="
+                h-9
+                w-px
+                bg-gray-300
+                mx-auto
+            "></div>
+
+            <div class="
+                h-px
+                bg-gray-300
+                w-[84%]
+                mx-auto
+            "></div>
+
+
+            <!-- EMPRESAS -->
+
+            <div class="
+                grid
+                grid-cols-2
+                md:grid-cols-4
+                gap-3
+            ">
+
+
+                <!-- PROMON -->
+
+                <div class="relative pt-9">
+
+                    <div class="
+                        absolute
+                        top-0
+                        left-1/2
+                        h-9
+                        w-px
+                        bg-gray-300
+                    "></div>
+
+                    <div class="
+                        bg-white
+                        border
+                        border-gray-200
+                        h-[76px]
+                        flex
+                        flex-col
+                        items-center
+                        justify-center
+                        transition
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                    ">
+
+                        <b class="
+                            text-[#ed4b0b]
+                            text-[12px]
+                        ">
+                            Promon
+                        </b>
+
+                        <span class="micro text-gray-400 mt-1">
+                            Engenharia
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FORZY -->
+
+                <div class="relative pt-9">
+
+                    <div class="
+                        absolute
+                        top-0
+                        left-1/2
+                        h-9
+                        w-px
+                        bg-gray-300
+                    "></div>
+
+                    <div class="
+                        bg-white
+                        border
+                        border-gray-200
+                        h-[76px]
+                        flex
+                        flex-col
+                        items-center
+                        justify-center
+                        transition
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                    ">
+
+                        <b class="
+                            text-[#f5a914]
+                            text-[12px]
+                        ">
+                            Forzy
+                        </b>
+
+                        <span class="micro text-gray-400 mt-1">
+                            Tecnologia
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FPPS -->
+
+                <div class="relative pt-9">
+
+                    <div class="
+                        absolute
+                        top-0
+                        left-1/2
+                        h-9
+                        w-px
+                        bg-gray-300
+                    "></div>
+
+                    <div class="
+                        bg-white
+                        border
+                        border-gray-200
+                        h-[76px]
+                        flex
+                        flex-col
+                        items-center
+                        justify-center
+                        transition
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                    ">
+
+                        <b class="
+                            text-gray-600
+                            text-[12px]
+                        ">
+                            FPPS
+                        </b>
+
+                        <span class="micro text-gray-400 mt-1">
+                            Previdência
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOGICALS -->
+
+                <div class="relative pt-9">
+
+                    <div class="
+                        absolute
+                        top-0
+                        left-1/2
+                        h-9
+                        w-px
+                        bg-gray-300
+                    "></div>
+
+                    <div class="
+                        bg-white
+                        border
+                        border-gray-200
+                        h-[76px]
+                        flex
+                        flex-col
+                        items-center
+                        justify-center
+                        transition
+                        hover:-translate-y-1
+                        hover:shadow-lg
+                    ">
+
+                        <b class="
+                            text-[#244cff]
+                            text-[12px]
+                        ">
+                            Logicals
+                        </b>
+
+                        <span class="micro text-gray-400 mt-1">
+                            Latin America
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     03 — DESTAQUES
+========================================================= -->
+
+<section id="destaques" class="
+    py-[90px]
+    bg-white
+">
+
+    <div class="
+        max-w-[900px]
+        mx-auto
+        px-6
+    ">
+
+
+        <div class="
+            flex
+            items-end
+            justify-between
+            mb-12
+        ">
+
+            <div>
+
+                <span class="
+                    kicker
+                    text-[#ed4b0b]
+                ">
+                    Performance
+                </span>
+
+                <h2 class="
+                    mt-3
+                    text-[24px]
+                    font-bold
+                    tracking-[-.035em]
+                ">
+                    DESTAQUES DE 2025
+                </h2>
+
+            </div>
+
+            <span class="
+                hidden md:block
+                micro
+                text-gray-400
+                max-w-[170px]
+                text-right
+            ">
+                Principais indicadores
+                e acontecimentos
+                do período.
+            </span>
+
+        </div>
+
+
+        <!-- CARDS -->
+
+        <div class="
+            grid
+            md:grid-cols-2
+            gap-5
+        ">
+
+
+            <!-- PROMON -->
+
+            <div class="
+                card
+                border
+                border-gray-200
+                bg-white
+                overflow-hidden
+            ">
+
+                <div class="
+                    h-[7px]
+                    bg-[#ed4b0b]
+                "></div>
+
+                <div class="p-6">
+
+                    <div class="
+                        flex
+                        items-center
+                        justify-between
+                    ">
+
+                        <h3 class="text-[12px] font-bold">
+                            Promon S.A.
+                        </h3>
+
+                        <span class="text-[#ed4b0b] text-[14px]">
+                            ↗
+                        </span>
+
+                    </div>
+
+
+                    <div class="
+                        mt-8
+                        grid
+                        grid-cols-2
+                        gap-6
+                    ">
+
+                        <div>
+
+                            <div class="
+                                text-[25px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                R$ 11,8
+                            </div>
+
+                            <div class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                                mt-1
+                            ">
+                                bilhões
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="
+                                text-[25px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                +30
+                            </div>
+
+                            <div class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                                mt-1
+                            ">
+                                iniciativas
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="
+                        mt-7
+                        pt-5
+                        border-t
+                        border-gray-100
+                        micro
+                        text-gray-500
+                    ">
+                        Negócios movimentados e iniciativas
+                        estratégicas ao longo do período.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ENGENHARIA -->
+
+            <div class="
+                card
+                border
+                border-gray-200
+                bg-white
+                overflow-hidden
+            ">
+
+                <div class="
+                    h-[7px]
+                    bg-[#004b78]
+                "></div>
+
+                <div class="p-6">
+
+                    <div class="
+                        flex
+                        items-center
+                        justify-between
+                    ">
+
+                        <h3 class="text-[12px] font-bold">
+                            Promon Engenharia
+                        </h3>
+
+                        <span class="text-[#004b78] text-[14px]">
+                            ↗
+                        </span>
+
+                    </div>
+
+
+                    <div class="
+                        mt-8
+                        grid
+                        grid-cols-2
+                        gap-6
+                    ">
+
+                        <div>
+
+                            <div class="
+                                text-[25px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                56
+                            </div>
+
+                            <div class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                                mt-1
+                            ">
+                                anos
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="
+                                text-[25px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                R$ 4,5
+                            </div>
+
+                            <div class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                                mt-1
+                            ">
+                                bilhões
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="
+                        mt-7
+                        pt-5
+                        border-t
+                        border-gray-100
+                        micro
+                        text-gray-500
+                    ">
+                        Engenharia, energia, infraestrutura,
+                        tecnologia e transformação digital.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORZY -->
+
+            <div class="
+                card
+                border
+                border-gray-200
+                bg-white
+                overflow-hidden
+            ">
+
+                <div class="
+                    h-[7px]
+                    bg-[#f5a914]
+                "></div>
+
+                <div class="p-6">
+
+                    <div class="
+                        flex
+                        items-center
+                        justify-between
+                    ">
+
+                        <h3 class="text-[12px] font-bold">
+                            Forzy
+                        </h3>
+
+                        <span class="text-[#f5a914] text-[14px]">
+                            ↗
+                        </span>
+
+                    </div>
+
+
+                    <div class="
+                        mt-8
+                        grid
+                        grid-cols-2
+                        gap-6
+                    ">
+
+                        <div>
+
+                            <div class="
+                                text-[25px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                R$ 12,7
+                            </div>
+
+                            <div class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                                mt-1
+                            ">
+                                milhões
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="
+                                text-[25px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                18,9 mil
+                            </div>
+
+                            <div class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                                mt-1
+                            ">
+                                usuários
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="
+                        mt-7
+                        pt-5
+                        border-t
+                        border-gray-100
+                        micro
+                        text-gray-500
+                    ">
+                        Tecnologia e inovação aplicadas
+                        à transformação dos negócios.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- FUNDAÇÃO -->
+
+            <div class="
+                card
+                border
+                border-gray-200
+                bg-white
+                overflow-hidden
+            ">
+
+                <div class="
+                    h-[7px]
+                    bg-[#43a487]
+                "></div>
+
+                <div class="p-6">
+
+                    <div class="
+                        flex
+                        items-center
+                        justify-between
+                    ">
+
+                        <h3 class="text-[12px] font-bold">
+                            Fundação Promon
+                        </h3>
+
+                        <span class="text-[#43a487] text-[14px]">
+                            ↗
+                        </span>
+
+                    </div>
+
+
+                    <div class="
+                        mt-8
+                        grid
+                        grid-cols-2
+                        gap-6
+                    ">
+
+                        <div>
+
+                            <div class="
+                                text-[25px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                R$ 2,6
+                            </div>
+
+                            <div class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                                mt-1
+                            ">
+                                bilhões
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="
+                                text-[25px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                8,5 mil
+                            </div>
+
+                            <div class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                                mt-1
+                            ">
+                                participantes
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="
+                        mt-7
+                        pt-5
+                        border-t
+                        border-gray-100
+                        micro
+                        text-gray-500
+                    ">
+                        Previdência, patrimônio e gestão
+                        de longo prazo.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOGICALS -->
+
+            <div class="
+                card
+                border
+                border-gray-200
+                bg-white
+                overflow-hidden
+                md:col-span-2
+            ">
+
+                <div class="
+                    h-[7px]
+                    bg-[#244cff]
+                "></div>
+
+                <div class="
+                    p-6
+                    md:p-8
+                    grid
+                    md:grid-cols-[1fr_auto_1fr]
+                    gap-8
+                    items-center
+                ">
+
+                    <div>
+
+                        <h3 class="text-[12px] font-bold">
+                            Logicals Latin America
+                        </h3>
+
+                        <p class="
+                            micro
+                            text-gray-500
+                            mt-3
+                            max-w-[300px]
+                        ">
+                            Soluções especializadas para
+                            organizações em toda a América Latina.
+                        </p>
+
+                    </div>
+
+
+                    <div class="
+                        hidden md:block
+                        w-px
+                        h-14
+                        bg-gray-200
+                    "></div>
+
+
+                    <div class="
+                        flex
+                        gap-12
+                    ">
+
+                        <div>
+
+                            <div class="
+                                text-[28px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                25
+                            </div>
+
+                            <span class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                            ">
+                                anos
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="
+                                text-[28px]
+                                font-bold
+                                tracking-[-.05em]
+                            ">
+                                R$ 2,4
+                            </div>
+
+                            <span class="
+                                text-[8px]
+                                text-gray-400
+                                uppercase
+                            ">
+                                bilhões
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     04 — EMPRESAS
+========================================================= -->
+
+<section id="empresas">
+
+
+    <!-- PROMON -->
+
+    <article class="
+        relative
+        min-h-[390px]
+        bg-[#ed4b0b]
+        overflow-hidden
+    ">
+
+        <div class="
+            max-w-[1000px]
+            mx-auto
+            px-6
+            py-16
+            grid
+            md:grid-cols-2
+            gap-14
+            items-center
+        ">
+
+            <div class="text-white">
+
+                <span class="
+                    kicker
+                    text-white/60
+                ">
+                    Empresa investida
+                </span>
+
+                <h2 class="
+                    mt-3
+                    text-[22px]
+                    font-bold
+                    tracking-[-.03em]
+                ">
+                    Promon S.A.
+                </h2>
+
+                <p class="
+                    body-small
+                    mt-5
+                    max-w-[400px]
+                    text-white/80
+                ">
+                    A Promon atua na construção de negócios
+                    sustentáveis, conectando pessoas,
+                    conhecimento e tecnologia para gerar
+                    valor no longo prazo.
+                </p>
+
+            </div>
+
+
+            <div class="
+                photo
+                h-[230px]
+                person
+                bg-cover
+                bg-center
+                diag-photo
+                shadow-2xl
+            "></div>
+
+        </div>
+
+    </article>
+
+
+
+    <!-- ENGENHARIA -->
+
+    <article class="
+        relative
+        min-h-[390px]
+        bg-[#004b78]
+        overflow-hidden
+    ">
+
+        <div class="
+            max-w-[1000px]
+            mx-auto
+            px-6
+            py-16
+            grid
+            md:grid-cols-2
+            gap-14
+            items-center
+        ">
+
+            <div class="
+                photo
+                h-[230px]
+                engineering
+                bg-cover
+                bg-center
+                diag-photo
+                order-2
+                md:order-1
+                shadow-2xl
+            "></div>
+
+
+            <div class="
+                text-white
+                order-1
+                md:order-2
+            ">
+
+                <span class="
+                    kicker
+                    text-white/50
+                ">
+                    Engenharia
+                </span>
+
+                <h2 class="
+                    mt-3
+                    text-[22px]
+                    font-bold
+                    tracking-[-.03em]
+                ">
+                    Promon Engenharia
+                </h2>
+
+                <p class="
+                    body-small
+                    mt-5
+                    max-w-[400px]
+                    text-white/75
+                ">
+                    Engenharia que combina experiência,
+                    inovação e capacidade técnica para
+                    desenvolver projetos complexos
+                    e de grande impacto.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+
+    <!-- FORZY -->
+
+    <article class="
+        relative
+        min-h-[390px]
+        bg-[#f5a914]
+        overflow-hidden
+    ">
+
+        <div class="
+            max-w-[1000px]
+            mx-auto
+            px-6
+            py-16
+            grid
+            md:grid-cols-2
+            gap-14
+            items-center
+        ">
+
+            <div class="text-white">
+
+                <span class="
+                    kicker
+                    text-white/60
+                ">
+                    Tecnologia
+                </span>
+
+                <h2 class="
+                    mt-3
+                    text-[22px]
+                    font-bold
+                    tracking-[-.03em]
+                ">
+                    Forzy
+                </h2>
+
+                <p class="
+                    body-small
+                    mt-5
+                    max-w-[400px]
+                    text-white/80
+                ">
+                    Tecnologia, dados e inovação aplicados
+                    à transformação dos negócios e à criação
+                    de novas oportunidades.
+                </p>
+
+            </div>
+
+
+            <div class="
+                photo
+                h-[230px]
+                tech
+                bg-cover
+                bg-center
+                diag-photo
+                shadow-2xl
+            "></div>
+
+        </div>
+
+    </article>
+
+
+
+    <!-- LOGICALS -->
+
+    <article class="
+        relative
+        min-h-[390px]
+        bg-[#244cff]
+        overflow-hidden
+    ">
+
+        <div class="
+            max-w-[1000px]
+            mx-auto
+            px-6
+            py-16
+            grid
+            md:grid-cols-2
+            gap-14
+            items-center
+        ">
+
+            <div class="
+                photo
+                h-[230px]
+                woman
+                bg-cover
+                bg-center
+                diag-photo
+                order-2
+                md:order-1
+                shadow-2xl
+            "></div>
+
+
+            <div class="
+                text-white
+                order-1
+                md:order-2
+            ">
+
+                <span class="
+                    kicker
+                    text-white/50
+                ">
+                    América Latina
+                </span>
+
+                <h2 class="
+                    mt-3
+                    text-[22px]
+                    font-bold
+                    tracking-[-.03em]
+                ">
+                    Logicals Latin America
+                </h2>
+
+                <p class="
+                    body-small
+                    mt-5
+                    max-w-[400px]
+                    text-white/75
+                ">
+                    Soluções e serviços especializados para
+                    apoiar organizações em sua evolução
+                    tecnológica e estratégica.
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- =========================================================
+     05 — FINAL
+========================================================= -->
+
+<section id="final" class="
+    relative
+    bg-[#f3f3f5]
+    py-[110px]
+    overflow-hidden
+">
+
+
+    <!-- GRANDE FORMA -->
+
+    <div class="
+        absolute
+        right-[-50px]
+        top-0
+        w-[260px]
+        h-full
+        bg-white
+        diag-left
+    "></div>
+
+
+    <div class="
+        relative
+        max-w-[700px]
+        mx-auto
+        px-6
+        text-center
+    ">
+
+        <span class="
+            kicker
+            text-[#ed4b0b]
+        ">
+            Próximo capítulo
+        </span>
+
+
+        <h2 class="
+            mt-4
+            text-[25px]
+            md:text-[32px]
+            font-bold
+            tracking-[-.045em]
+        ">
+            SAIBA MAIS SOBRE A PROMON S.A.
+            E SUAS EMPRESAS
+        </h2>
+
+
+        <p class="
+            body-small
+            text-gray-500
+            mt-5
+            max-w-[500px]
+            mx-auto
+        ">
+            Conheça nossa história, nossos negócios,
+            nossas pessoas e os caminhos que estamos
+            construindo para o futuro.
+        </p>
+
+
+        <a href="#grupo" class="
+            inline-flex
+            items-center
+            gap-4
+            mt-9
+            bg-[#ed4b0b]
+            hover:bg-[#d83f07]
+            text-white
+            px-7
+            py-4
+            text-[8px]
+            uppercase
+            font-bold
+            tracking-[.12em]
+            transition
+        ">
+
+            Conheça o grupo
+
+            <span class="text-[14px]">
+                →
+            </span>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="
+    bg-[#ed4b0b]
+    text-white
+">
+
+    <div class="
+        max-w-[1180px]
+        mx-auto
+        px-6
+        py-8
+        flex
+        flex-col
+        md:flex-row
+        justify-between
+        gap-4
+    ">
+
+        <div>
+
+            <div class="
+                text-[12px]
+                font-bold
+            ">
+                PROMON<span class="text-white/60">▮</span>
+            </div>
+
+            <div class="
+                text-[8px]
+                text-white/60
+                mt-2
+            ">
+                Relatório Anual 2026
+            </div>
+
+        </div>
+
+
+        <div class="
+            text-[8px]
+            text-white/60
+            self-end
+        ">
+            © 2026 Promon S.A.
+        </div>
+
+    </div>
+
+</footer>
+
+
 </body>
 </html>
