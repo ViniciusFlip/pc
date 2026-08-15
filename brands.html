@@ -9,7 +9,7 @@
   <title>Brands</title>
 </head>
 
-<body class="bg-white text-black transition-colors dark:bg-black dark:text-white">
+<body class="min-h-screen bg-white text-black transition-colors duration-300 dark:bg-black dark:text-white">
 
   <section class="w-full overflow-hidden px-5 py-8">
 
@@ -17,11 +17,11 @@
     <div class="mb-6 flex items-center justify-between">
 
       <div>
-        <h1 class="text-3xl font-bold">
+        <h1 class="text-3xl font-bold tracking-tight">
           Brands
         </h1>
 
-        <p class="mt-1 text-gray-500 dark:text-gray-400">
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
           Crie o seu
         </p>
       </div>
@@ -29,9 +29,11 @@
       <!-- LIGHT / DARK -->
       <button
         onclick="document.documentElement.classList.toggle('dark')"
-        class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-100 transition hover:scale-105 dark:border-gray-800 dark:bg-gray-900"
+        aria-label="Alternar tema"
       >
-        ☼
+        <span class="dark:hidden">☾</span>
+        <span class="hidden dark:inline">☀</span>
       </button>
 
     </div>
@@ -39,21 +41,21 @@
 
     <!-- CARROSSEL -->
     <div
-      class="flex w-full gap-4 overflow-x-auto snap-x snap-mandatory pb-4"
+      class="flex w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-4"
       style="scrollbar-width:none;"
     >
 
-      <!-- CARD 1 -->
-      <div
-        class="relative h-[360px] w-[48%] min-w-[48%] shrink-0 snap-start overflow-hidden rounded-[28px] bg-cover bg-center"
-        style="background-image:url('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80');"
+      <!-- MARCA 1 -->
+      <article
+        class="relative h-[360px] w-[68%] min-w-[68%] shrink-0 snap-start overflow-hidden rounded-[28px] bg-cover bg-center md:w-[40%] md:min-w-[40%]"
+        style="background-image:url('./marca1.png');"
       >
 
-        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-black/30"></div>
 
-        <div class="absolute bottom-0 left-0 p-6 text-white">
+        <div class="absolute inset-x-0 bottom-0 p-6 text-white">
 
-          <p class="mb-2 text-xs uppercase tracking-widest text-white/70">
+          <p class="mb-2 text-xs uppercase tracking-[0.2em] text-white/70">
             Brand 01
           </p>
 
@@ -67,20 +69,20 @@
 
         </div>
 
-      </div>
+      </article>
 
 
-      <!-- CARD 2 -->
-      <div
-        class="relative h-[360px] w-[48%] min-w-[48%] shrink-0 snap-start overflow-hidden rounded-[28px] bg-cover bg-center"
-        style="background-image:url('https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80');"
+      <!-- MARCA 2 -->
+      <article
+        class="relative h-[360px] w-[68%] min-w-[68%] shrink-0 snap-start overflow-hidden rounded-[28px] bg-cover bg-center md:w-[40%] md:min-w-[40%]"
+        style="background-image:url('./marca2.png');"
       >
 
-        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-black/30"></div>
 
-        <div class="absolute bottom-0 left-0 p-6 text-white">
+        <div class="absolute inset-x-0 bottom-0 p-6 text-white">
 
-          <p class="mb-2 text-xs uppercase tracking-widest text-white/70">
+          <p class="mb-2 text-xs uppercase tracking-[0.2em] text-white/70">
             Brand 02
           </p>
 
@@ -94,38 +96,71 @@
 
         </div>
 
-      </div>
+      </article>
 
 
-      <!-- CARD 3 — 30% -->
-      <div
-        class="relative h-[360px] w-[30%] min-w-[30%] shrink-0 snap-start overflow-hidden rounded-[28px] bg-cover bg-center"
-        style="background-image:url('https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=1200&q=80');"
+      <!-- MARCA 3 -->
+      <article
+        class="relative h-[360px] w-[68%] min-w-[68%] shrink-0 snap-start overflow-hidden rounded-[28px] bg-cover bg-center md:w-[40%] md:min-w-[40%]"
+        style="background-image:url('./marca3.png');"
       >
 
-        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-black/30"></div>
 
-        <div class="absolute bottom-0 left-0 p-6 text-white">
+        <div class="absolute inset-x-0 bottom-0 p-6 text-white">
 
-          <p class="mb-2 text-xs uppercase tracking-widest text-white/70">
+          <p class="mb-2 text-xs uppercase tracking-[0.2em] text-white/70">
             Brand 03
           </p>
 
-          <h2 class="text-2xl font-bold">
+          <h2 class="text-3xl font-bold">
             Explore.
           </h2>
 
+          <p class="mt-2 text-sm text-white/80">
+            Dê vida à sua próxima ideia.
+          </p>
+
         </div>
 
-      </div>
+      </article>
+
+
+      <!-- MARCA 4 -->
+      <article
+        class="relative h-[360px] w-[68%] min-w-[68%] shrink-0 snap-start overflow-hidden rounded-[28px] bg-cover bg-center md:w-[40%] md:min-w-[40%]"
+        style="background-image:url('./marca4.png');"
+      >
+
+        <div class="absolute inset-0 bg-black/30"></div>
+
+        <div class="absolute inset-x-0 bottom-0 p-6 text-white">
+
+          <p class="mb-2 text-xs uppercase tracking-[0.2em] text-white/70">
+            Brand 04
+          </p>
+
+          <h2 class="text-3xl font-bold">
+            Comece agora.
+          </h2>
+
+          <p class="mt-2 text-sm text-white/80">
+            Sua identidade começa aqui.
+          </p>
+
+        </div>
+
+      </article>
 
     </div>
 
 
-    <!-- INDICADOR -->
+    <!-- INDICADORES -->
     <div class="mt-3 flex justify-center gap-1.5">
 
       <span class="h-1.5 w-6 rounded-full bg-black dark:bg-white"></span>
+
+      <span class="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-700"></span>
 
       <span class="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-700"></span>
 
