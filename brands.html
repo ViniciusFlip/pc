@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <title>Brands</title>
+</head>
+
+<body class="min-h-screen bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
+
+  <!-- SLIDE SECTION -->
+  <section class="w-full px-4 py-6">
+
+    <!-- HEADER -->
+    <div class="mb-5 flex items-center justify-between">
+
+      <div>
+        <h1 class="text-2xl font-bold tracking-tight">
+          Brands
+        </h1>
+
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Crie o seu
+        </p>
+      </div>
+
+      <!-- DARK / LIGHT -->
+      <button
+        onclick="document.documentElement.classList.toggle('dark')"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-gray-100 text-black transition hover:scale-105 dark:border-gray-800 dark:bg-gray-900 dark:text-white"
+      >
+        <span class="dark:hidden">☾</span>
+        <span class="hidden dark:inline">☀</span>
+      </button>
+
+    </div>
+
+
+    <!-- CAROUSEL -->
+    <div
+      class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 scrollbar-hide"
+      style="scrollbar-width:none;"
+    >
+
+      <!-- SLIDE 1 -->
+      <article
+        class="relative min-w-[calc(50% - 8px)] h-[320px] snap-start overflow-hidden rounded-3xl bg-cover bg-center"
+        style="background-image:url('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80');"
+      >
+
+        <!-- OVERLAY -->
+        <div class="absolute inset-0 bg-black/35"></div>
+
+        <!-- CONTENT -->
+        <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
+
+          <span class="mb-2 text-xs font-medium uppercase tracking-[0.2em] opacity-80">
+            Brand 01
+          </span>
+
+          <h2 class="text-2xl font-bold tracking-tight">
+            Sua marca.
+          </h2>
+
+          <p class="mt-1 text-sm text-white/80">
+            Transforme ideias em identidade.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- SLIDE 2 -->
+      <article
+        class="relative min-w-[calc(50% - 8px)] h-[320px] snap-start overflow-hidden rounded-3xl bg-cover bg-center"
+        style="background-image:url('https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80');"
+      >
+
+        <div class="absolute inset-0 bg-black/35"></div>
+
+        <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
+
+          <span class="mb-2 text-xs font-medium uppercase tracking-[0.2em] opacity-80">
+            Brand 02
+          </span>
+
+          <h2 class="text-2xl font-bold tracking-tight">
+            Crie o seu.
+          </h2>
+
+          <p class="mt-1 text-sm text-white/80">
+            Uma identidade feita para você.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- SLIDE 3 — 30% VISÍVEL -->
+      <article
+        class="relative min-w-[30%] h-[320px] snap-start overflow-hidden rounded-3xl bg-cover bg-center"
+        style="background-image:url('https://images.unsplash.com/photo-1634942537034-2531766767d1?auto=format&fit=crop&w=1200&q=80');"
+      >
+
+        <div class="absolute inset-0 bg-black/35"></div>
+
+        <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
+
+          <span class="mb-2 text-xs font-medium uppercase tracking-[0.2em] opacity-80">
+            Brand 03
+          </span>
+
+          <h2 class="text-2xl font-bold">
+            Explore.
+          </h2>
+
+        </div>
+
+      </article>
+
+    </div>
+
+    <!-- INDICATOR -->
+    <div class="mt-2 flex justify-center gap-1.5">
+      <span class="h-1.5 w-6 rounded-full bg-black dark:bg-white"></span>
+      <span class="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-700"></span>
+      <span class="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-700"></span>
+    </div>
+
+  </section>
+
+</body>
+</html>
