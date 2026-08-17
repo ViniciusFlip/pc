@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="https://cdn.tailwindcss.com"></script>
+<title>Minha Semana</title>
+</head>
+
+<body class="bg-gray-50 text-black">
+
+<main class="max-w-3xl mx-auto p-4">
+
+<header class="flex justify-between items-center mb-5">
+  <div>
+    <h1 id="title" class="text-2xl font-bold">Hoje</h1>
+    <p class="text-sm text-gray-500">Organize sua execução</p>
+  </div>
+
+  <button id="addBtn"
+    class="bg-black text-white w-11 h-11 rounded-xl text-2xl">
+    +
+  </button>
+</header>
+
+<nav class="grid grid-cols-2 bg-gray-200 p-1 rounded-xl mb-5">
+  <button id="todayTab"
+    class="py-2 rounded-lg bg-black text-white">
+    Hoje
+  </button>
+
+  <button id="weekTab"
+    class="py-2 rounded-lg">
+    Semana
+  </button>
+</nav>
+
+<section id="summary"
+  class="grid grid-cols-3 gap-2 mb-5">
+</section>
+
+<form id="form"
+  class="hidden bg-white border rounded-2xl p-4 mb-5 space-y-3">
+
+  <select id="day" class="w-full border rounded-xl p-3">
+    <option>Segunda</option>
+    <option>Terça</option>
+    <option>Quarta</option>
+    <option>Quinta</option>
+    <option>Sexta</option>
+    <option>Sábado</option>
+    <option>Domingo</option>
+  </select>
+
+  <div class="grid grid-cols-2 gap-2">
+    <input id="time" type="time" required
+      class="border rounded-xl p-3">
+
+    <input id="duration" type="number"
+      placeholder="Minutos"
+      class="border rounded-xl p-3">
+  </div>
+
+  <input id="task" required maxlength="120"
+    placeholder="Atividade"
+    class="w-full border rounded-xl p-3">
+
+  <select id="type" class="w-full border rounded-xl p-3">
+    <option value="day">Dia a dia</option>
+    <option value="work">Trabalho</option>
+    <option value="physical">Físico</option>
+  </select>
+
+  <select id="priority" class="w-full border rounded-xl p-3">
+    <option value="low">Baixa</option>
+    <option value="medium" selected>Média</option>
+    <option value="high">Alta</option>
+  </select>
+
+  <input id="money" type="number" min="0" step=".01"
+    placeholder="Valor relacionado (R$)"
+    class="w-full border rounded-xl p-3">
+
+  <button class="w-full bg-black text-white rounded-xl p-3">
+    Adicionar
+  </button>
+
+</form>
+
+<div id="content"></div>
+
+</main>
+
+
+<script type="module">
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  query,
+  orderBy
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_PROJETO.firebaseapp.com",
+  projectId: "SEU_PROJECT_ID",
+  storageBucket: "SEU_PROJETO.firebasestorage.app",
+  messagingSenderId: "SEU_SENDER_ID",
+  appId: "SEU_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const activities = collection(db, "week");
+
+
+/* ESTADO */
+
+const days = [
+  "Segunda",
+  "Terça",
+  "Quarta",
+  "Quinta",
+  "Sexta",
+  "Sábado",
+  "Domingo"
+];
+
+let data = [];
+let view = "today";
+
+
+/* ELEMENTOS */
+
+const form = document.getElementById("form");
+const content = document.getElementById("content");
+const summary = document.getElementById("summary");
+const title = document.getElementById("title");
+
+
+/* DIA ATUAL */
+
+function today() {
+  return days[(new Date().getDay() + 6) % 7];
+}
+
+
+/* SEGURANÇA */
+
+function safe(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+
+/* MOEDA */
+
+function money(value) {
+  return Number(value || 0).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+}
+
+
+/* =========================
+   CREATE
+========================= */
+
+form.addEventListener("submit", async e => {
+
+  e.preventDefault();
+
+  await addDoc(activities, {
+    day: day.value,
+    time: time.value,
+    task: task.value.trim(),
+    type: type.value,
+    priority: priority.value,
+    duration: Number(duration.value || 0),
+    money: Number(moneyInput.value || 0),
+    status: "pending",
+    result: "",
+    createdAt: Date.now()
+  });
+
+  form.reset();
+  form.classList.add("hidden");
+
+});
+
+
+const moneyInput = document.getElementById("money");
+
+
+/* =========================
+   UPDATE
+========================= */
+
+async function updateStatus(id, status) {
+
+  await updateDoc(
+    doc(db, "week", id),
+    { status }
+  );
+
+}
+
+
+async function updateResult(id) {
+
+  const item = data.find(x => x.id === id);
+
+  const result = prompt(
+    "Resultado da atividade:",
+    item?.result || ""
+  );
+
+  if (result === null) return;
+
+  await updateDoc(
+    doc(db, "week", id),
+    { result: result.trim() }
+  );
+
+}
+
+
+/* =========================
+   DELETE
+========================= */
+
+async function remove(id) {
+
+  if (!confirm("Excluir esta atividade?")) return;
+
+  await deleteDoc(
+    doc(db, "week", id)
+  );
+
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+function card(a) {
+
+  const type =
+    a.type === "work"
+      ? "Trabalho"
+      : a.type === "physical"
+        ? "Físico"
+        : "Dia a dia";
+
+  return `
+    <article class="
+      bg-white border rounded-2xl p-3
+      ${a.status === "done" ? "opacity-50" : ""}
+    ">
+
+      <div class="flex gap-3">
+
+        <button
+          data-action="status"
+          data-id="${a.id}"
+          data-status="done"
+          class="text-xl">
+          ${a.status === "done" ? "✓" : "○"}
+        </button>
+
+        <div class="flex-1">
+
+          <div class="text-sm font-bold">
+            ${safe(a.time)}
+            ${a.duration ? ` · ${a.duration} min` : ""}
+          </div>
+
+          <p class="text-sm mt-1">
+            ${safe(a.task)}
+          </p>
+
+          <div class="flex gap-2 mt-2 text-xs">
+
+            <span class="bg-gray-100 px-2 py-1 rounded">
+              ${type}
+            </span>
+
+            ${
+              a.money
+                ? `<span class="text-gray-500">
+                    ${money(a.money)}
+                   </span>`
+                : ""
+            }
+
+          </div>
+
+          ${
+            a.result
+              ? `<p class="text-xs text-gray-500 mt-2">
+                  Resultado: ${safe(a.result)}
+                 </p>`
+              : ""
+          }
+
+        </div>
+
+        <button
+          data-action="delete"
+          data-id="${a.id}"
+          class="text-gray-400">
+          ×
+        </button>
+
+      </div>
+
+      <div class="grid grid-cols-3 gap-1 mt-3">
+
+        <button
+          data-action="status"
+          data-id="${a.id}"
+          data-status="done"
+          class="bg-green-50 text-green-700 rounded-lg py-2 text-xs">
+          Feita
+        </button>
+
+        <button
+          data-action="status"
+          data-id="${a.id}"
+          data-status="partial"
+          class="bg-yellow-50 text-yellow-700 rounded-lg py-2 text-xs">
+          Parcial
+        </button>
+
+        <button
+          data-action="result"
+          data-id="${a.id}"
+          class="bg-gray-100 rounded-lg py-2 text-xs">
+          Resultado
+        </button>
+
+      </div>
+
+    </article>
+  `;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+function renderSummary(items) {
+
+  const done = items.filter(
+    x => x.status === "done"
+  ).length;
+
+  const value = items
+    .filter(x => x.status === "done")
+    .reduce(
+      (total, x) => total + Number(x.money || 0),
+      0
+    );
+
+  summary.innerHTML = `
+    <div class="bg-white border rounded-xl p-3">
+      <p class="text-xs text-gray-500">Tarefas</p>
+      <b>${items.length}</b>
+    </div>
+
+    <div class="bg-white border rounded-xl p-3">
+      <p class="text-xs text-gray-500">Feitas</p>
+      <b>${done}</b>
+    </div>
+
+    <div class="bg-white border rounded-xl p-3">
+      <p class="text-xs text-gray-500">Resultado</p>
+      <b>${money(value)}</b>
+    </div>
+  `;
+}
+
+
+/* =========================
+   TODAY
+========================= */
+
+function renderToday() {
+
+  const d = today();
+
+  const items = data
+    .filter(x => x.day === d)
+    .sort((a, b) => a.time.localeCompare(b.time));
+
+  title.textContent = d;
+
+  renderSummary(items);
+
+  content.innerHTML = items.length
+    ? `<div class="space-y-2">
+        ${items.map(card).join("")}
+       </div>`
+    : `
+      <div class="bg-white border border-dashed rounded-2xl p-8 text-center">
+        <b>Nenhuma atividade hoje</b>
+
+        <p class="text-sm text-gray-500 mt-1">
+          Planeje o que realmente importa.
+        </p>
+      </div>
+    `;
+}
+
+
+/* =========================
+   WEEK
+========================= */
+
+function renderWeek() {
+
+  title.textContent = "Minha Semana";
+
+  renderSummary(data);
+
+  content.innerHTML = days.map(d => {
+
+    const items = data
+      .filter(x => x.day === d)
+      .sort((a, b) => a.time.localeCompare(b.time));
+
+    return `
+      <section class="mb-6">
+
+        <h2 class="font-bold mb-2">
+          ${d}
+        </h2>
+
+        ${
+          items.length
+            ? `<div class="space-y-2">
+                ${items.map(card).join("")}
+               </div>`
+            : `<div class="text-xs text-gray-400">
+                Nenhuma atividade
+               </div>`
+        }
+
+      </section>
+    `;
+
+  }).join("");
+}
+
+
+/* =========================
+   CLICK DOS CARDS
+========================= */
+
+content.addEventListener("click", e => {
+
+  const button = e.target.closest("button");
+
+  if (!button) return;
+
+  const id = button.dataset.id;
+  const action = button.dataset.action;
+
+  if (action === "status") {
+    updateStatus(id, button.dataset.status);
+  }
+
+  if (action === "result") {
+    updateResult(id);
+  }
+
+  if (action === "delete") {
+    remove(id);
+  }
+
+});
+
+
+/* =========================
+   ABAS
+========================= */
+
+todayTab.onclick = () => {
+
+  view = "today";
+
+  todayTab.classList.add("bg-black", "text-white");
+  weekTab.classList.remove("bg-black", "text-white");
+
+  render();
+};
+
+
+weekTab.onclick = () => {
+
+  view = "week";
+
+  weekTab.classList.add("bg-black", "text-white");
+  todayTab.classList.remove("bg-black", "text-white");
+
+  render();
+};
+
+
+/* =========================
+   FORM
+========================= */
+
+addBtn.onclick = () => {
+
+  form.classList.toggle("hidden");
+
+  day.value = today();
+
+};
+
+
+/* =========================
+   READ — FIRESTORE
+========================= */
+
+const q = query(
+  activities,
+  orderBy("time")
+);
+
+onSnapshot(q, snapshot => {
+
+  data = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }));
+
+  render();
+
+});
+
+
+/* =========================
+   INIT
+========================= */
+
+render();
+
+</script>
+
+</body>
+</html>
