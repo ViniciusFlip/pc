@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medtromic</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="relative min-h-[620px] h-[100svh] max-h-[900px] overflow-hidden text-white">
+
+    <!-- Background -->
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style="
+        background-image:
+          linear-gradient(90deg, rgba(15,15,15,.62) 0%, rgba(15,15,15,.28) 48%, rgba(15,15,15,.18) 100%),
+          linear-gradient(0deg, rgba(0,0,0,.28), rgba(0,0,0,.08)),
+          url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1800&q=90');
+      ">
+    </div>
+
+    <!-- Blur / atmospheric layer -->
+    <div class="absolute inset-0 bg-black/5"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 h-full max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-14">
+
+      <!-- NAVBAR -->
+      <header class="flex items-center justify-between pt-5 sm:pt-7">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-white/90 flex items-center justify-center">
+            <i data-lucide="leaf" class="w-4 h-4 text-neutral-800"></i>
+          </div>
+
+          <span class="text-[13px] sm:text-[15px] font-semibold tracking-tight">
+            Medtromic
+          </span>
+        </div>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-8 text-[11px] font-medium text-white/90">
+          <a href="#" class="hover:text-white transition">Home</a>
+          <a href="#" class="hover:text-white transition">Features</a>
+          <a href="#" class="hover:text-white transition">About Us</a>
+          <a href="#" class="hover:text-white transition">Trainers</a>
+          <a href="#" class="hover:text-white transition">Testimonials</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+
+          <button
+            class="hidden sm:block text-[11px] font-medium px-3 py-2 text-white/90">
+            Log In
+          </button>
+
+          <button
+            class="flex items-center gap-1.5 bg-white text-neutral-900 rounded-full px-4 py-2 text-[10px] sm:text-[11px] font-semibold shadow-lg">
+            Sign Up
+            <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+          </button>
+
+          <button
+            id="menuBtn"
+            class="md:hidden w-9 h-9 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center">
+            <i data-lucide="menu" class="w-4 h-4"></i>
+          </button>
+
+        </div>
+      </header>
+
+      <!-- HERO TEXT -->
+      <div class="absolute left-5 sm:left-8 lg:left-14 top-[31%] sm:top-[34%] max-w-[620px]">
+
+        <div class="mb-4 sm:mb-5 flex items-center gap-2">
+          <span class="w-5 h-px bg-white/70"></span>
+          <span class="text-[9px] sm:text-[11px] uppercase tracking-[.18em] text-white/85">
+            Daily Fitness Guide
+          </span>
+        </div>
+
+        <h1
+          class="text-[42px] leading-[.98] sm:text-6xl lg:text-[72px] font-medium tracking-[-.045em] max-w-[580px]">
+          Meditations change
+          <br>
+          your lifestyle
+        </h1>
+
+        <button
+          class="mt-7 sm:mt-8 flex items-center gap-3 bg-white text-neutral-900 rounded-full pl-5 pr-2 py-2 text-[10px] sm:text-[11px] font-semibold shadow-xl">
+
+          Get In touch
+
+          <span class="w-7 h-7 rounded-full bg-neutral-900 text-white flex items-center justify-center">
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </span>
+
+        </button>
+
+      </div>
+
+      <!-- RATING CARD -->
+      <div
+        class="absolute right-5 sm:right-8 lg:right-14 bottom-[15%] sm:bottom-[12%] w-[155px] sm:w-[190px] rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 p-3 sm:p-4 shadow-2xl">
+
+        <div class="flex items-center justify-between">
+
+          <div class="flex -space-x-2">
+            <div class="w-6 h-6 rounded-full border border-white bg-orange-200"></div>
+            <div class="w-6 h-6 rounded-full border border-white bg-red-200"></div>
+            <div class="w-6 h-6 rounded-full border border-white bg-blue-200"></div>
+          </div>
+
+          <span class="text-[8px] text-white/70">
+            Plus 26% Trusted!
+          </span>
+
+        </div>
+
+        <p class="mt-3 text-[8px] sm:text-[9px] leading-relaxed text-white/70">
+          The perfect organizer<br>
+          and developer of dream agency.
+        </p>
+
+        <div class="mt-1 flex items-end gap-1">
+          <span class="text-[36px] sm:text-[42px] leading-none font-light">
+            4.9
+          </span>
+
+          <span class="text-yellow-300 text-sm mb-1">★</span>
+        </div>
+
+        <div class="mt-1 text-right text-[7px] text-white/60 tracking-widest">
+          [ RATING ]
+        </div>
+
+      </div>
+
+      <!-- POPULAR TAGS -->
+      <div class="absolute bottom-7 sm:bottom-10 left-5 sm:left-8 lg:left-14 flex items-center gap-2">
+
+        <span class="text-[8px] sm:text-[9px] font-medium mr-1 text-white/80">
+          Popular Tags
+        </span>
+
+        <span class="rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3 py-1.5 text-[7px] sm:text-[8px]">
+          New Fitness
+        </span>
+
+        <span class="hidden sm:block rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3 py-1.5 text-[7px] sm:text-[8px]">
+          Health Goal
+        </span>
+
+        <span class="hidden sm:block rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-3 py-1.5 text-[7px] sm:text-[8px]">
+          Fit Goal
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div
+      id="mobileMenu"
+      class="hidden fixed inset-0 z-50 bg-neutral-950/95 backdrop-blur-xl p-6">
+
+      <div class="flex justify-between items-center">
+        <span class="font-semibold">Medtromic</span>
+
+        <button id="closeMenu" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <nav class="mt-20 flex flex-col gap-7 text-3xl font-medium">
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">About Us</a>
+        <a href="#">Trainers</a>
+        <a href="#">Testimonials</a>
+      </nav>
+
+    </div>
+
+  </section>
+
+  <script>
+    lucide.createIcons();
+
+    const menuBtn = document.getElementById("menuBtn");
+    const closeMenu = document.getElementById("closeMenu");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn?.addEventListener("click", () => {
+      mobileMenu.classList.remove("hidden");
+    });
+
+    closeMenu?.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  </script>
+
+</body>
+</html>
