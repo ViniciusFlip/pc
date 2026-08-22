@@ -1,3 +1,4 @@
+ 
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -5,6 +6,7 @@
 <script src="https://cdn.tailwindcss.com"></script><script src="https://unpkg.com/lucide@latest"></script>
 <title>Minha Semana</title>
 </head>
+
 <body class="bg-white text-black">
 <main class="max-w-3xl mx-auto p-5">
 
@@ -27,25 +29,22 @@
 
 <div id="week" class="space-y-5"></div>
 </main>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_BUCKET",
-  messagingSenderId: "SEU_SENDER_ID",
-  appId: "SEU_APP_ID"
+ apiKey: "AIzaSyD-xzRjMRVUpey19g745DvPjjpCApqSHVE",
+  authDomain: "myops-d7525.firebaseapp.com",
+  projectId: "myops-d7525",
+  storageBucket: "myops-d7525.firebasestorage.app",
+  messagingSenderId: "247824192162",
+  appId: "1:247824192162:web:77c91ab1e3df855dc7fdfb"
 };
 
-const app=initializeApp(firebaseConfig);
-const db=getFirestore(app);
+const db=getFirestore(initializeApp(firebaseConfig));
 
-window.db=db;
-</script>
-<script>
 let data=JSON.parse(localStorage.getItem('week')||'[]');
 const days=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
 const colors={day:'bg-blue-100 text-blue-700',work:'bg-green-100 text-green-700',physical:'bg-orange-100 text-orange-700'};
@@ -54,29 +53,29 @@ function toggleForm(){document.getElementById('addForm').classList.toggle('hidde
 
 function save(){
   localStorage.setItem('week',JSON.stringify(data));
-  setDoc(doc(window.db,'week','data'),{data});
+  setDoc(doc(db,'week','data'),{data});
   render();
 }
 
 function add(e){
-e.preventDefault();
-data.push({
-day:document.getElementById('day').value,
-time:document.getElementById('time').value,
-task:document.getElementById('task').value,
-type:document.getElementById('type').value
-});
-e.target.reset();
-document.getElementById('addForm').classList.add('hidden');
-save();
+  e.preventDefault();
+  data.push({
+    day:document.getElementById('day').value,
+    time:document.getElementById('time').value,
+    task:document.getElementById('task').value,
+    type:document.getElementById('type').value
+  });
+  e.target.reset();
+  document.getElementById('addForm').classList.add('hidden');
+  save();
 }
 
 function del(i){data.splice(i,1);save()}
 
 function render(){
-document.getElementById('week').innerHTML=days.map(d=>{
-let x=data.map((a,i)=>({...a,i})).filter(a=>a.day==d).sort((a,b)=>a.time.localeCompare(b.time));
-return `<section>
+  document.getElementById('week').innerHTML=days.map(d=>{
+    let x=data.map((a,i)=>({...a,i})).filter(a=>a.day==d).sort((a,b)=>a.time.localeCompare(b.time));
+    return `<section>
 <h2 class="font-bold text-lg mb-2">${d}</h2>
 <div class="space-y-2">${x.map(a=>`
 <div class="border rounded-xl p-3 flex gap-3 items-center">
@@ -86,11 +85,16 @@ return `<section>
 <button type="button" onclick="del(${a.i})"><i data-lucide="x" class="w-4 text-gray-400"></i></button>
 </div>`).join('')}</div>
 </section>`;
-}).join('');
-lucide.createIcons();
+  }).join('');
+  lucide.createIcons();
 }
+
+window.toggleForm=toggleForm;
+window.add=add;
+window.del=del;
 
 render();
 </script>
 </body>
 </html>
+ 
