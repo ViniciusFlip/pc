@@ -1,3 +1,4 @@
+ 
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -28,31 +29,36 @@
 
 <div id="week" class="space-y-5"></div>
 </main>
-
+  
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_BUCKET",
-  messagingSenderId: "SEU_SENDER_ID",
-  appId: "SEU_APP_ID"
+ apiKey: "AIzaSyD-xzRjMRVUpey19g745DvPjjpCApqSHVE",
+ authDomain: "myops-d7525.firebaseapp.com",
+ projectId: "myops-d7525",
+ storageBucket: "myops-d7525.firebasestorage.app",
+ messagingSenderId: "247824192162",
+ appId: "1:247824192162:web:77c91ab1e3df855dc7fdfb"
 };
 
 const db=getFirestore(initializeApp(firebaseConfig));
 
-let data=JSON.parse(localStorage.getItem('week')||'[]');
+let data=[];
 const days=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
 const colors={day:'bg-blue-100 text-blue-700',work:'bg-green-100 text-green-700',physical:'bg-orange-100 text-orange-700'};
 
 function toggleForm(){document.getElementById('addForm').classList.toggle('hidden')}
 
 function save(){
-  localStorage.setItem('week',JSON.stringify(data));
   setDoc(doc(db,'week','data'),{data});
+  render();
+}
+
+async function load(){
+  const snap=await getDoc(doc(db,'week','data'));
+  data=snap.exists()?snap.data().data||[]:[];
   render();
 }
 
@@ -92,7 +98,10 @@ window.toggleForm=toggleForm;
 window.add=add;
 window.del=del;
 
-render();
+load();
 </script>
+ 
+
 </body>
 </html>
+ 
