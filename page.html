@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Vinicius Araujo — Software Engineer</title>
+  <title>Vinicius Araujo — Branding, Produto & Software</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -17,21 +17,23 @@
             sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
             mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
           },
+
           colors: {
-            ink: '#000000',
-            panel: '#0A0A0A',
-            panel2: '#111111',
-            line: '#3A3A3A',
-            cyan: '#7FFF6E',
-            blue: '#0C836F',
-            green: '#7FFF6E',
-            teal: '#0C836F',
+            black: '#000000',
+            white: '#FFFFFF',
             gray: '#6F6F6F',
-            darkgray: '#3A3A3A'
+            dark: '#3A3A3A',
+            teal: '#0C836F',
+            green: '#7FFF6E'
           },
+
           boxShadow: {
             glow: '0 0 80px rgba(127,255,110,.10)',
             card: '0 30px 100px rgba(0,0,0,.45)'
+          },
+
+          backgroundImage: {
+            'brand-gradient': 'linear-gradient(135deg, #0C836F 0%, #7FFF6E 100%)'
           }
         }
       }
@@ -49,20 +51,32 @@
 
     body {
       background:
-        radial-gradient(circle at 50% -10%, rgba(12,131,111,.16), transparent 34rem),
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(12,131,111,.18),
+          transparent 34rem
+        ),
         #000000;
     }
 
     ::selection {
       background: rgba(127,255,110,.25);
+      color: #FFFFFF;
     }
 
     .grid-bg {
       background-image:
         linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
       background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, black, transparent 90%);
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 90%
+        );
     }
 
     .noise {
@@ -81,7 +95,7 @@
     }
 
     .code-glow {
-      text-shadow: 0 0 25px rgba(127,255,110,.25);
+      text-shadow: 0 0 25px rgba(127,255,110,.22);
     }
 
     .float {
@@ -115,70 +129,137 @@
 
     .gradient-border::before {
       content: "";
+
       position: absolute;
       inset: 0;
+
       border-radius: inherit;
       padding: 1px;
-      background: linear-gradient(
-        135deg,
-        rgba(127,255,110,.45),
-        rgba(255,255,255,.04),
-        rgba(12,131,111,.35)
-      );
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(127,255,110,.45),
+          rgba(255,255,255,.04),
+          rgba(12,131,111,.35)
+        );
+
       -webkit-mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
+
       -webkit-mask-composite: xor;
       mask-composite: exclude;
+
       pointer-events: none;
+    }
+
+    .brand-gradient {
+      background:
+        linear-gradient(
+          135deg,
+          #0C836F 0%,
+          #7FFF6E 100%
+        );
+    }
+
+    .brand-text {
+      background:
+        linear-gradient(
+          135deg,
+          #0C836F 0%,
+          #7FFF6E 100%
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
   </style>
 </head>
 
+
 <body class="text-white antialiased">
 
-  <!-- GRID -->
+
+  <!-- BACKGROUND -->
+
   <div class="fixed inset-0 grid-bg pointer-events-none"></div>
+
   <div class="fixed inset-0 noise pointer-events-none"></div>
+
 
   <main class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
+
+    <!-- ========================================================= -->
     <!-- NAV -->
+    <!-- ========================================================= -->
+
     <nav class="h-20 flex items-center justify-between">
 
-      <a href="#" class="flex items-center gap-3 group">
+      <a
+        href="#"
+        class="flex items-center gap-3 group"
+      >
 
-        <div class="w-9 h-9 rounded-xl border border-white/10 bg-white/[.04] flex items-center justify-center">
-          <i data-lucide="terminal" class="w-4 h-4 text-cyan"></i>
+        <div
+          class="w-9 h-9 rounded-xl border border-white/10 bg-white/[.04] flex items-center justify-center"
+        >
+          <i
+            data-lucide="layers-3"
+            class="w-4 h-4 text-green"
+          ></i>
         </div>
 
+
         <div>
+
           <div class="text-sm font-bold tracking-tight">
             VINICIUS ARAUJO
           </div>
 
           <div class="text-[9px] uppercase tracking-[.22em] text-white/35">
-            Software Engineering
+            Brand · Product · Software
           </div>
+
         </div>
 
       </a>
 
+
       <div class="hidden md:flex items-center gap-8 text-xs text-white/45">
 
-        <a href="#about" class="hover:text-white transition">
+        <a
+          href="#about"
+          class="hover:text-white transition"
+        >
           Sobre
         </a>
 
-        <a href="#projects" class="hover:text-white transition">
+        <a
+          href="#services"
+          class="hover:text-white transition"
+        >
+          Serviços
+        </a>
+
+        <a
+          href="#projects"
+          class="hover:text-white transition"
+        >
           Projetos
         </a>
 
-        <a href="#stack" class="hover:text-white transition">
-          Stack
+        <a
+          href="#building"
+          class="hover:text-white transition"
+        >
+          Construindo
         </a>
 
       </div>
+
 
       <a
         href="#contact"
@@ -186,89 +267,128 @@
       >
         Vamos conversar
 
-        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        <i
+          data-lucide="arrow-up-right"
+          class="w-3.5 h-3.5"
+        ></i>
+
       </a>
 
     </nav>
 
 
+
+    <!-- ========================================================= -->
     <!-- HERO -->
+    <!-- ========================================================= -->
+
     <section class="pt-10 sm:pt-16 lg:pt-24 pb-16 lg:pb-24">
 
-      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-10 lg:gap-16 items-center">
+      <div
+        class="grid lg:grid-cols-[1.05fr_.95fr] gap-10 lg:gap-16 items-center"
+      >
+
 
         <!-- LEFT -->
+
         <div class="reveal">
 
-          <div class="inline-flex items-center gap-2 rounded-full border border-green/20 bg-green/[.06] px-3 py-1.5 mb-6">
 
-            <span class="w-1.5 h-1.5 rounded-full bg-green shadow-[0_0_12px_#7FFF6E]"></span>
+          <!-- STATUS -->
 
-            <span class="text-[10px] uppercase tracking-[.18em] text-green">
-              Available for selected projects
+          <div
+            class="inline-flex items-center gap-2 rounded-full border border-green/20 bg-green/[.06] px-3 py-1.5 mb-6"
+          >
+
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-green shadow-[0_0_12px_#7FFF6E]"
+            ></span>
+
+            <span
+              class="text-[10px] uppercase tracking-[.18em] text-green"
+            >
+              Construindo e disponível para projetos
             </span>
 
           </div>
 
-          <p class="font-mono text-xs text-cyan mb-4">
-            ~/software-engineer
+
+          <p class="font-mono text-xs text-green mb-4">
+            ~/vinicius-araujo
           </p>
 
-          <h1 class="text-[3.4rem] sm:text-6xl lg:text-[5.4rem] leading-[.92] tracking-[-.055em] font-black">
 
-            Building
+          <h1
+            class="text-[3.4rem] sm:text-6xl lg:text-[5.4rem] leading-[.92] tracking-[-.055em] font-black"
+          >
+
+            Construo
 
             <span class="block text-white/40">
-              software
+              marcas,
             </span>
 
             <span class="block">
-              that <span class="text-cyan code-glow">works.</span>
+              produtos <span class="brand-text">& software.</span>
             </span>
 
           </h1>
 
-          <p class="mt-7 max-w-xl text-sm sm:text-base leading-7 text-white/45">
-            Engenheiro de Software focado em transformar problemas complexos
-            em produtos simples, sistemas escaláveis e experiências digitais
-            rápidas.
+
+          <p
+            class="mt-7 max-w-xl text-sm sm:text-base leading-7 text-white/45"
+          >
+            Desenvolvedor em formação que combina branding, experiência
+            digital e software para transformar problemas reais em
+            produtos simples, claros e funcionais.
           </p>
+
 
           <div class="flex flex-wrap gap-3 mt-8">
 
+
             <a
               href="#projects"
-              class="group rounded-full bg-white text-black px-5 py-3 text-xs font-bold flex items-center gap-2 hover:bg-cyan transition"
+              class="group rounded-full brand-gradient text-black px-5 py-3 text-xs font-bold flex items-center gap-2 hover:opacity-90 transition"
             >
+
               Ver projetos
 
               <i
                 data-lucide="arrow-down-right"
                 class="w-4 h-4 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition"
               ></i>
+
             </a>
+
 
             <a
               href="#contact"
               class="rounded-full border border-white/10 px-5 py-3 text-xs font-bold text-white/70 hover:text-white hover:bg-white/[.05] transition"
             >
-              Entrar em contato
+              Conversar sobre um projeto
             </a>
+
 
           </div>
 
 
           <!-- STATS -->
-          <div class="grid grid-cols-3 gap-5 mt-12 pt-7 border-t border-white/[.07] max-w-lg">
+
+          <div
+            class="grid grid-cols-3 gap-5 mt-12 pt-7 border-t border-white/[.07] max-w-lg"
+          >
 
             <div>
 
               <div class="text-2xl font-bold tracking-tight">
-                08+
+                03
               </div>
 
-              <div class="text-[10px] text-white/35 uppercase tracking-widest mt-1">
-                Anos
+              <div
+                class="text-[10px] text-white/35 uppercase tracking-widest mt-1"
+              >
+                Frentes
               </div>
 
             </div>
@@ -277,11 +397,13 @@
             <div>
 
               <div class="text-2xl font-bold tracking-tight">
-                40+
+                01
               </div>
 
-              <div class="text-[10px] text-white/35 uppercase tracking-widest mt-1">
-                Projetos
+              <div
+                class="text-[10px] text-white/35 uppercase tracking-widest mt-1"
+              >
+                Direção
               </div>
 
             </div>
@@ -290,31 +412,45 @@
             <div>
 
               <div class="text-2xl font-bold tracking-tight">
-                99.9%
+                ∞
               </div>
 
-              <div class="text-[10px] text-white/35 uppercase tracking-widest mt-1">
-                Uptime
+              <div
+                class="text-[10px] text-white/35 uppercase tracking-widest mt-1"
+              >
+                Aprendizado
               </div>
 
             </div>
 
           </div>
 
+
         </div>
 
 
+
         <!-- RIGHT / TERMINAL -->
+
         <div class="reveal lg:pl-4">
 
           <div class="relative float">
 
-            <div class="absolute -inset-10 bg-cyan/[.06] blur-3xl rounded-full"></div>
+            <div
+              class="absolute -inset-10 bg-green/[.05] blur-3xl rounded-full"
+            ></div>
 
-            <div class="relative gradient-border rounded-[28px] bg-[#080808] shadow-card overflow-hidden">
+
+            <div
+              class="relative gradient-border rounded-[28px] bg-[#050505] shadow-card overflow-hidden"
+            >
+
 
               <!-- TERMINAL TOP -->
-              <div class="h-12 border-b border-white/[.07] flex items-center justify-between px-4 bg-white/[.02]">
+
+              <div
+                class="h-12 border-b border-white/[.07] flex items-center justify-between px-4 bg-white/[.02]"
+              >
 
                 <div class="flex gap-1.5">
 
@@ -324,9 +460,13 @@
 
                 </div>
 
-                <span class="font-mono text-[9px] text-white/25">
-                  engineer.ts
+
+                <span
+                  class="font-mono text-[9px] text-white/25"
+                >
+                  vinicius.config.ts
                 </span>
+
 
                 <i
                   data-lucide="maximize-2"
@@ -336,12 +476,17 @@
               </div>
 
 
+
               <!-- CODE -->
-              <div class="p-5 sm:p-7 font-mono text-[11px] sm:text-xs leading-7 overflow-hidden">
+
+              <div
+                class="p-5 sm:p-7 font-mono text-[11px] sm:text-xs leading-7 overflow-hidden"
+              >
 
                 <div class="text-white/20">
                   // build something meaningful
                 </div>
+
 
                 <div>
 
@@ -349,8 +494,8 @@
                     const
                   </span>
 
-                  <span class="text-cyan">
-                    engineer
+                  <span class="text-green">
+                    vinicius
                   </span>
 
                   <span class="text-white/40">
@@ -367,11 +512,24 @@
                 <div class="pl-5">
 
                   <span class="text-white/35">
-                    role:
+                    position:
                   </span>
 
                   <span class="text-green">
-                    'Software Engineer'
+                    'developer in training'
+                  </span>,
+
+                </div>
+
+
+                <div class="pl-5">
+
+                  <span class="text-white/35">
+                    builds:
+                  </span>
+
+                  <span class="text-green">
+                    ['brands', 'products', 'software']
                   </span>,
 
                 </div>
@@ -384,7 +542,7 @@
                   </span>
 
                   <span class="text-green">
-                    'scalable systems'
+                    'real problems'
                   </span>,
 
                 </div>
@@ -393,7 +551,7 @@
                 <div class="pl-5">
 
                   <span class="text-white/35">
-                    frontend:
+                    validates:
                   </span>
 
                   <span class="text-green">
@@ -406,24 +564,11 @@
                 <div class="pl-5">
 
                   <span class="text-white/35">
-                    backend:
+                    overengineering:
                   </span>
 
                   <span class="text-green">
-                    true
-                  </span>,
-
-                </div>
-
-
-                <div class="pl-5">
-
-                  <span class="text-white/35">
-                    coffee:
-                  </span>
-
-                  <span class="text-green">
-                    Infinity
+                    false
                   </span>
 
                 </div>
@@ -439,43 +584,54 @@
 
 
                 <div class="mt-4 text-white/20">
-                  // system status
+                  // current strategy
                 </div>
 
 
                 <div class="terminal-line text-green">
-                  all systems operational
+                  learn → build → publish → validate
                 </div>
 
 
                 <div class="mt-5 border-t border-white/[.06] pt-5">
 
+
                   <div class="flex items-center justify-between mb-3">
 
                     <span class="text-white/30">
-                      deployment
+                      direction
                     </span>
 
                     <span class="text-green">
-                      LIVE
+                      BUILDING
                     </span>
 
                   </div>
 
 
-                  <div class="h-1 rounded-full bg-white/[.05] overflow-hidden">
+                  <div
+                    class="h-1 rounded-full bg-white/[.05] overflow-hidden"
+                  >
 
-                    <div class="h-full w-[94%] bg-gradient-to-r from-[#0C836F] to-[#7FFF6E] rounded-full"></div>
+                    <div
+                      class="h-full w-[72%] brand-gradient rounded-full"
+                    ></div>
 
                   </div>
 
+
                 </div>
+
 
               </div>
 
 
+
               <!-- TERMINAL FOOT -->
-              <div class="border-t border-white/[.06] px-5 py-4 flex items-center justify-between">
+
+              <div
+                class="border-t border-white/[.06] px-5 py-4 flex items-center justify-between"
+              >
 
                 <div class="flex items-center gap-2">
 
@@ -484,17 +640,23 @@
                     class="w-3.5 h-3.5 text-white/25"
                   ></i>
 
-                  <span class="font-mono text-[10px] text-white/30">
+                  <span
+                    class="font-mono text-[10px] text-white/30"
+                  >
                     main
                   </span>
 
                 </div>
 
-                <span class="font-mono text-[10px] text-green">
-                  ● production
+
+                <span
+                  class="font-mono text-[10px] text-green"
+                >
+                  ● BUILDING
                 </span>
 
               </div>
+
 
             </div>
 
@@ -507,19 +669,31 @@
     </section>
 
 
-    <!-- TRUST / STACK -->
-    <section id="stack" class="py-10 border-y border-white/[.06] reveal">
 
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+    <!-- ========================================================= -->
+    <!-- POSITIONING -->
+    <!-- ========================================================= -->
+
+    <section
+      id="about"
+      class="py-10 border-y border-white/[.06] reveal"
+    >
+
+      <div
+        class="flex flex-col md:flex-row md:items-center justify-between gap-6"
+      >
+
 
         <div>
 
-          <p class="text-[9px] uppercase tracking-[.22em] text-white/25 mb-1">
-            Built with
+          <p
+            class="text-[9px] uppercase tracking-[.22em] text-white/25 mb-1"
+          >
+            Como eu penso
           </p>
 
           <p class="text-xs text-white/45">
-            Tecnologias que fazem parte do dia a dia.
+            Design, produto e software trabalhando juntos.
           </p>
 
         </div>
@@ -527,24 +701,34 @@
 
         <div class="flex flex-wrap gap-2">
 
-          <span class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45">
-            TypeScript
+          <span
+            class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45"
+          >
+            Branding
           </span>
 
-          <span class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45">
-            React
+          <span
+            class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45"
+          >
+            UX/UI
           </span>
 
-          <span class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45">
-            Node.js
+          <span
+            class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45"
+          >
+            Landing Pages
           </span>
 
-          <span class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45">
-            PostgreSQL
+          <span
+            class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45"
+          >
+            Desenvolvimento
           </span>
 
-          <span class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45">
-            AWS
+          <span
+            class="px-3 py-2 rounded-lg border border-white/[.07] bg-white/[.025] font-mono text-[10px] text-white/45"
+          >
+            Produto
           </span>
 
         </div>
@@ -554,23 +738,34 @@
     </section>
 
 
-    <!-- ABOUT -->
-    <section id="about" class="py-24 lg:py-32 reveal">
 
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-24">
+    <!-- ========================================================= -->
+    <!-- ABOUT -->
+    <!-- ========================================================= -->
+
+    <section class="py-24 lg:py-32 reveal">
+
+      <div
+        class="grid lg:grid-cols-2 gap-12 lg:gap-24"
+      >
+
 
         <div>
 
-          <p class="text-[10px] uppercase tracking-[.22em] text-cyan mb-4">
-            01 — Behind the code
+          <p
+            class="text-[10px] uppercase tracking-[.22em] text-green mb-4"
+          >
+            01 — Sobre
           </p>
 
-          <h2 class="text-4xl sm:text-5xl font-black tracking-[-.04em] leading-tight">
 
-            Engenharia para
+          <h2
+            class="text-4xl sm:text-5xl font-black tracking-[-.04em] leading-tight"
+          >
 
+            Não quero apenas
             <span class="text-white/35">
-              resolver problemas reais.
+              criar coisas bonitas.
             </span>
 
           </h2>
@@ -578,32 +773,47 @@
         </div>
 
 
-        <div class="space-y-5 text-sm leading-7 text-white/45">
+        <div
+          class="space-y-5 text-sm leading-7 text-white/45"
+        >
 
           <p>
-            Não escrevo código apenas para entregar funcionalidades.
-            Construo sistemas que precisam continuar funcionando quando
-            o produto cresce.
+            Estou construindo minha carreira na interseção entre
+            design, produto e software.
           </p>
+
 
           <p>
-            Minha abordagem combina arquitetura, produto, performance,
-            experiência do usuário e automação.
+            Hoje uso branding, identidade visual, landing pages e
+            desenvolvimento para resolver problemas reais de negócios.
           </p>
 
-          <div class="pt-3 flex items-center gap-3 text-white/70">
 
-            <div class="w-8 h-8 rounded-full bg-cyan/10 flex items-center justify-center">
+          <p>
+            Ao mesmo tempo, estudo Engenharia de Software e construo
+            produtos próprios para transformar problemas recorrentes
+            em soluções de software.
+          </p>
+
+
+          <div
+            class="pt-3 flex items-center gap-3 text-white/70"
+          >
+
+            <div
+              class="w-8 h-8 rounded-full bg-green/10 flex items-center justify-center"
+            >
 
               <i
                 data-lucide="layers-3"
-                class="w-4 h-4 text-cyan"
+                class="w-4 h-4 text-green"
               ></i>
 
             </div>
 
+
             <span class="text-xs">
-              Clean architecture · Performance · DX · Observability
+              Pensar → projetar → construir → validar
             </span>
 
           </div>
@@ -615,37 +825,319 @@
     </section>
 
 
-    <!-- PROJECTS -->
-    <section id="projects" class="pb-24 lg:pb-32">
 
-      <div class="flex items-end justify-between mb-8 reveal">
+    <!-- ========================================================= -->
+    <!-- SERVICES -->
+    <!-- ========================================================= -->
+
+    <section
+      id="services"
+      class="pb-24 lg:pb-32 reveal"
+    >
+
+
+      <div class="mb-8">
+
+        <p
+          class="text-[10px] uppercase tracking-[.22em] text-green mb-3"
+        >
+          02 — O que faço
+        </p>
+
+
+        <h2
+          class="text-3xl sm:text-4xl font-black tracking-[-.04em]"
+        >
+          Transformo problemas em soluções.
+        </h2>
+
+
+        <p
+          class="text-sm text-white/35 mt-3 max-w-xl leading-6"
+        >
+          Três frentes diferentes, uma mesma lógica:
+          entender o problema antes de construir a solução.
+        </p>
+
+      </div>
+
+
+
+      <div class="grid md:grid-cols-3 gap-4">
+
+
+        <!-- BRANDING -->
+
+        <article
+          class="reveal group gradient-border rounded-3xl bg-[#080808] p-6"
+        >
+
+          <div
+            class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center mb-6"
+          >
+
+            <i
+              data-lucide="pen-tool"
+              class="w-5 h-5 text-green"
+            ></i>
+
+          </div>
+
+
+          <p
+            class="font-mono text-[9px] text-green mb-2"
+          >
+            01
+          </p>
+
+
+          <h3 class="font-bold text-lg">
+            Branding
+          </h3>
+
+
+          <p
+            class="text-xs leading-6 text-white/35 mt-3"
+          >
+            Identidade e direção visual para empresas que
+            precisam comunicar melhor o valor que entregam.
+          </p>
+
+
+          <div
+            class="flex flex-wrap gap-2 mt-5"
+          >
+
+            <span
+              class="text-[9px] font-mono text-white/30"
+            >
+              Identidade
+            </span>
+
+            <span class="text-white/10">
+              ·
+            </span>
+
+            <span
+              class="text-[9px] font-mono text-white/30"
+            >
+              Posicionamento
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- LANDING -->
+
+        <article
+          class="reveal group gradient-border rounded-3xl bg-[#080808] p-6"
+        >
+
+          <div
+            class="w-10 h-10 rounded-xl bg-teal/20 flex items-center justify-center mb-6"
+          >
+
+            <i
+              data-lucide="layout-template"
+              class="w-5 h-5 text-green"
+            ></i>
+
+          </div>
+
+
+          <p
+            class="font-mono text-[9px] text-green mb-2"
+          >
+            02
+          </p>
+
+
+          <h3 class="font-bold text-lg">
+            Landing Pages
+          </h3>
+
+
+          <p
+            class="text-xs leading-6 text-white/35 mt-3"
+          >
+            Transformo ofertas confusas em páginas claras,
+            rápidas e preparadas para apresentar e validar produtos.
+          </p>
+
+
+          <div
+            class="flex flex-wrap gap-2 mt-5"
+          >
+
+            <span
+              class="text-[9px] font-mono text-white/30"
+            >
+              UX
+            </span>
+
+            <span class="text-white/10">
+              ·
+            </span>
+
+            <span
+              class="text-[9px] font-mono text-white/30"
+            >
+              Copy
+            </span>
+
+            <span class="text-white/10">
+              ·
+            </span>
+
+            <span
+              class="text-[9px] font-mono text-white/30"
+            >
+              Código
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- SOFTWARE -->
+
+        <article
+          class="reveal group gradient-border rounded-3xl bg-[#080808] p-6"
+        >
+
+          <div
+            class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center mb-6"
+          >
+
+            <i
+              data-lucide="code-2"
+              class="w-5 h-5 text-green"
+            ></i>
+
+          </div>
+
+
+          <p
+            class="font-mono text-[9px] text-green mb-2"
+          >
+            03
+          </p>
+
+
+          <h3 class="font-bold text-lg">
+            Desenvolvimento
+          </h3>
+
+
+          <p
+            class="text-xs leading-6 text-white/35 mt-3"
+          >
+            Construção de ferramentas, sistemas e produtos
+            digitais para resolver processos e problemas específicos.
+          </p>
+
+
+          <div
+            class="flex flex-wrap gap-2 mt-5"
+          >
+
+            <span
+              class="text-[9px] font-mono text-white/30"
+            >
+              Web
+            </span>
+
+            <span class="text-white/10">
+              ·
+            </span>
+
+            <span
+              class="text-[9px] font-mono text-white/30"
+            >
+              SaaS
+            </span>
+
+            <span class="text-white/10">
+              ·
+            </span>
+
+            <span
+              class="text-[9px] font-mono text-white/30"
+            >
+              Automação
+            </span>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================================= -->
+    <!-- PROJECTS -->
+    <!-- ========================================================= -->
+
+    <section
+      id="projects"
+      class="pb-24 lg:pb-32"
+    >
+
+
+      <div
+        class="flex items-end justify-between mb-8 reveal"
+      >
 
         <div>
 
-          <p class="text-[10px] uppercase tracking-[.22em] text-cyan mb-3">
-            02 — Selected work
+          <p
+            class="text-[10px] uppercase tracking-[.22em] text-green mb-3"
+          >
+            03 — Trabalho
           </p>
 
-          <h2 class="text-3xl sm:text-4xl font-black tracking-[-.04em]">
-            Projetos recentes
+
+          <h2
+            class="text-3xl sm:text-4xl font-black tracking-[-.04em]"
+          >
+            Construindo na prática.
           </h2>
 
         </div>
 
-        <span class="hidden sm:block font-mono text-[10px] text-white/20">
-          2024—2026
+
+        <span
+          class="hidden sm:block font-mono text-[10px] text-white/20"
+        >
+          SELECTED WORK
         </span>
 
       </div>
 
 
+
       <div class="grid md:grid-cols-2 gap-4">
 
 
-        <!-- CARD 1 -->
-        <article class="reveal group gradient-border rounded-3xl bg-panel overflow-hidden">
+        <!-- PROJECT 1 -->
 
-          <div class="h-64 relative overflow-hidden bg-[#0A1210]">
+        <article
+          class="reveal group gradient-border rounded-3xl bg-[#080808] overflow-hidden"
+        >
+
+          <div
+            class="h-64 relative overflow-hidden bg-[#06110E]"
+          >
+
 
             <div
               class="absolute inset-0 opacity-50"
@@ -657,9 +1149,14 @@
               "
             ></div>
 
-            <div class="absolute inset-0 flex items-center justify-center">
 
-              <div class="w-[70%] rounded-2xl border border-white/10 bg-[#080808] shadow-2xl p-4">
+            <div
+              class="absolute inset-0 flex items-center justify-center"
+            >
+
+              <div
+                class="w-[70%] rounded-2xl border border-white/10 bg-[#050505] shadow-2xl p-4"
+              >
 
                 <div class="flex gap-1.5 mb-4">
 
@@ -669,15 +1166,24 @@
 
                 </div>
 
+
                 <div class="space-y-2">
 
-                  <div class="h-2 w-[35%] rounded bg-cyan/50"></div>
+                  <div
+                    class="h-2 w-[35%] rounded bg-green/50"
+                  ></div>
 
-                  <div class="h-2 w-[80%] rounded bg-white/10"></div>
+                  <div
+                    class="h-2 w-[80%] rounded bg-white/10"
+                  ></div>
 
-                  <div class="h-2 w-[65%] rounded bg-white/10"></div>
+                  <div
+                    class="h-2 w-[65%] rounded bg-white/10"
+                  ></div>
 
-                  <div class="h-12 rounded-xl bg-white/[.025] border border-white/[.05] mt-4"></div>
+                  <div
+                    class="h-12 rounded-xl bg-white/[.025] border border-white/[.05] mt-4"
+                  ></div>
 
                 </div>
 
@@ -690,21 +1196,29 @@
 
           <div class="p-6">
 
-            <div class="flex items-center justify-between gap-4">
+
+            <div
+              class="flex items-center justify-between gap-4"
+            >
 
               <div>
 
                 <h3 class="font-bold">
-                  Platform Core
+                  Landing & Produto
                 </h3>
 
-                <p class="text-xs text-white/35 mt-1">
-                  Plataforma SaaS escalável
+                <p
+                  class="text-xs text-white/35 mt-1"
+                >
+                  Interface para apresentar e validar uma oferta.
                 </p>
 
               </div>
 
-              <div class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-cyan group-hover:text-black transition">
+
+              <div
+                class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-green group-hover:text-black transition"
+              >
 
                 <i
                   data-lucide="arrow-up-right"
@@ -718,24 +1232,30 @@
 
             <div class="flex gap-2 mt-5">
 
-              <span class="text-[9px] font-mono text-white/30">
-                Node.js
+              <span
+                class="text-[9px] font-mono text-white/30"
+              >
+                UX
               </span>
 
               <span class="text-white/10">
                 ·
               </span>
 
-              <span class="text-[9px] font-mono text-white/30">
-                Postgres
+              <span
+                class="text-[9px] font-mono text-white/30"
+              >
+                UI
               </span>
 
               <span class="text-white/10">
                 ·
               </span>
 
-              <span class="text-[9px] font-mono text-white/30">
-                AWS
+              <span
+                class="text-[9px] font-mono text-white/30"
+              >
+                Frontend
               </span>
 
             </div>
@@ -745,62 +1265,77 @@
         </article>
 
 
-        <!-- CARD 2 -->
-        <article class="reveal group gradient-border rounded-3xl bg-panel overflow-hidden">
 
-          <div class="h-64 relative overflow-hidden bg-[#0A0F0E]">
+        <!-- PROJECT 2 -->
 
-            <div class="absolute inset-0 flex items-center justify-center">
+        <article
+          class="reveal group gradient-border rounded-3xl bg-[#080808] overflow-hidden"
+        >
+
+          <div
+            class="h-64 relative overflow-hidden bg-[#0A0A0A]"
+          >
+
+
+            <div
+              class="absolute inset-0 flex items-center justify-center"
+            >
 
               <div class="w-[75%]">
 
-                <div class="flex items-center gap-2 mb-4">
 
-                  <div class="w-8 h-8 rounded-lg bg-teal/20 flex items-center justify-center">
+                <div
+                  class="flex items-center gap-2 mb-4"
+                >
+
+                  <div
+                    class="w-8 h-8 rounded-lg bg-teal/20 flex items-center justify-center"
+                  >
 
                     <i
-                      data-lucide="activity"
-                      class="w-4 h-4 text-cyan"
+                      data-lucide="workflow"
+                      class="w-4 h-4 text-green"
                     ></i>
 
                   </div>
 
-                  <div class="h-2 w-20 bg-white/15 rounded"></div>
+
+                  <div
+                    class="h-2 w-20 bg-white/15 rounded"
+                  ></div>
 
                 </div>
 
 
-                <div class="grid grid-cols-3 gap-2 mb-2">
+                <div
+                  class="grid grid-cols-3 gap-2 mb-2"
+                >
 
-                  <div class="h-16 rounded-xl border border-white/[.06] bg-white/[.025]"></div>
+                  <div
+                    class="h-16 rounded-xl border border-white/[.06] bg-white/[.025]"
+                  ></div>
 
-                  <div class="h-16 rounded-xl border border-white/[.06] bg-white/[.025]"></div>
+                  <div
+                    class="h-16 rounded-xl border border-white/[.06] bg-white/[.025]"
+                  ></div>
 
-                  <div class="h-16 rounded-xl border border-white/[.06] bg-white/[.025]"></div>
+                  <div
+                    class="h-16 rounded-xl border border-white/[.06] bg-white/[.025]"
+                  ></div>
 
                 </div>
 
 
-                <div class="h-20 rounded-xl border border-white/[.06] bg-white/[.025] relative overflow-hidden">
+                <div
+                  class="h-20 rounded-xl border border-white/[.06] bg-white/[.025] relative overflow-hidden"
+                >
 
                   <div
                     class="absolute bottom-0 left-0 right-0 h-1/2 opacity-50"
                     style="
                       background:
-                      linear-gradient(
-                        135deg,
-                        transparent 20%,
-                        rgba(127,255,110,.3) 21%,
-                        rgba(127,255,110,.3) 22%,
-                        transparent 23%
-                      ),
-                      linear-gradient(
-                        45deg,
-                        transparent 40%,
-                        rgba(12,131,111,.3) 41%,
-                        rgba(12,131,111,.3) 42%,
-                        transparent 43%
-                      );
+                      linear-gradient(135deg,transparent 20%,rgba(127,255,110,.3) 21%,rgba(127,255,110,.3) 22%,transparent 23%),
+                      linear-gradient(45deg,transparent 40%,rgba(12,131,111,.35) 41%,rgba(12,131,111,.35) 42%,transparent 43%);
                     "
                   ></div>
 
@@ -815,21 +1350,29 @@
 
           <div class="p-6">
 
-            <div class="flex items-center justify-between gap-4">
+
+            <div
+              class="flex items-center justify-between gap-4"
+            >
 
               <div>
 
                 <h3 class="font-bold">
-                  Ops Intelligence
+                  Produto em construção
                 </h3>
 
-                <p class="text-xs text-white/35 mt-1">
-                  Observabilidade e automação
+                <p
+                  class="text-xs text-white/35 mt-1"
+                >
+                  Transformando um problema recorrente em software.
                 </p>
 
               </div>
 
-              <div class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-cyan group-hover:text-black transition">
+
+              <div
+                class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-green group-hover:text-black transition"
+              >
 
                 <i
                   data-lucide="arrow-up-right"
@@ -843,24 +1386,30 @@
 
             <div class="flex gap-2 mt-5">
 
-              <span class="text-[9px] font-mono text-white/30">
-                React
+              <span
+                class="text-[9px] font-mono text-white/30"
+              >
+                Problem
               </span>
 
               <span class="text-white/10">
                 ·
               </span>
 
-              <span class="text-[9px] font-mono text-white/30">
-                Docker
+              <span
+                class="text-[9px] font-mono text-white/30"
+              >
+                MVP
               </span>
 
               <span class="text-white/10">
                 ·
               </span>
 
-              <span class="text-[9px] font-mono text-white/30">
-                K8s
+              <span
+                class="text-[9px] font-mono text-white/30"
+              >
+                SaaS
               </span>
 
             </div>
@@ -869,81 +1418,170 @@
 
         </article>
 
+
       </div>
 
     </section>
 
 
-    <!-- SERVICES -->
-    <section class="pb-24 reveal">
 
-      <div class="rounded-[32px] border border-white/[.07] bg-panel p-6 sm:p-10">
+    <!-- ========================================================= -->
+    <!-- BUILDING / CONTENT -->
+    <!-- ========================================================= -->
 
-        <div class="grid md:grid-cols-3 gap-8">
+    <section
+      id="building"
+      class="pb-24 lg:pb-32 reveal"
+    >
+
+
+      <div
+        class="rounded-[32px] border border-white/[.07] bg-[#080808] p-6 sm:p-10"
+      >
+
+
+        <div
+          class="grid md:grid-cols-[.8fr_1.2fr] gap-10"
+        >
 
 
           <div>
 
-            <div class="w-10 h-10 rounded-xl bg-cyan/10 flex items-center justify-center mb-5">
+            <p
+              class="text-[10px] uppercase tracking-[.22em] text-green mb-4"
+            >
+              04 — Construindo em público
+            </p>
 
-              <i
-                data-lucide="boxes"
-                class="w-5 h-5 text-cyan"
-              ></i>
 
-            </div>
+            <h2
+              class="text-3xl sm:text-4xl font-black tracking-[-.04em] leading-tight"
+            >
 
-            <h3 class="font-bold">
-              Arquitetura
-            </h3>
+              O processo também é
+              <span class="text-white/35">
+                parte do produto.
+              </span>
 
-            <p class="text-xs leading-6 text-white/35 mt-2">
-              Sistemas preparados para crescer sem virar dívida técnica.
+            </h2>
+
+
+            <p
+              class="text-sm leading-6 text-white/35 mt-5 max-w-md"
+            >
+              Compartilho estudos, decisões, experimentos e projetos
+              porque construir também é uma forma de aprender e validar.
             </p>
 
           </div>
 
 
-          <div>
 
-            <div class="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center mb-5">
+          <div class="grid sm:grid-cols-2 gap-4">
+
+
+            <div
+              class="border border-white/[.06] rounded-2xl p-5 bg-white/[.015]"
+            >
 
               <i
-                data-lucide="gauge"
-                class="w-5 h-5 text-teal"
+                data-lucide="search"
+                class="w-4 h-4 text-green mb-5"
               ></i>
+
+
+              <h3 class="font-bold text-sm">
+                Diagnóstico
+              </h3>
+
+
+              <p
+                class="text-xs leading-6 text-white/30 mt-2"
+              >
+                Análises de marcas, landing pages, UX e produtos
+                para entender onde existe oportunidade.
+              </p>
 
             </div>
 
-            <h3 class="font-bold">
-              Performance
-            </h3>
-
-            <p class="text-xs leading-6 text-white/35 mt-2">
-              Menos latência, mais estabilidade e melhor experiência.
-            </p>
-
-          </div>
 
 
-          <div>
-
-            <div class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center mb-5">
+            <div
+              class="border border-white/[.06] rounded-2xl p-5 bg-white/[.015]"
+            >
 
               <i
-                data-lucide="workflow"
-                class="w-5 h-5 text-green"
+                data-lucide="hammer"
+                class="w-4 h-4 text-green mb-5"
               ></i>
+
+
+              <h3 class="font-bold text-sm">
+                Construção
+              </h3>
+
+
+              <p
+                class="text-xs leading-6 text-white/30 mt-2"
+              >
+                Branding, interfaces, código, automações e produtos
+                construídos na prática.
+              </p>
 
             </div>
 
-            <h3 class="font-bold">
-              Automação
-            </h3>
 
-            <p class="text-xs leading-6 text-white/35 mt-2">
-              CI/CD, observabilidade e processos que reduzem trabalho manual.
-            </p>
+
+            <div
+              class="border border-white/[.06] rounded-2xl p-5 bg-white/[.015]"
+            >
+
+              <i
+                data-lucide="flask-conical"
+                class="w-4 h-4 text-green mb-5"
+              ></i>
+
+
+              <h3 class="font-bold text-sm">
+                Validação
+              </h3>
+
+
+              <p
+                class="text-xs leading-6 text-white/30 mt-2"
+              >
+                Hipóteses testadas com pessoas reais antes de
+                investir meses em desenvolvimento.
+              </p>
+
+            </div>
+
+
+
+            <div
+              class="border border-white/[.06] rounded-2xl p-5 bg-white/[.015]"
+            >
+
+              <i
+                data-lucide="repeat-2"
+                class="w-4 h-4 text-green mb-5"
+              ></i>
+
+
+              <h3 class="font-bold text-sm">
+                Evolução
+              </h3>
+
+
+              <p
+                class="text-xs leading-6 text-white/30 mt-2"
+              >
+                O que funciona vira processo. O que se repete
+                pode virar produto.
+              </p>
+
+            </div>
+
 
           </div>
 
@@ -954,38 +1592,340 @@
     </section>
 
 
+
+    <!-- ========================================================= -->
+    <!-- STRATEGY -->
+    <!-- ========================================================= -->
+
+    <section
+      class="pb-24 reveal"
+    >
+
+
+      <div
+        class="rounded-[32px] border border-white/[.07] bg-[#080808] p-6 sm:p-10"
+      >
+
+
+        <div class="mb-8">
+
+          <p
+            class="text-[10px] uppercase tracking-[.22em] text-green mb-3"
+          >
+            05 — Direção
+          </p>
+
+
+          <h2
+            class="text-3xl sm:text-4xl font-black tracking-[-.04em]"
+          >
+            Um ciclo simples.
+          </h2>
+
+        </div>
+
+
+
+        <div
+          class="grid md:grid-cols-5 gap-3"
+        >
+
+
+          <div
+            class="rounded-2xl border border-white/[.06] p-5 bg-white/[.015]"
+          >
+
+            <span
+              class="font-mono text-[9px] text-green"
+            >
+              01
+            </span>
+
+            <h3 class="font-bold mt-4 text-sm">
+              Aprender
+            </h3>
+
+            <p
+              class="text-[11px] leading-5 text-white/30 mt-2"
+            >
+              Fundamentos e prática.
+            </p>
+
+          </div>
+
+
+
+          <div
+            class="rounded-2xl border border-white/[.06] p-5 bg-white/[.015]"
+          >
+
+            <span
+              class="font-mono text-[9px] text-green"
+            >
+              02
+            </span>
+
+            <h3 class="font-bold mt-4 text-sm">
+              Construir
+            </h3>
+
+            <p
+              class="text-[11px] leading-5 text-white/30 mt-2"
+            >
+              Soluções simples.
+            </p>
+
+          </div>
+
+
+
+          <div
+            class="rounded-2xl border border-white/[.06] p-5 bg-white/[.015]"
+          >
+
+            <span
+              class="font-mono text-[9px] text-green"
+            >
+              03
+            </span>
+
+            <h3 class="font-bold mt-4 text-sm">
+              Publicar
+            </h3>
+
+            <p
+              class="text-[11px] leading-5 text-white/30 mt-2"
+            >
+              Mostrar o processo.
+            </p>
+
+          </div>
+
+
+
+          <div
+            class="rounded-2xl border border-white/[.06] p-5 bg-white/[.015]"
+          >
+
+            <span
+              class="font-mono text-[9px] text-green"
+            >
+              04
+            </span>
+
+            <h3 class="font-bold mt-4 text-sm">
+              Validar
+            </h3>
+
+            <p
+              class="text-[11px] leading-5 text-white/30 mt-2"
+            >
+              Conversar com o mercado.
+            </p>
+
+          </div>
+
+
+
+          <div
+            class="rounded-2xl border border-green/20 p-5 bg-green/[.03]"
+          >
+
+            <span
+              class="font-mono text-[9px] text-green"
+            >
+              05
+            </span>
+
+            <h3 class="font-bold mt-4 text-sm">
+              Vender
+            </h3>
+
+            <p
+              class="text-[11px] leading-5 text-white/40 mt-2"
+            >
+              Transformar valor em receita.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================================= -->
+    <!-- SERVICES / PRINCIPLE -->
+    <!-- ========================================================= -->
+
+    <section class="pb-24 reveal">
+
+
+      <div
+        class="rounded-[32px] border border-white/[.07] bg-[#080808] p-6 sm:p-10"
+      >
+
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+
+          <div>
+
+            <div
+              class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center mb-5"
+            >
+
+              <i
+                data-lucide="target"
+                class="w-5 h-5 text-green"
+              ></i>
+
+            </div>
+
+
+            <h3 class="font-bold">
+              Problema antes da tecnologia
+            </h3>
+
+
+            <p
+              class="text-xs leading-6 text-white/35 mt-2"
+            >
+              Entender quem tem o problema, como resolve hoje
+              e se existe disposição para pagar.
+            </p>
+
+          </div>
+
+
+
+          <div>
+
+            <div
+              class="w-10 h-10 rounded-xl bg-teal/20 flex items-center justify-center mb-5"
+            >
+
+              <i
+                data-lucide="scissors"
+                class="w-5 h-5 text-green"
+              ></i>
+
+            </div>
+
+
+            <h3 class="font-bold">
+              Simplicidade antes da complexidade
+            </h3>
+
+
+            <p
+              class="text-xs leading-6 text-white/35 mt-2"
+            >
+              Se uma solução simples resolve, não existe motivo
+              para construir uma arquitetura desnecessariamente complexa.
+            </p>
+
+          </div>
+
+
+
+          <div>
+
+            <div
+              class="w-10 h-10 rounded-xl bg-green/10 flex items-center justify-center mb-5"
+            >
+
+              <i
+                data-lucide="trending-up"
+                class="w-5 h-5 text-green"
+              ></i>
+
+            </div>
+
+
+            <h3 class="font-bold">
+              Receita antes da vaidade
+            </h3>
+
+
+            <p
+              class="text-xs leading-6 text-white/35 mt-2"
+            >
+              Clientes, conversas, propostas e receita importam
+              mais do que seguidores ou métricas de vaidade.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ========================================================= -->
     <!-- CTA -->
-    <section id="contact" class="pb-20 reveal">
+    <!-- ========================================================= -->
 
-      <div class="relative overflow-hidden rounded-[34px] border border-cyan/15 bg-gradient-to-br from-[#0C836F]/20 to-[#080808] p-8 sm:p-12 lg:p-16 text-center">
+    <section
+      id="contact"
+      class="pb-20 reveal"
+    >
 
-        <div class="absolute w-80 h-80 bg-cyan/[.08] blur-3xl rounded-full -top-40 left-1/2 -translate-x-1/2"></div>
+
+      <div
+        class="relative overflow-hidden rounded-[34px] border border-green/15 bg-gradient-to-br from-[#07130F] to-[#050505] p-8 sm:p-12 lg:p-16 text-center"
+      >
+
+
+        <div
+          class="absolute w-80 h-80 bg-green/[.07] blur-3xl rounded-full -top-40 left-1/2 -translate-x-1/2"
+        ></div>
+
 
         <div class="relative">
 
-          <p class="font-mono text-[10px] text-cyan mb-4">
+
+          <p
+            class="font-mono text-[10px] text-green mb-4"
+          >
             // let's build
           </p>
 
-          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-[-.05em]">
+
+          <h2
+            class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-[-.05em]"
+          >
 
             Tem um problema
-
             <span class="text-white/35">
-              interessante?
+              para resolver?
             </span>
 
           </h2>
 
-          <p class="max-w-lg mx-auto text-sm leading-6 text-white/40 mt-5">
-            Se existe um produto para construir, sistema para melhorar
-            ou problema complexo para resolver, vamos conversar.
+
+          <p
+            class="max-w-lg mx-auto text-sm leading-6 text-white/40 mt-5"
+          >
+            Se você precisa construir uma marca, melhorar sua presença
+            digital, criar uma landing page ou transformar um processo
+            em software, podemos começar pela conversa.
           </p>
+
 
           <a
             href="mailto:hello@example.com"
-            class="inline-flex items-center gap-2 mt-8 rounded-full bg-white text-black px-6 py-3.5 text-xs font-bold hover:bg-cyan transition"
+            class="inline-flex items-center gap-2 mt-8 rounded-full brand-gradient text-black px-6 py-3.5 text-xs font-bold hover:opacity-90 transition"
           >
+
             Iniciar conversa
 
             <i
@@ -995,6 +1935,7 @@
 
           </a>
 
+
         </div>
 
       </div>
@@ -1002,70 +1943,104 @@
     </section>
 
 
+
+    <!-- ========================================================= -->
     <!-- FOOTER -->
-    <footer class="border-t border-white/[.06] py-7 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <!-- ========================================================= -->
+
+    <footer
+      class="border-t border-white/[.06] py-7 flex flex-col sm:flex-row items-center justify-between gap-4"
+    >
+
 
       <div class="flex items-center gap-2">
 
-        <div class="w-6 h-6 rounded-md bg-white/[.05] flex items-center justify-center">
+
+        <div
+          class="w-6 h-6 rounded-md bg-white/[.05] flex items-center justify-center"
+        >
 
           <i
-            data-lucide="terminal"
-            class="w-3 h-3 text-cyan"
+            data-lucide="layers-3"
+            class="w-3 h-3 text-green"
           ></i>
 
         </div>
 
-        <span class="font-mono text-[10px] text-white/30">
+
+        <span
+          class="font-mono text-[10px] text-white/30"
+        >
           © 2026 VINICIUS ARAUJO
         </span>
+
 
       </div>
 
 
+
       <div class="flex items-center gap-5">
+
 
         <a
           href="#"
-          class="text-white/25 hover:text-white transition"
+          aria-label="GitHub"
+          class="text-white/25 hover:text-green transition"
         >
+
           <i
             data-lucide="github"
             class="w-4 h-4"
           ></i>
+
         </a>
+
 
         <a
           href="#"
-          class="text-white/25 hover:text-white transition"
+          aria-label="LinkedIn"
+          class="text-white/25 hover:text-green transition"
         >
+
           <i
             data-lucide="linkedin"
             class="w-4 h-4"
           ></i>
+
         </a>
 
+
         <a
-          href="#"
-          class="text-white/25 hover:text-white transition"
+          href="mailto:hello@example.com"
+          aria-label="Email"
+          class="text-white/25 hover:text-green transition"
         >
+
           <i
             data-lucide="mail"
             class="w-4 h-4"
           ></i>
+
         </a>
+
 
       </div>
 
     </footer>
 
+
   </main>
 
 
+
+  <!-- ========================================================= -->
   <!-- MINIMAL JS -->
+  <!-- ========================================================= -->
+
   <script>
 
     lucide.createIcons();
+
 
     const observer = new IntersectionObserver(
       entries => {
@@ -1089,13 +2064,16 @@
     );
 
 
-    document.querySelectorAll('.reveal').forEach(el => {
+    document
+      .querySelectorAll('.reveal')
+      .forEach(el => {
 
-      observer.observe(el);
+        observer.observe(el);
 
-    });
+      });
 
   </script>
+
 
 </body>
 </html>
