@@ -11,6 +11,7 @@
 
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           boxShadow: {
@@ -39,22 +40,62 @@
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
+
+    /* Transição suave entre os modos */
+    html.theme-transition,
+    html.theme-transition body,
+    html.theme-transition header,
+    html.theme-transition section,
+    html.theme-transition article,
+    html.theme-transition footer,
+    html.theme-transition a,
+    html.theme-transition div,
+    html.theme-transition p,
+    html.theme-transition h1,
+    html.theme-transition h2,
+    html.theme-transition h3,
+    html.theme-transition span {
+      transition:
+        background-color .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
+    }
   </style>
+
+  <!-- =========================
+       DARK MODE INICIAL
+       Evita flash branco antes do carregamento
+  ========================== -->
+
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem("theme");
+
+      if (
+        savedTheme === "dark" ||
+        (!savedTheme &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
 </head>
 
-<body class="bg-[#f5f5f3] text-[#171717] antialiased">
+<body class="bg-[#f5f5f3] text-[#171717] antialiased transition-colors duration-300 dark:bg-[#0b0b0b] dark:text-white">
 
   <!-- =========================
        NAV
   ========================== -->
 
-  <header class="sticky top-0 z-50 border-b border-black/5 bg-[#f5f5f3]/90 backdrop-blur-xl">
+  <header class="sticky top-0 z-50 border-b border-black/5 bg-[#f5f5f3]/90 backdrop-blur-xl dark:border-white/10 dark:bg-[#0b0b0b]/90">
 
     <nav class="mx-auto flex max-w-[1480px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
 
       <a href="#top" class="flex items-center gap-3">
 
-        <div class="grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-[10px] font-bold text-white">
+        <div class="grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-[10px] font-bold text-white dark:bg-white dark:text-[#171717]">
           VA
         </div>
 
@@ -64,7 +105,7 @@
             VINICIUS ARAUJO
           </p>
 
-          <p class="mt-1 text-[7px] uppercase tracking-[.18em] text-black/35">
+          <p class="mt-1 text-[7px] uppercase tracking-[.18em] text-black/35 dark:text-white/35">
             Brand · Product · Software
           </p>
 
@@ -77,28 +118,47 @@
 
         <a
           href="#brands"
-          class="text-[10px] font-medium text-black/50 transition hover:text-black"
+          class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white"
         >
           Projetos
         </a>
 
         <a
           href="#services"
-          class="text-[10px] font-medium text-black/50 transition hover:text-black"
+          class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white"
         >
           Serviços
         </a>
 
         <a
           href="#about"
-          class="text-[10px] font-medium text-black/50 transition hover:text-black"
+          class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white"
         >
           Sobre
         </a>
 
+
+        <!-- THEME TOGGLE -->
+
+        <button
+          id="themeToggle"
+          type="button"
+          aria-label="Alternar tema"
+          class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white text-black transition hover:scale-[1.05] dark:border-white/10 dark:bg-[#171717] dark:text-white"
+        >
+
+          <i
+            id="themeIcon"
+            data-lucide="moon"
+            class="h-4 w-4"
+          ></i>
+
+        </button>
+
+
         <a
           href="#contact"
-          class="rounded-full bg-[#171717] px-4 py-2.5 text-[9px] font-semibold text-white transition hover:scale-[1.03]"
+          class="rounded-full bg-[#171717] px-4 py-2.5 text-[9px] font-semibold text-white transition hover:scale-[1.03] dark:bg-white dark:text-[#171717]"
         >
           Quero um projeto
         </a>
@@ -106,12 +166,34 @@
       </div>
 
 
-      <a
-        href="#contact"
-        class="grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-white md:hidden"
-      >
-        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-      </a>
+      <div class="flex items-center gap-2 md:hidden">
+
+        <!-- MOBILE THEME TOGGLE -->
+
+        <button
+          id="themeToggleMobile"
+          type="button"
+          aria-label="Alternar tema"
+          class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white text-black dark:border-white/10 dark:bg-[#171717] dark:text-white"
+        >
+
+          <i
+            id="themeIconMobile"
+            data-lucide="moon"
+            class="h-4 w-4"
+          ></i>
+
+        </button>
+
+
+        <a
+          href="#contact"
+          class="grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717]"
+        >
+          <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+        </a>
+
+      </div>
 
     </nav>
 
@@ -132,7 +214,7 @@
         <div>
 
           <div
-            class="mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+            class="mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:border-white/10 dark:bg-[#151515]"
           >
 
             <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
@@ -148,7 +230,7 @@
 
             Marcas.<br />
 
-            <span class="text-black/25">
+            <span class="text-black/25 dark:text-white/25">
               Produtos.
             </span><br />
 
@@ -158,7 +240,7 @@
 
 
           <p
-            class="mt-8 max-w-[600px] text-[14px] leading-[1.7] text-black/55 sm:text-[15px]"
+            class="mt-8 max-w-[600px] text-[14px] leading-[1.7] text-black/55 sm:text-[15px] dark:text-white/55"
           >
             Construo marcas, sites, experiências digitais e software
             para transformar ideias em soluções claras, profissionais
@@ -170,12 +252,12 @@
 
             <a
               href="#services"
-              class="inline-flex items-center gap-3 rounded-full bg-[#171717] py-2.5 pl-5 pr-2.5 text-[10px] font-semibold text-white shadow-dark transition hover:-translate-y-0.5"
+              class="inline-flex items-center gap-3 rounded-full bg-[#171717] py-2.5 pl-5 pr-2.5 text-[10px] font-semibold text-white shadow-dark transition hover:-translate-y-0.5 dark:bg-white dark:text-[#171717]"
             >
 
               Quero construir algo
 
-              <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-black">
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-black dark:bg-[#171717] dark:text-white">
 
                 <i
                   data-lucide="arrow-down"
@@ -189,7 +271,7 @@
 
             <a
               href="#brands"
-              class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-[10px] font-semibold transition hover:bg-black hover:text-white"
+              class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-[10px] font-semibold transition hover:bg-black hover:text-white dark:border-white/10 dark:bg-[#151515] dark:hover:bg-white dark:hover:text-black"
             >
               Ver projetos
             </a>
@@ -201,9 +283,9 @@
 
         <div class="lg:pb-3">
 
-          <div class="border-t border-black/10 pt-5">
+          <div class="border-t border-black/10 pt-5 dark:border-white/10">
 
-            <p class="text-[9px] uppercase tracking-[.2em] text-black/30">
+            <p class="text-[9px] uppercase tracking-[.2em] text-black/30 dark:text-white/30">
               O que eu faço
             </p>
 
@@ -216,10 +298,10 @@
           </div>
 
 
-          <div class="mt-8 grid grid-cols-3 border-y border-black/10 py-5">
+          <div class="mt-8 grid grid-cols-3 border-y border-black/10 py-5 dark:border-white/10">
 
             <div>
-              <p class="text-[8px] uppercase tracking-[.16em] text-black/30">
+              <p class="text-[8px] uppercase tracking-[.16em] text-black/30 dark:text-white/30">
                 Brand
               </p>
               <p class="mt-2 text-[10px] font-medium">
@@ -228,7 +310,7 @@
             </div>
 
             <div>
-              <p class="text-[8px] uppercase tracking-[.16em] text-black/30">
+              <p class="text-[8px] uppercase tracking-[.16em] text-black/30 dark:text-white/30">
                 Digital
               </p>
               <p class="mt-2 text-[10px] font-medium">
@@ -237,7 +319,7 @@
             </div>
 
             <div>
-              <p class="text-[8px] uppercase tracking-[.16em] text-black/30">
+              <p class="text-[8px] uppercase tracking-[.16em] text-black/30 dark:text-white/30">
                 Software
               </p>
               <p class="mt-2 text-[10px] font-medium">
@@ -269,7 +351,7 @@
         <div>
 
           <div
-            class="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+            class="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:bg-[#151515]"
           >
             <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
             Projetos recentes
@@ -280,7 +362,7 @@
           >
             Marcas que já<br />
 
-            <span class="text-black/25">
+            <span class="text-black/25 dark:text-white/25">
               saíram do papel.
             </span>
 
@@ -291,7 +373,7 @@
 
         <div class="max-w-[330px]">
 
-          <p class="text-[11px] leading-[1.65] text-black/45">
+          <p class="text-[11px] leading-[1.65] text-black/45 dark:text-white/45">
             Alguns dos trabalhos recentes que mostram como transformo
             ideias em identidades visuais com clareza, presença e direção.
           </p>
@@ -304,7 +386,7 @@
             Quero construir minha marca
 
             <span
-              class="grid h-7 w-7 place-items-center rounded-full bg-[#171717] text-white"
+              class="grid h-7 w-7 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black"
             >
               <i
                 data-lucide="arrow-up-right"
@@ -469,22 +551,22 @@
         <div class="flex gap-1.5">
 
           <span class="h-1.5 w-8 rounded-full bg-[#ff3008]"></span>
-          <span class="h-1.5 w-1.5 rounded-full bg-black/15"></span>
-          <span class="h-1.5 w-1.5 rounded-full bg-black/15"></span>
-          <span class="h-1.5 w-1.5 rounded-full bg-black/15"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-black/15 dark:bg-white/15"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-black/15 dark:bg-white/15"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-black/15 dark:bg-white/15"></span>
 
         </div>
 
 
         <a
           href="#contact"
-          class="group inline-flex items-center gap-3 rounded-full bg-[#171717] py-2 pl-5 pr-2 text-[10px] font-semibold text-white shadow-dark"
+          class="group inline-flex items-center gap-3 rounded-full bg-[#171717] py-2 pl-5 pr-2 text-[10px] font-semibold text-white shadow-dark dark:bg-white dark:text-[#171717]"
         >
 
           Quero minha marca
 
           <span
-            class="grid h-8 w-8 place-items-center rounded-full bg-white text-black transition group-hover:rotate-45"
+            class="grid h-8 w-8 place-items-center rounded-full bg-white text-black transition group-hover:rotate-45 dark:bg-[#171717] dark:text-white"
           >
             <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
           </span>
@@ -511,7 +593,7 @@
         <div>
 
           <div
-            class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+            class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:bg-[#151515]"
           >
             <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
             Sobre o trabalho
@@ -523,17 +605,17 @@
           >
             Não construo apenas<br />
 
-            <span class="text-black/25">
+            <span class="text-black/25 dark:text-white/25">
               coisas bonitas.
             </span>
           </h2>
 
 
-          <p class="mt-8 max-w-[650px] text-[14px] leading-[1.75] text-black/60">
+          <p class="mt-8 max-w-[650px] text-[14px] leading-[1.75] text-black/60 dark:text-white/60">
 
             Sou Vinicius Araujo, desenvolvedor em formação.
             Trabalho na interseção entre
-            <strong class="font-semibold text-black">
+            <strong class="font-semibold text-black dark:text-white">
               marca, produto e software
             </strong>
             para transformar problemas reais em soluções claras,
@@ -542,7 +624,7 @@
           </p>
 
 
-          <p class="mt-5 max-w-[650px] text-[14px] leading-[1.75] text-black/45">
+          <p class="mt-5 max-w-[650px] text-[14px] leading-[1.75] text-black/45 dark:text-white/45">
 
             Meu trabalho começa entendendo o problema, o público,
             o objetivo e a solução mais simples que pode ser colocada
@@ -553,7 +635,7 @@
         </div>
 
 
-        <div class="rounded-[28px] bg-[#171717] p-7 text-white shadow-soft sm:p-9">
+        <div class="rounded-[28px] bg-[#171717] p-7 text-white shadow-soft sm:p-9 dark:bg-[#151515]">
 
           <div class="flex items-center justify-between">
 
@@ -643,7 +725,7 @@
       </div>
 
 
-      <div class="mt-16 border-t border-black/10 pt-7">
+      <div class="mt-16 border-t border-black/10 pt-7 dark:border-white/10">
 
         <div class="flex flex-col justify-between gap-5 md:flex-row md:items-center">
 
@@ -654,7 +736,7 @@
             produtos digitais e software.
           </p>
 
-          <span class="shrink-0 text-[9px] uppercase tracking-[.18em] text-black/30">
+          <span class="shrink-0 text-[9px] uppercase tracking-[.18em] text-black/30 dark:text-white/30">
             Brand · Product · Software
           </span>
 
@@ -678,7 +760,7 @@
       <div class="mb-12 max-w-[900px]">
 
         <div
-          class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+          class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:bg-[#151515]"
         >
           <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
           Serviços
@@ -690,13 +772,13 @@
         >
           Você traz o problema.<br />
 
-          <span class="text-black/25">
+          <span class="text-black/25 dark:text-white/25">
             Eu construo a solução.
           </span>
         </h2>
 
 
-        <p class="mt-7 max-w-[650px] text-[13px] leading-[1.7] text-black/50">
+        <p class="mt-7 max-w-[650px] text-[13px] leading-[1.7] text-black/50 dark:text-white/50">
           Serviços para colocar uma ideia no mercado, melhorar a percepção
           da sua empresa ou transformar um processo em uma solução digital.
         </p>
@@ -710,7 +792,7 @@
         <!-- BRAND -->
 
         <article
-          class="group rounded-[30px] bg-[#171717] p-7 text-white shadow-dark transition duration-500 hover:-translate-y-1 sm:p-9"
+          class="group rounded-[30px] bg-[#171717] p-7 text-white shadow-dark transition duration-500 hover:-translate-y-1 sm:p-9 dark:bg-[#151515]"
         >
 
           <div class="flex items-center justify-between">
@@ -780,12 +862,12 @@
         <!-- DIGITAL -->
 
         <article
-          class="group rounded-[30px] border border-black/10 bg-white p-7 shadow-soft transition duration-500 hover:-translate-y-1 sm:p-9"
+          class="group rounded-[30px] border border-black/10 bg-white p-7 shadow-soft transition duration-500 hover:-translate-y-1 sm:p-9 dark:border-white/10 dark:bg-[#151515]"
         >
 
           <div class="flex items-center justify-between">
 
-            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35">
+            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35 dark:text-white/35">
               02 / Digital
             </span>
 
@@ -801,14 +883,14 @@
           </h3>
 
 
-          <p class="mt-6 text-[11px] leading-[1.7] text-black/45">
+          <p class="mt-6 text-[11px] leading-[1.7] text-black/45 dark:text-white/45">
             Landing pages e sites com estratégia, UX, copy e design
             para transformar sua presença digital em uma ferramenta
             comercial.
           </p>
 
 
-          <ul class="mt-8 space-y-3 text-[10px] text-black/60">
+          <ul class="mt-8 space-y-3 text-[10px] text-black/60 dark:text-white/60">
 
             <li class="flex gap-2">
               <span class="text-[#ff3008]">+</span>
@@ -835,7 +917,7 @@
 
             Quero um site
 
-            <span class="grid h-8 w-8 place-items-center rounded-full bg-[#171717] text-white">
+            <span class="grid h-8 w-8 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black">
 
               <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
 
@@ -850,12 +932,12 @@
         <!-- SOFTWARE -->
 
         <article
-          class="group rounded-[30px] border border-black/10 bg-white p-7 shadow-soft transition duration-500 hover:-translate-y-1 sm:p-9"
+          class="group rounded-[30px] border border-black/10 bg-white p-7 shadow-soft transition duration-500 hover:-translate-y-1 sm:p-9 dark:border-white/10 dark:bg-[#151515]"
         >
 
           <div class="flex items-center justify-between">
 
-            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35">
+            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35 dark:text-white/35">
               03 / Software
             </span>
 
@@ -871,13 +953,13 @@
           </h3>
 
 
-          <p class="mt-6 text-[11px] leading-[1.7] text-black/45">
+          <p class="mt-6 text-[11px] leading-[1.7] text-black/45 dark:text-white/45">
             MVPs, automações e sistemas sob medida para problemas
             que precisam de uma solução digital mais eficiente.
           </p>
 
 
-          <ul class="mt-8 space-y-3 text-[10px] text-black/60">
+          <ul class="mt-8 space-y-3 text-[10px] text-black/60 dark:text-white/60">
 
             <li class="flex gap-2">
               <span class="text-[#ff3008]">+</span>
@@ -904,7 +986,7 @@
 
             Quero discutir uma solução
 
-            <span class="grid h-8 w-8 place-items-center rounded-full bg-[#171717] text-white">
+            <span class="grid h-8 w-8 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black">
 
               <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
 
@@ -917,9 +999,9 @@
       </div>
 
 
-      <div class="mt-10 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 sm:flex-row sm:items-center">
+      <div class="mt-10 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 sm:flex-row sm:items-center dark:border-white/10">
 
-        <p class="max-w-[650px] text-[11px] leading-[1.6] text-black/40">
+        <p class="max-w-[650px] text-[11px] leading-[1.6] text-black/40 dark:text-white/40">
           Se você ainda não sabe exatamente o que precisa, tudo bem.
           Podemos começar pelo problema e encontrar juntos a solução mais simples.
         </p>
@@ -944,7 +1026,7 @@
 
     <section
       id="process"
-      class="bg-[#171717] text-white"
+      class="bg-[#171717] text-white dark:bg-[#050505]"
     >
 
       <div class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
@@ -1121,11 +1203,11 @@
     >
 
       <div
-        class="rounded-[30px] border border-black/10 bg-white px-6 py-10 shadow-soft sm:px-10"
+        class="rounded-[30px] border border-black/10 bg-white px-6 py-10 shadow-soft sm:px-10 dark:border-white/10 dark:bg-[#151515]"
       >
 
         <div
-          class="mx-auto mb-5 grid h-10 w-10 place-items-center rounded-full bg-[#171717] text-white"
+          class="mx-auto mb-5 grid h-10 w-10 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black"
         >
 
           <i
@@ -1137,7 +1219,7 @@
 
 
         <p
-          class="mx-auto max-w-[580px] text-[13px] leading-[1.7] text-black/55"
+          class="mx-auto max-w-[580px] text-[13px] leading-[1.7] text-black/55 dark:text-white/55"
         >
           Curtiu o projeto? Apoie com qualquer valor.
         </p>
@@ -1145,13 +1227,13 @@
 
         <a
           href="#"
-          class="mt-6 inline-flex items-center gap-3 rounded-full bg-[#171717] py-2.5 pl-5 pr-2.5 text-[10px] font-semibold text-white transition hover:-translate-y-0.5"
+          class="mt-6 inline-flex items-center gap-3 rounded-full bg-[#171717] py-2.5 pl-5 pr-2.5 text-[10px] font-semibold text-white transition hover:-translate-y-0.5 dark:bg-white dark:text-black"
         >
 
           APOIAR O PROJETO
 
           <span
-            class="grid h-8 w-8 place-items-center rounded-full bg-white text-black"
+            class="grid h-8 w-8 place-items-center rounded-full bg-white text-black dark:bg-[#171717] dark:text-white"
           >
 
             <i
@@ -1287,7 +1369,7 @@
        FOOTER
   ========================== -->
 
-  <footer class="bg-[#171717] text-white">
+  <footer class="bg-[#171717] text-white dark:bg-[#050505]">
 
     <div class="mx-auto max-w-[1480px] px-5 py-8 sm:px-8 lg:px-10">
 
@@ -1320,11 +1402,81 @@
 
 
   <!-- =========================
-       ICONS
+       ICONS + DARK MODE
   ========================== -->
 
   <script>
+
     lucide.createIcons();
+
+
+    const html = document.documentElement;
+
+    const themeToggle = document.getElementById("themeToggle");
+    const themeToggleMobile = document.getElementById("themeToggleMobile");
+
+    const themeIcon = document.getElementById("themeIcon");
+    const themeIconMobile = document.getElementById("themeIconMobile");
+
+
+    function updateThemeIcons() {
+
+      const isDark = html.classList.contains("dark");
+
+      const icon = isDark ? "sun" : "moon";
+
+      if (themeIcon) {
+        themeIcon.setAttribute("data-lucide", icon);
+      }
+
+      if (themeIconMobile) {
+        themeIconMobile.setAttribute("data-lucide", icon);
+      }
+
+      lucide.createIcons();
+
+    }
+
+
+    function toggleTheme() {
+
+      html.classList.add("theme-transition");
+
+      const isDark = html.classList.toggle("dark");
+
+      localStorage.setItem(
+        "theme",
+        isDark ? "dark" : "light"
+      );
+
+      updateThemeIcons();
+
+
+      setTimeout(() => {
+        html.classList.remove("theme-transition");
+      }, 300);
+
+    }
+
+
+    if (themeToggle) {
+      themeToggle.addEventListener(
+        "click",
+        toggleTheme
+      );
+    }
+
+
+    if (themeToggleMobile) {
+      themeToggleMobile.addEventListener(
+        "click",
+        toggleTheme
+      );
+    }
+
+
+    updateThemeIcons();
+
   </script>
 
 </body>
