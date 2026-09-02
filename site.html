@@ -1,0 +1,1483 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <title>Vinicius Araujo — Brand · Product · Software</title>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          boxShadow: {
+            soft: "0 20px 60px rgba(0,0,0,.08)",
+            dark: "0 20px 50px rgba(0,0,0,.18)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    ::selection {
+      background: #ff3008;
+      color: white;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Transição suave entre os modos */
+    html.theme-transition,
+    html.theme-transition body,
+    html.theme-transition header,
+    html.theme-transition section,
+    html.theme-transition article,
+    html.theme-transition footer,
+    html.theme-transition a,
+    html.theme-transition div,
+    html.theme-transition p,
+    html.theme-transition h1,
+    html.theme-transition h2,
+    html.theme-transition h3,
+    html.theme-transition span {
+      transition:
+        background-color .25s ease,
+        border-color .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
+    }
+  </style>
+
+  <!-- =========================
+       DARK MODE INICIAL
+       Evita flash branco antes do carregamento
+  ========================== -->
+
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem("theme");
+
+      if (
+        savedTheme === "dark" ||
+        (!savedTheme &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+</head>
+
+<body class="bg-[#f5f5f3] text-[#171717] antialiased transition-colors duration-300 dark:bg-[#0b0b0b] dark:text-white">
+
+  <!-- =========================
+       NAV
+  ========================== -->
+
+  <header class="sticky top-0 z-50 border-b border-black/5 bg-[#f5f5f3]/90 backdrop-blur-xl dark:border-white/10 dark:bg-[#0b0b0b]/90">
+
+    <nav class="mx-auto flex max-w-[1480px] items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
+
+      <a href="#top" class="flex items-center gap-3">
+
+        <div class="grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-[10px] font-bold text-white dark:bg-white dark:text-[#171717]">
+          VA
+        </div>
+
+        <div class="leading-none">
+
+          <p class="text-[11px] font-bold tracking-[-.02em]">
+            VINICIUS ARAUJO
+          </p>
+
+          <p class="mt-1 text-[7px] uppercase tracking-[.18em] text-black/35 dark:text-white/35">
+            Brand · Product · Software
+          </p>
+
+        </div>
+
+      </a>
+
+
+      <div class="hidden items-center gap-7 md:flex">
+
+        <a
+          href="#brands"
+          class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white"
+        >
+          Projetos
+        </a>
+
+        <a
+          href="#services"
+          class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white"
+        >
+          Serviços
+        </a>
+
+        <a
+          href="#about"
+          class="text-[10px] font-medium text-black/50 transition hover:text-black dark:text-white/50 dark:hover:text-white"
+        >
+          Sobre
+        </a>
+
+
+        <!-- THEME TOGGLE -->
+
+        <button
+          id="themeToggle"
+          type="button"
+          aria-label="Alternar tema"
+          class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white text-black transition hover:scale-[1.05] dark:border-white/10 dark:bg-[#171717] dark:text-white"
+        >
+
+          <i
+            id="themeIcon"
+            data-lucide="moon"
+            class="h-4 w-4"
+          ></i>
+
+        </button>
+
+
+        <a
+          href="#contact"
+          class="rounded-full bg-[#171717] px-4 py-2.5 text-[9px] font-semibold text-white transition hover:scale-[1.03] dark:bg-white dark:text-[#171717]"
+        >
+          Quero um projeto
+        </a>
+
+      </div>
+
+
+      <div class="flex items-center gap-2 md:hidden">
+
+        <!-- MOBILE THEME TOGGLE -->
+
+        <button
+          id="themeToggleMobile"
+          type="button"
+          aria-label="Alternar tema"
+          class="grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white text-black dark:border-white/10 dark:bg-[#171717] dark:text-white"
+        >
+
+          <i
+            id="themeIconMobile"
+            data-lucide="moon"
+            class="h-4 w-4"
+          ></i>
+
+        </button>
+
+
+        <a
+          href="#contact"
+          class="grid h-9 w-9 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-[#171717]"
+        >
+          <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+        </a>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <main id="top">
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="mx-auto max-w-[1480px] px-5 pb-20 pt-16 sm:px-8 lg:px-10 lg:pb-28 lg:pt-24">
+
+      <div class="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
+
+        <div>
+
+          <div
+            class="mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:border-white/10 dark:bg-[#151515]"
+          >
+
+            <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
+
+            Desenvolvedor em formação
+
+          </div>
+
+
+          <h1
+            class="max-w-[1050px] text-[58px] font-medium leading-[.86] tracking-[-.075em] sm:text-[82px] lg:text-[112px]"
+          >
+
+            Marcas.<br />
+
+            <span class="text-black/25 dark:text-white/25">
+              Produtos.
+            </span><br />
+
+            Software.
+
+          </h1>
+
+
+          <p
+            class="mt-8 max-w-[600px] text-[14px] leading-[1.7] text-black/55 sm:text-[15px] dark:text-white/55"
+          >
+            Construo marcas, sites, experiências digitais e software
+            para transformar ideias em soluções claras, profissionais
+            e prontas para gerar negócio.
+          </p>
+
+
+          <div class="mt-8 flex flex-wrap gap-3">
+
+            <a
+              href="#services"
+              class="inline-flex items-center gap-3 rounded-full bg-[#171717] py-2.5 pl-5 pr-2.5 text-[10px] font-semibold text-white shadow-dark transition hover:-translate-y-0.5 dark:bg-white dark:text-[#171717]"
+            >
+
+              Quero construir algo
+
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-black dark:bg-[#171717] dark:text-white">
+
+                <i
+                  data-lucide="arrow-down"
+                  class="h-3.5 w-3.5"
+                ></i>
+
+              </span>
+
+            </a>
+
+
+            <a
+              href="#brands"
+              class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-5 py-3 text-[10px] font-semibold transition hover:bg-black hover:text-white dark:border-white/10 dark:bg-[#151515] dark:hover:bg-white dark:hover:text-black"
+            >
+              Ver projetos
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="lg:pb-3">
+
+          <div class="border-t border-black/10 pt-5 dark:border-white/10">
+
+            <p class="text-[9px] uppercase tracking-[.2em] text-black/30 dark:text-white/30">
+              O que eu faço
+            </p>
+
+            <p
+              class="mt-5 max-w-[390px] text-[22px] font-medium leading-[1.05] tracking-[-.04em] sm:text-[28px]"
+            >
+              Transformo problemas e ideias em marcas, experiências digitais e produtos.
+            </p>
+
+          </div>
+
+
+          <div class="mt-8 grid grid-cols-3 border-y border-black/10 py-5 dark:border-white/10">
+
+            <div>
+              <p class="text-[8px] uppercase tracking-[.16em] text-black/30 dark:text-white/30">
+                Brand
+              </p>
+              <p class="mt-2 text-[10px] font-medium">
+                Posicionamento
+              </p>
+            </div>
+
+            <div>
+              <p class="text-[8px] uppercase tracking-[.16em] text-black/30 dark:text-white/30">
+                Digital
+              </p>
+              <p class="mt-2 text-[10px] font-medium">
+                Conversão
+              </p>
+            </div>
+
+            <div>
+              <p class="text-[8px] uppercase tracking-[.16em] text-black/30 dark:text-white/30">
+                Software
+              </p>
+              <p class="mt-2 text-[10px] font-medium">
+                Solução
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         BRANDS / PROVA
+    ========================== -->
+
+    <section
+      id="brands"
+      class="mx-auto max-w-[1480px] overflow-hidden px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+    >
+
+      <div class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+
+        <div>
+
+          <div
+            class="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:bg-[#151515]"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
+            Projetos recentes
+          </div>
+
+          <h2
+            class="max-w-[760px] text-[44px] font-medium leading-[.92] tracking-[-.06em] sm:text-[62px] lg:text-[74px]"
+          >
+            Marcas que já<br />
+
+            <span class="text-black/25 dark:text-white/25">
+              saíram do papel.
+            </span>
+
+          </h2>
+
+        </div>
+
+
+        <div class="max-w-[330px]">
+
+          <p class="text-[11px] leading-[1.65] text-black/45 dark:text-white/45">
+            Alguns dos trabalhos recentes que mostram como transformo
+            ideias em identidades visuais com clareza, presença e direção.
+          </p>
+
+          <a
+            href="#contact"
+            class="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold"
+          >
+
+            Quero construir minha marca
+
+            <span
+              class="grid h-7 w-7 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black"
+            >
+              <i
+                data-lucide="arrow-up-right"
+                class="h-3.5 w-3.5"
+              ></i>
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- CARROSSEL -->
+
+      <div
+        class="no-scrollbar flex w-full snap-x snap-mandatory gap-4 overflow-x-auto pb-5"
+      >
+
+
+        <!-- BRAND 01 -->
+
+        <article
+          class="group relative h-[420px] w-[82%] min-w-[82%] shrink-0 snap-start overflow-hidden rounded-[30px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] md:w-[48%] md:min-w-[48%] lg:h-[560px] lg:w-[38%] lg:min-w-[38%]"
+          style="background-image:url('./marca1.png');"
+        >
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+
+          <div
+            class="absolute left-5 top-5 rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[8px] font-semibold uppercase tracking-[.2em] text-white/70 backdrop-blur"
+          >
+            Brand 01
+          </div>
+
+          <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+
+            <p class="mb-2 text-[9px] uppercase tracking-[.2em] text-white/55">
+              Identidade visual
+            </p>
+
+            <h3 class="text-[30px] font-medium leading-none tracking-[-.04em] text-white sm:text-[38px]">
+              Sua marca.
+            </h3>
+
+            <p class="mt-3 max-w-[300px] text-[11px] leading-[1.55] text-white/65">
+              Transforme uma ideia em uma identidade com presença e posicionamento.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- BRAND 02 -->
+
+        <article
+          class="group relative h-[420px] w-[82%] min-w-[82%] shrink-0 snap-start overflow-hidden rounded-[30px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] md:w-[48%] md:min-w-[48%] lg:h-[560px] lg:w-[38%] lg:min-w-[38%]"
+          style="background-image:url('./marca2.png');"
+        >
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+
+          <div
+            class="absolute left-5 top-5 rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[8px] font-semibold uppercase tracking-[.2em] text-white/70 backdrop-blur"
+          >
+            Brand 02
+          </div>
+
+          <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+
+            <p class="mb-2 text-[9px] uppercase tracking-[.2em] text-white/55">
+              Identidade visual
+            </p>
+
+            <h3 class="text-[30px] font-medium leading-none tracking-[-.04em] text-white sm:text-[38px]">
+              Crie o seu.
+            </h3>
+
+            <p class="mt-3 max-w-[300px] text-[11px] leading-[1.55] text-white/65">
+              Uma identidade pensada para comunicar valor antes mesmo de explicar.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- BRAND 03 -->
+
+        <article
+          class="group relative h-[420px] w-[82%] min-w-[82%] shrink-0 snap-start overflow-hidden rounded-[30px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] md:w-[48%] md:min-w-[48%] lg:h-[560px] lg:w-[38%] lg:min-w-[38%]"
+          style="background-image:url('./marca3.png');"
+        >
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+
+          <div
+            class="absolute left-5 top-5 rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[8px] font-semibold uppercase tracking-[.2em] text-white/70 backdrop-blur"
+          >
+            Brand 03
+          </div>
+
+          <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+
+            <p class="mb-2 text-[9px] uppercase tracking-[.2em] text-white/55">
+              Identidade visual
+            </p>
+
+            <h3 class="text-[30px] font-medium leading-none tracking-[-.04em] text-white sm:text-[38px]">
+              Explore.
+            </h3>
+
+            <p class="mt-3 max-w-[300px] text-[11px] leading-[1.55] text-white/65">
+              Dê forma visual à próxima ideia que você quer colocar no mercado.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <!-- BRAND 04 -->
+
+        <article
+          class="group relative h-[420px] w-[82%] min-w-[82%] shrink-0 snap-start overflow-hidden rounded-[30px] bg-cover bg-center shadow-soft transition duration-500 hover:-translate-y-1 sm:h-[500px] md:w-[48%] md:min-w-[48%] lg:h-[560px] lg:w-[38%] lg:min-w-[38%]"
+          style="background-image:url('./marca4.png');"
+        >
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+
+          <div
+            class="absolute left-5 top-5 rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[8px] font-semibold uppercase tracking-[.2em] text-white/70 backdrop-blur"
+          >
+            Brand 04
+          </div>
+
+          <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7">
+
+            <p class="mb-2 text-[9px] uppercase tracking-[.2em] text-white/55">
+              Identidade visual
+            </p>
+
+            <h3 class="text-[30px] font-medium leading-none tracking-[-.04em] text-white sm:text-[38px]">
+              Comece agora.
+            </h3>
+
+            <p class="mt-3 max-w-[300px] text-[11px] leading-[1.55] text-white/65">
+              Uma identidade clara para começar com mais confiança.
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <div class="mt-3 flex flex-col items-center justify-between gap-5 sm:flex-row">
+
+        <div class="flex gap-1.5">
+
+          <span class="h-1.5 w-8 rounded-full bg-[#ff3008]"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-black/15 dark:bg-white/15"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-black/15 dark:bg-white/15"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-black/15 dark:bg-white/15"></span>
+
+        </div>
+
+
+        <a
+          href="#contact"
+          class="group inline-flex items-center gap-3 rounded-full bg-[#171717] py-2 pl-5 pr-2 text-[10px] font-semibold text-white shadow-dark dark:bg-white dark:text-[#171717]"
+        >
+
+          Quero minha marca
+
+          <span
+            class="grid h-8 w-8 place-items-center rounded-full bg-white text-black transition group-hover:rotate-45 dark:bg-[#171717] dark:text-white"
+          >
+            <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+          </span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section
+      id="about"
+      class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+    >
+
+      <div class="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
+
+        <div>
+
+          <div
+            class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:bg-[#151515]"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
+            Sobre o trabalho
+          </div>
+
+
+          <h2
+            class="max-w-[900px] text-[45px] font-medium leading-[.92] tracking-[-.06em] sm:text-[62px] lg:text-[78px]"
+          >
+            Não construo apenas<br />
+
+            <span class="text-black/25 dark:text-white/25">
+              coisas bonitas.
+            </span>
+          </h2>
+
+
+          <p class="mt-8 max-w-[650px] text-[14px] leading-[1.75] text-black/60 dark:text-white/60">
+
+            Sou Vinicius Araujo, desenvolvedor em formação.
+            Trabalho na interseção entre
+            <strong class="font-semibold text-black dark:text-white">
+              marca, produto e software
+            </strong>
+            para transformar problemas reais em soluções claras,
+            funcionais e prontas para gerar valor.
+
+          </p>
+
+
+          <p class="mt-5 max-w-[650px] text-[14px] leading-[1.75] text-black/45 dark:text-white/45">
+
+            Meu trabalho começa entendendo o problema, o público,
+            o objetivo e a solução mais simples que pode ser colocada
+            em prática e testada.
+
+          </p>
+
+        </div>
+
+
+        <div class="rounded-[28px] bg-[#171717] p-7 text-white shadow-soft sm:p-9 dark:bg-[#151515]">
+
+          <div class="flex items-center justify-between">
+
+            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-white/40">
+              Como penso
+            </span>
+
+            <i data-lucide="crosshair" class="h-4 w-4 text-white/40"></i>
+
+          </div>
+
+
+          <div class="mt-12 space-y-5">
+
+            <div class="flex items-start gap-4">
+
+              <span class="mt-1 text-[9px] text-[#ff3008]">
+                01
+              </span>
+
+              <div>
+
+                <h3 class="text-lg font-medium">
+                  Problema antes da solução
+                </h3>
+
+                <p class="mt-1 text-[10px] leading-[1.6] text-white/40">
+                  Entender o que precisa ser resolvido antes de decidir o que construir.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="h-px bg-white/10"></div>
+
+
+            <div class="flex items-start gap-4">
+
+              <span class="mt-1 text-[9px] text-[#ff3008]">
+                02
+              </span>
+
+              <div>
+
+                <h3 class="text-lg font-medium">
+                  Validar antes de construir demais
+                </h3>
+
+                <p class="mt-1 text-[10px] leading-[1.6] text-white/40">
+                  Testar a menor solução capaz de gerar evidência real.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="h-px bg-white/10"></div>
+
+
+            <div class="flex items-start gap-4">
+
+              <span class="mt-1 text-[9px] text-[#ff3008]">
+                03
+              </span>
+
+              <div>
+
+                <h3 class="text-lg font-medium">
+                  Resultado antes de vaidade
+                </h3>
+
+                <p class="mt-1 text-[10px] leading-[1.6] text-white/40">
+                  Clientes, receita, aprendizado e evolução importam mais que aparência de sucesso.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="mt-16 border-t border-black/10 pt-7 dark:border-white/10">
+
+        <div class="flex flex-col justify-between gap-5 md:flex-row md:items-center">
+
+          <p
+            class="max-w-[850px] text-[20px] font-medium leading-[1.1] tracking-[-.03em] sm:text-[27px]"
+          >
+            Desenvolvedor em formação que constrói marcas,
+            produtos digitais e software.
+          </p>
+
+          <span class="shrink-0 text-[9px] uppercase tracking-[.18em] text-black/30 dark:text-white/30">
+            Brand · Product · Software
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section
+      id="services"
+      class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+    >
+
+      <div class="mb-12 max-w-[900px]">
+
+        <div
+          class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm dark:bg-[#151515]"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"></span>
+          Serviços
+        </div>
+
+
+        <h2
+          class="text-[48px] font-medium leading-[.9] tracking-[-.065em] sm:text-[70px] lg:text-[88px]"
+        >
+          Você traz o problema.<br />
+
+          <span class="text-black/25 dark:text-white/25">
+            Eu construo a solução.
+          </span>
+        </h2>
+
+
+        <p class="mt-7 max-w-[650px] text-[13px] leading-[1.7] text-black/50 dark:text-white/50">
+          Serviços para colocar uma ideia no mercado, melhorar a percepção
+          da sua empresa ou transformar um processo em uma solução digital.
+        </p>
+
+      </div>
+
+
+      <div class="grid gap-4 lg:grid-cols-3">
+
+
+        <!-- BRAND -->
+
+        <article
+          class="group rounded-[30px] bg-[#171717] p-7 text-white shadow-dark transition duration-500 hover:-translate-y-1 sm:p-9 dark:bg-[#151515]"
+        >
+
+          <div class="flex items-center justify-between">
+
+            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-white/40">
+              01 / Brand
+            </span>
+
+            <i data-lucide="layers" class="h-4 w-4 text-[#ff3008]"></i>
+
+          </div>
+
+
+          <h3
+            class="mt-20 text-[36px] font-medium leading-[.95] tracking-[-.04em]"
+          >
+            Uma marca pronta para ser levada a sério.
+          </h3>
+
+
+          <p class="mt-6 text-[11px] leading-[1.7] text-white/45">
+            Estratégia, identidade visual e direção de marca
+            para negócios que precisam sair do improviso e
+            construir uma presença profissional.
+          </p>
+
+
+          <ul class="mt-8 space-y-3 text-[10px] text-white/65">
+
+            <li class="flex gap-2">
+              <span class="text-[#ff3008]">+</span>
+              Estratégia de marca
+            </li>
+
+            <li class="flex gap-2">
+              <span class="text-[#ff3008]">+</span>
+              Identidade visual
+            </li>
+
+            <li class="flex gap-2">
+              <span class="text-[#ff3008]">+</span>
+              Sistema visual
+            </li>
+
+          </ul>
+
+
+          <a
+            href="#contact"
+            class="mt-10 inline-flex items-center gap-3 text-[10px] font-semibold"
+          >
+
+            Quero construir minha marca
+
+            <span class="grid h-8 w-8 place-items-center rounded-full bg-white text-black">
+
+              <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+
+            </span>
+
+          </a>
+
+        </article>
+
+
+
+        <!-- DIGITAL -->
+
+        <article
+          class="group rounded-[30px] border border-black/10 bg-white p-7 shadow-soft transition duration-500 hover:-translate-y-1 sm:p-9 dark:border-white/10 dark:bg-[#151515]"
+        >
+
+          <div class="flex items-center justify-between">
+
+            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35 dark:text-white/35">
+              02 / Digital
+            </span>
+
+            <i data-lucide="monitor-smartphone" class="h-4 w-4 text-[#ff3008]"></i>
+
+          </div>
+
+
+          <h3
+            class="mt-20 text-[36px] font-medium leading-[.95] tracking-[-.04em]"
+          >
+            Um site que apresenta seu negócio e ajuda a vender.
+          </h3>
+
+
+          <p class="mt-6 text-[11px] leading-[1.7] text-black/45 dark:text-white/45">
+            Landing pages e sites com estratégia, UX, copy e design
+            para transformar sua presença digital em uma ferramenta
+            comercial.
+          </p>
+
+
+          <ul class="mt-8 space-y-3 text-[10px] text-black/60 dark:text-white/60">
+
+            <li class="flex gap-2">
+              <span class="text-[#ff3008]">+</span>
+              Landing pages
+            </li>
+
+            <li class="flex gap-2">
+              <span class="text-[#ff3008]">+</span>
+              Sites institucionais
+            </li>
+
+            <li class="flex gap-2">
+              <span class="text-[#ff3008]">+</span>
+              Páginas de campanha
+            </li>
+
+          </ul>
+
+
+          <a
+            href="#contact"
+            class="mt-10 inline-flex items-center gap-3 text-[10px] font-semibold"
+          >
+
+            Quero um site
+
+            <span class="grid h-8 w-8 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black">
+
+              <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+
+            </span>
+
+          </a>
+
+        </article>
+
+
+
+        <!-- SOFTWARE -->
+
+        <article
+          class="group rounded-[30px] border border-black/10 bg-white p-7 shadow-soft transition duration-500 hover:-translate-y-1 sm:p-9 dark:border-white/10 dark:bg-[#151515]"
+        >
+
+          <div class="flex items-center justify-between">
+
+            <span class="text-[9px] font-semibold uppercase tracking-[.2em] text-black/35 dark:text-white/35">
+              03 / Software
+            </span>
+
+            <i data-lucide="code-2" class="h-4 w-4 text-[#ff3008]"></i>
+
+          </div>
+
+
+          <h3
+            class="mt-20 text-[36px] font-medium leading-[.95] tracking-[-.04em]"
+          >
+            Um processo melhor pode virar software.
+          </h3>
+
+
+          <p class="mt-6 text-[11px] leading-[1.7] text-black/45 dark:text-white/45">
+            MVPs, automações e sistemas sob medida para problemas
+            que precisam de uma solução digital mais eficiente.
+          </p>
+
+
+          <ul class="mt-8 space-y-3 text-[10px] text-black/60 dark:text-white/60">
+
+            <li class="flex gap-2">
+              <span class="text-[#ff3008]">+</span>
+              MVPs
+            </li>
+
+            <li class="flex gap-2">
+              <span class="text-[#ff3008]">+</span>
+              Automações
+            </li>
+
+            <li class="flex gap-2">
+              <span class="text-[#ff3008]">+</span>
+              Sistemas sob medida
+            </li>
+
+          </ul>
+
+
+          <a
+            href="#contact"
+            class="mt-10 inline-flex items-center gap-3 text-[10px] font-semibold"
+          >
+
+            Quero discutir uma solução
+
+            <span class="grid h-8 w-8 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black">
+
+              <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+
+            </span>
+
+          </a>
+
+        </article>
+
+      </div>
+
+
+      <div class="mt-10 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 sm:flex-row sm:items-center dark:border-white/10">
+
+        <p class="max-w-[650px] text-[11px] leading-[1.6] text-black/40 dark:text-white/40">
+          Se você ainda não sabe exatamente o que precisa, tudo bem.
+          Podemos começar pelo problema e encontrar juntos a solução mais simples.
+        </p>
+
+        <a
+          href="#contact"
+          class="inline-flex shrink-0 items-center gap-2 text-[10px] font-semibold"
+        >
+          Conversar sobre meu projeto
+          <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PROCESS
+    ========================== -->
+
+    <section
+      id="process"
+      class="bg-[#171717] text-white dark:bg-[#050505]"
+    >
+
+      <div class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+
+        <div class="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
+
+          <div>
+
+            <p class="text-[9px] uppercase tracking-[.2em] text-white/35">
+              Processo
+            </p>
+
+            <h2
+              class="mt-5 text-[48px] font-medium leading-[.9] tracking-[-.06em] sm:text-[68px]"
+            >
+              Primeiro<br />
+              <span class="text-white/25">
+                validamos.
+              </span>
+            </h2>
+
+            <p class="mt-7 max-w-[390px] text-[12px] leading-[1.7] text-white/45">
+              Não começo construindo meses de trabalho.
+              Começo entendendo o problema e buscando a menor solução
+              capaz de gerar resultado.
+            </p>
+
+          </div>
+
+
+          <div class="space-y-0">
+
+            <div class="border-t border-white/10 py-7">
+
+              <div class="flex gap-6">
+
+                <span class="text-[9px] text-[#ff3008]">
+                  01
+                </span>
+
+                <div>
+
+                  <h3 class="text-xl font-medium">
+                    Entender
+                  </h3>
+
+                  <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                    Problema, público, contexto, objetivo e oportunidade.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="border-t border-white/10 py-7">
+
+              <div class="flex gap-6">
+
+                <span class="text-[9px] text-[#ff3008]">
+                  02
+                </span>
+
+                <div>
+
+                  <h3 class="text-xl font-medium">
+                    Definir
+                  </h3>
+
+                  <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                    Encontrar a oferta e a solução mínima que fazem sentido testar.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="border-t border-white/10 py-7">
+
+              <div class="flex gap-6">
+
+                <span class="text-[9px] text-[#ff3008]">
+                  03
+                </span>
+
+                <div>
+
+                  <h3 class="text-xl font-medium">
+                    Construir
+                  </h3>
+
+                  <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                    Marca, landing page, site, MVP, automação ou software.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="border-t border-white/10 py-7">
+
+              <div class="flex gap-6">
+
+                <span class="text-[9px] text-[#ff3008]">
+                  04
+                </span>
+
+                <div>
+
+                  <h3 class="text-xl font-medium">
+                    Vender e aprender
+                  </h3>
+
+                  <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                    Colocar no mundo, ouvir o mercado, medir a resposta e decidir o próximo passo.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="border-y border-white/10 py-7">
+
+              <div class="flex gap-6">
+
+                <span class="text-[9px] text-[#ff3008]">
+                  05
+                </span>
+
+                <div>
+
+                  <h3 class="text-xl font-medium">
+                    Evoluir
+                  </h3>
+
+                  <p class="mt-2 max-w-[500px] text-[11px] leading-[1.6] text-white/40">
+                    O que se repete pode virar processo, produto e, quando fizer sentido, software.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SUPPORT PROJECT
+    ========================== -->
+
+    <section
+      id="support"
+      class="mx-auto max-w-[900px] px-5 py-16 text-center sm:px-8 lg:py-20"
+    >
+
+      <div
+        class="rounded-[30px] border border-black/10 bg-white px-6 py-10 shadow-soft sm:px-10 dark:border-white/10 dark:bg-[#151515]"
+      >
+
+        <div
+          class="mx-auto mb-5 grid h-10 w-10 place-items-center rounded-full bg-[#171717] text-white dark:bg-white dark:text-black"
+        >
+
+          <i
+            data-lucide="heart"
+            class="h-4 w-4"
+          ></i>
+
+        </div>
+
+
+        <p
+          class="mx-auto max-w-[580px] text-[13px] leading-[1.7] text-black/55 dark:text-white/55"
+        >
+          Curtiu o projeto? Apoie com qualquer valor.
+        </p>
+
+
+        <a
+          href="#"
+          class="mt-6 inline-flex items-center gap-3 rounded-full bg-[#171717] py-2.5 pl-5 pr-2.5 text-[10px] font-semibold text-white transition hover:-translate-y-0.5 dark:bg-white dark:text-black"
+        >
+
+          APOIAR O PROJETO
+
+          <span
+            class="grid h-8 w-8 place-items-center rounded-full bg-white text-black dark:bg-[#171717] dark:text-white"
+          >
+
+            <i
+              data-lucide="heart"
+              class="h-3.5 w-3.5"
+            ></i>
+
+          </span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+      id="contact"
+      class="bg-[#ff3008] text-white"
+    >
+
+      <div
+        class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+      >
+
+        <div class="grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
+
+          <div>
+
+            <p class="text-[9px] font-semibold uppercase tracking-[.2em] text-white/55">
+              Próximo projeto
+            </p>
+
+            <h2
+              class="mt-5 max-w-[900px] text-[52px] font-medium leading-[.88] tracking-[-.07em] sm:text-[76px] lg:text-[100px]"
+            >
+              Tem um problema?
+              <br />
+              Vamos construir.
+            </h2>
+
+            <p class="mt-8 max-w-[500px] text-[12px] leading-[1.7] text-white/65">
+              Me conte o que você quer construir, melhorar ou colocar no mercado.
+              A partir disso, encontramos a solução mais adequada para o seu momento.
+            </p>
+
+          </div>
+
+
+          <a
+            href="mailto:seuemail@email.com"
+            class="group inline-flex w-fit items-center gap-4 rounded-full bg-white py-2 pl-6 pr-2 text-[11px] font-semibold text-black"
+          >
+
+            Quero conversar sobre meu projeto
+
+            <span
+              class="grid h-10 w-10 place-items-center rounded-full bg-[#171717] text-white transition group-hover:rotate-45"
+            >
+
+              <i
+                data-lucide="arrow-up-right"
+                class="h-4 w-4"
+              ></i>
+
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <div class="mt-16 border-t border-white/20 pt-7">
+
+          <div class="grid gap-8 sm:grid-cols-3">
+
+            <div>
+
+              <p class="text-[8px] uppercase tracking-[.18em] text-white/45">
+                Brand
+              </p>
+
+              <p class="mt-2 text-[12px] font-medium">
+                Para quem precisa construir percepção.
+              </p>
+
+            </div>
+
+
+            <div>
+
+              <p class="text-[8px] uppercase tracking-[.18em] text-white/45">
+                Digital
+              </p>
+
+              <p class="mt-2 text-[12px] font-medium">
+                Para quem precisa transformar presença em oportunidade.
+              </p>
+
+            </div>
+
+
+            <div>
+
+              <p class="text-[8px] uppercase tracking-[.18em] text-white/45">
+                Software
+              </p>
+
+              <p class="mt-2 text-[12px] font-medium">
+                Para quem precisa transformar processos em solução.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="bg-[#171717] text-white dark:bg-[#050505]">
+
+    <div class="mx-auto max-w-[1480px] px-5 py-8 sm:px-8 lg:px-10">
+
+      <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+
+        <div>
+
+          <p class="text-[11px] font-bold">
+            VINICIUS ARAUJO
+          </p>
+
+          <p class="mt-1 text-[7px] uppercase tracking-[.2em] text-white/30">
+            Brand · Product · Software
+          </p>
+
+        </div>
+
+
+        <p class="text-[9px] text-white/30">
+          Desenvolvedor em formação que constrói marcas,
+          produtos digitais e software.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =========================
+       ICONS + DARK MODE
+  ========================== -->
+
+  <script>
+
+    lucide.createIcons();
+
+
+    const html = document.documentElement;
+
+    const themeToggle = document.getElementById("themeToggle");
+    const themeToggleMobile = document.getElementById("themeToggleMobile");
+
+    const themeIcon = document.getElementById("themeIcon");
+    const themeIconMobile = document.getElementById("themeIconMobile");
+
+
+    function updateThemeIcons() {
+
+      const isDark = html.classList.contains("dark");
+
+      const icon = isDark ? "sun" : "moon";
+
+      if (themeIcon) {
+        themeIcon.setAttribute("data-lucide", icon);
+      }
+
+      if (themeIconMobile) {
+        themeIconMobile.setAttribute("data-lucide", icon);
+      }
+
+      lucide.createIcons();
+
+    }
+
+
+    function toggleTheme() {
+
+      html.classList.add("theme-transition");
+
+      const isDark = html.classList.toggle("dark");
+
+      localStorage.setItem(
+        "theme",
+        isDark ? "dark" : "light"
+      );
+
+      updateThemeIcons();
+
+
+      setTimeout(() => {
+        html.classList.remove("theme-transition");
+      }, 300);
+
+    }
+
+
+    if (themeToggle) {
+      themeToggle.addEventListener(
+        "click",
+        toggleTheme
+      );
+    }
+
+
+    if (themeToggleMobile) {
+      themeToggleMobile.addEventListener(
+        "click",
+        toggleTheme
+      );
+    }
+
+
+    updateThemeIcons();
+
+  </script>
+
+</body>
+</html>

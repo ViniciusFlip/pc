@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeonAI — AI SaaS Services</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 18px 50px rgba(0,0,0,.10)',
+            dark: '0 12px 28px rgba(0,0,0,.22)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+
+    .hero-grid {
+      background:
+        radial-gradient(
+          circle at 78% 28%,
+          rgba(255,255,255,.13) 0 1px,
+          transparent 2px
+        ),
+        radial-gradient(
+          circle at 20% 75%,
+          rgba(255,255,255,.10) 0 1px,
+          transparent 2px
+        );
+
+      background-size: 48px 48px, 70px 70px;
+    }
+
+    .noise::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .055;
+
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+      mix-blend-mode: overlay;
+    }
+
+    .hero-photo {
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(255,45,0,.20),
+          rgba(0,0,0,.05) 50%,
+          rgba(0,0,0,.12)
+        ),
+        url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1100&q=90");
+
+      background-position: center top;
+      background-size: cover;
+      filter: saturate(.85) contrast(1.08);
+    }
+
+    .city-photo {
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(10,20,30,.15),
+          rgba(8,14,22,.75)
+        ),
+        url("https://images.unsplash.com/photo-1519832979-6fa011b87667?auto=format&fit=crop&w=1400&q=90");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .marquee {
+      animation: marquee 18s linear infinite;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .marquee {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#f1f1f0] text-[#111] antialiased">
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <header id="top" class="px-3 pt-3 sm:px-5 sm:pt-5">
+
+    <section
+      class="noise hero-grid relative mx-auto min-h-[720px] max-w-[1480px] overflow-hidden rounded-[30px] bg-[#ff3008] text-white shadow-soft sm:min-h-[800px] lg:min-h-[820px]"
+    >
+
+      <!-- Giant decorative text -->
+
+      <div
+        class="pointer-events-none absolute -bottom-12 left-[-3%] select-none text-[170px] font-semibold leading-none tracking-[-.08em] text-white/[.055] sm:text-[260px] lg:text-[390px]"
+      >
+        AI
+      </div>
+
+
+      <!-- Navigation -->
+
+      <nav
+        class="relative z-20 flex items-center justify-between px-5 py-5 sm:px-8 lg:px-10"
+      >
+
+        <a
+          href="#top"
+          class="flex items-center gap-2 text-sm font-bold tracking-tight"
+        >
+          <span
+            class="grid h-8 w-8 place-items-center rounded-full bg-white text-[#ff3008]"
+          >
+            <i
+              data-lucide="sparkles"
+              class="h-4 w-4"
+            ></i>
+          </span>
+
+          LeonAI
+        </a>
+
+
+        <!-- Desktop navigation -->
+
+        <div
+          class="hidden items-center gap-8 text-[11px] font-medium lg:flex"
+        >
+          <a
+            href="#about"
+            class="opacity-80 transition hover:opacity-100"
+          >
+            About
+          </a>
+
+          <a
+            href="#services"
+            class="opacity-80 transition hover:opacity-100"
+          >
+            Services
+          </a>
+
+          <a
+            href="#work"
+            class="opacity-80 transition hover:opacity-100"
+          >
+            Work
+          </a>
+
+          <a
+            href="#pricing"
+            class="opacity-80 transition hover:opacity-100"
+          >
+            Pricing
+          </a>
+        </div>
+
+
+        <!-- CTA / Mobile menu -->
+
+        <div class="flex items-center gap-2">
+
+          <a
+            href="#contact"
+            class="hidden rounded-full bg-[#161616] px-5 py-3 text-[11px] font-semibold shadow-dark transition hover:-translate-y-0.5 sm:block"
+          >
+            Start a Project
+          </a>
+
+          <button
+            id="menuBtn"
+            class="grid h-10 w-10 place-items-center rounded-full bg-white/15 backdrop-blur lg:hidden"
+            aria-label="Open menu"
+          >
+            <i
+              data-lucide="menu"
+              class="h-5 w-5"
+            ></i>
+          </button>
+
+        </div>
+
+      </nav>
+
+
+      <!-- Mobile menu -->
+
+      <div
+        id="mobileMenu"
+        class="relative z-30 hidden mx-4 rounded-2xl bg-[#171717] p-4 shadow-dark lg:hidden"
+      >
+
+        <div class="grid gap-1 text-sm">
+
+          <a
+            class="rounded-xl px-4 py-3 hover:bg-white/10"
+            href="#about"
+          >
+            About
+          </a>
+
+          <a
+            class="rounded-xl px-4 py-3 hover:bg-white/10"
+            href="#services"
+          >
+            Services
+          </a>
+
+          <a
+            class="rounded-xl px-4 py-3 hover:bg-white/10"
+            href="#work"
+          >
+            Work
+          </a>
+
+          <a
+            class="rounded-xl px-4 py-3 hover:bg-white/10"
+            href="#pricing"
+          >
+            Pricing
+          </a>
+
+          <a
+            class="mt-2 rounded-xl bg-white px-4 py-3 text-center font-semibold text-black"
+            href="#contact"
+          >
+            Start a Project
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Hero content -->
+
+      <div
+        class="relative z-10 mx-auto grid max-w-[1240px] items-center px-5 pb-8 pt-8 sm:px-8 lg:grid-cols-[1fr_1.15fr_1fr] lg:px-10 lg:pb-16 lg:pt-14"
+      >
+
+        <!-- Hero text -->
+
+        <div class="relative z-20 max-w-[520px] lg:pt-10">
+
+          <div
+            class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[10px] font-semibold text-black shadow-sm"
+          >
+
+            <i
+              data-lucide="sparkles"
+              class="h-3 w-3"
+            ></i>
+
+            AI-Driven Agency
+
+          </div>
+
+
+          <h1
+            class="max-w-[540px] text-[48px] font-medium leading-[.88] tracking-[-.065em] sm:text-[64px] lg:text-[70px]"
+          >
+            Your AI sprint<br />
+            team on<br />
+            demand
+          </h1>
+
+
+          <p
+            class="mt-6 max-w-[390px] text-[12px] leading-[1.55] text-white/80 sm:text-[13px]"
+          >
+            From discovery to deployment, we plug into your stack to prototype,
+            validate, and launch AI experiences your users actually love.
+          </p>
+
+
+          <div class="mt-7 flex flex-wrap gap-2">
+
+            <a
+              href="#services"
+              class="inline-flex items-center gap-2 rounded-full bg-[#171717] px-5 py-3 text-[11px] font-semibold shadow-dark transition hover:-translate-y-0.5"
+            >
+              Explore Services
+
+              <i
+                data-lucide="arrow-up-right"
+                class="h-3.5 w-3.5"
+              ></i>
+            </a>
+
+
+            <a
+              href="#pricing"
+              class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-[11px] font-semibold text-black transition hover:-translate-y-0.5"
+            >
+              View Pricing Plans
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- Central visual -->
+
+        <div
+          class="relative order-first mx-auto h-[440px] w-full max-w-[560px] sm:h-[520px] lg:order-none lg:h-[650px]"
+        >
+
+          <div
+            class="hero-photo absolute left-1/2 top-1/2 h-[110%] w-[70%] -translate-x-1/2 -translate-y-[43%] rounded-[40%] opacity-90 sm:w-[58%] lg:w-[64%]"
+          ></div>
+
+
+          <div
+            class="absolute inset-x-0 bottom-[4%] mx-auto h-[44%] w-[68%] rounded-full bg-black/25 blur-3xl"
+          ></div>
+
+
+          <!-- Floating cards -->
+
+          <div
+            class="absolute left-[6%] top-[38%] grid h-10 w-10 rotate-[-14deg] place-items-center rounded-lg bg-white text-black shadow-dark sm:left-[5%]"
+          >
+            <i
+              data-lucide="wand-sparkles"
+              class="h-4 w-4"
+            ></i>
+          </div>
+
+
+          <div
+            class="absolute left-[11%] top-[48%] grid h-9 w-9 rotate-[10deg] place-items-center rounded-lg bg-white text-black shadow-dark"
+          >
+            <i
+              data-lucide="bot"
+              class="h-4 w-4"
+            ></i>
+          </div>
+
+
+          <div
+            class="absolute right-[9%] top-[42%] grid h-10 w-10 rotate-[12deg] place-items-center rounded-lg bg-white text-black shadow-dark"
+          >
+            <i
+              data-lucide="braces"
+              class="h-4 w-4"
+            ></i>
+          </div>
+
+
+          <div
+            class="absolute bottom-[5%] left-1/2 -translate-x-1/2 text-[10px] font-medium text-white/85"
+          >
+            Scroll for more
+
+            <span
+              class="ml-2 inline-grid h-5 w-5 place-items-center rounded-full bg-white text-black"
+            >
+              <i
+                data-lucide="arrow-down"
+                class="h-3 w-3"
+              ></i>
+            </span>
+          </div>
+
+        </div>
+
+
+        <!-- Metric -->
+
+        <div
+          class="hidden max-w-[260px] justify-self-end lg:block"
+        >
+
+          <p
+            class="max-w-[220px] text-[10px] leading-relaxed text-white/75"
+          >
+            We shipped our first cockpit in 7 weeks and cut support tickets by 37%.
+            The goal: make every decision obvious.
+          </p>
+
+
+          <div
+            class="mt-20 border-t border-white/20 pt-5"
+          >
+
+            <div
+              class="text-[9px] uppercase tracking-widest text-white/60"
+            >
+              Our growth
+            </div>
+
+            <div
+              class="mt-1 text-[68px] font-medium leading-none tracking-[-.06em]"
+            >
+              230K
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Logo strip -->
+
+      <div
+        class="absolute bottom-0 left-0 right-0 z-20 overflow-hidden border-t border-white/10 py-5"
+      >
+
+        <div
+          class="marquee flex w-max items-center gap-14 px-8 text-[11px] font-semibold text-white/70"
+        >
+
+          <span>Calendly</span>
+          <span>classpass</span>
+          <span>GitHub</span>
+          <span>Basecamp</span>
+          <span>attentive</span>
+          <span>gumroad</span>
+
+          <span>Calendly</span>
+          <span>classpass</span>
+          <span>GitHub</span>
+          <span>Basecamp</span>
+          <span>attentive</span>
+          <span>gumroad</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </header>
+
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main>
+
+
+    <!-- ABOUT -->
+
+    <section
+      id="about"
+      class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+    >
+
+      <div class="max-w-[820px]">
+
+        <div
+          class="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+        >
+
+          <span
+            class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"
+          ></span>
+
+          About Us
+
+        </div>
+
+
+        <h2
+          class="text-[43px] font-medium leading-[.95] tracking-[-.055em] sm:text-[62px] lg:text-[78px]"
+        >
+          Human-Centered AI,<br />
+
+          <span class="text-black/25">
+            Built for Production
+          </span>
+        </h2>
+
+      </div>
+
+
+      <div
+        class="mt-10 grid gap-4 lg:grid-cols-[1.15fr_.85fr]"
+      >
+
+        <!-- City card -->
+
+        <div
+          id="work"
+          class="city-photo relative min-h-[470px] overflow-hidden rounded-[28px] p-6 text-white shadow-soft sm:p-8"
+        >
+
+          <div
+            class="relative z-10 flex h-full flex-col justify-between"
+          >
+
+            <div>
+
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/25 px-3 py-2 text-[9px] backdrop-blur"
+              >
+
+                <span
+                  class="h-1.5 w-1.5 rounded-full bg-[#ff3008]"
+                ></span>
+
+                Available for worldwide project
+
+              </span>
+
+
+              <h3
+                class="mt-5 max-w-[440px] text-[40px] font-medium leading-[.95] tracking-[-.05em] sm:text-[54px]"
+              >
+                Based in<br />
+
+                <span class="text-[#ff3008]">
+                  Montréal, Canada
+                </span>
+              </h3>
+
+            </div>
+
+
+            <a
+              href="#contact"
+              class="w-fit rounded-full bg-[#171717] px-5 py-3 text-[10px] font-semibold shadow-dark"
+            >
+              Start a Project
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- Right cards -->
+
+        <div class="grid gap-4">
+
+
+          <!-- Stats -->
+
+          <article
+            class="relative min-h-[230px] overflow-hidden rounded-[28px] bg-white p-7 shadow-soft"
+          >
+
+            <p
+              class="max-w-[330px] text-[11px] leading-[1.5] text-black/60"
+            >
+              Trusted by 120+ clients across 4 industries — shipping AI from ideas to production in 8–10 weeks.
+            </p>
+
+
+            <div
+              class="absolute bottom-5 left-7 text-lg tracking-[.08em]"
+            >
+              ★★★★★
+            </div>
+
+
+            <div
+              class="absolute bottom-[-8px] right-5 text-[100px] font-medium leading-none tracking-[-.08em] text-black/[.055]"
+            >
+              120+
+            </div>
+
+          </article>
+
+
+          <!-- Testimonial -->
+
+          <article
+            class="relative min-h-[230px] overflow-hidden rounded-[28px] bg-white p-6 shadow-soft"
+          >
+
+            <div class="flex items-center gap-4">
+
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=85"
+                alt="Client"
+                class="h-24 w-20 rounded-2xl object-cover"
+              />
+
+
+              <div>
+
+                <div
+                  class="mb-2 text-xl leading-none text-black/20"
+                >
+                  “
+                </div>
+
+
+                <p
+                  class="max-w-[250px] text-[11px] leading-[1.5] text-black/65"
+                >
+                  Good AI feels obvious — because the hard work is hidden.
+                </p>
+
+
+                <p
+                  class="mt-3 text-[9px] font-semibold text-black/45"
+                >
+                  Alex Collins · Agency Design Lead
+                </p>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section
+      id="services"
+      class="bg-[#171717] px-5 py-20 text-white sm:px-8 lg:px-10 lg:py-28"
+    >
+
+      <div class="mx-auto max-w-[1480px]">
+
+        <div
+          class="flex flex-col justify-between gap-8 md:flex-row md:items-end"
+        >
+
+          <div>
+
+            <div
+              class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 text-[9px] font-semibold"
+            >
+
+              <i
+                data-lucide="layers-3"
+                class="h-3 w-3"
+              ></i>
+
+              Services
+
+            </div>
+
+
+            <h2
+              class="text-[48px] font-medium leading-[.9] tracking-[-.06em] sm:text-[68px]"
+            >
+              AI, from idea<br />
+              to impact.
+            </h2>
+
+          </div>
+
+
+          <p
+            class="max-w-[360px] text-[12px] leading-[1.6] text-white/50"
+          >
+            A compact senior team that plugs into your product, design and engineering workflow.
+          </p>
+
+        </div>
+
+
+        <div
+          class="mt-14 grid gap-px overflow-hidden rounded-[28px] border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-4"
+        >
+
+
+          <!-- Discovery -->
+
+          <article
+            class="bg-[#171717] p-7 transition hover:bg-[#222]"
+          >
+
+            <i
+              data-lucide="search"
+              class="h-5 w-5"
+            ></i>
+
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Discovery
+            </h3>
+
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Find the highest-leverage AI opportunities before writing production code.
+            </p>
+
+          </article>
+
+
+          <!-- Prototype -->
+
+          <article
+            class="bg-[#171717] p-7 transition hover:bg-[#222]"
+          >
+
+            <i
+              data-lucide="pen-tool"
+              class="h-5 w-5"
+            ></i>
+
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Prototype
+            </h3>
+
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Turn ideas into useful, testable experiences in days instead of months.
+            </p>
+
+          </article>
+
+
+          <!-- Build -->
+
+          <article
+            class="bg-[#171717] p-7 transition hover:bg-[#222]"
+          >
+
+            <i
+              data-lucide="code-2"
+              class="h-5 w-5"
+            ></i>
+
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Build
+            </h3>
+
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Ship robust AI features integrated with the systems you already use.
+            </p>
+
+          </article>
+
+
+          <!-- Launch -->
+
+          <article
+            class="bg-[#171717] p-7 transition hover:bg-[#222]"
+          >
+
+            <i
+              data-lucide="rocket"
+              class="h-5 w-5"
+            ></i>
+
+
+            <h3
+              class="mt-16 text-xl font-medium"
+            >
+              Launch
+            </h3>
+
+
+            <p
+              class="mt-3 text-[11px] leading-[1.6] text-white/45"
+            >
+              Measure, iterate and make the experience better after launch.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PRICING
+    ========================== -->
+
+    <section
+      id="pricing"
+      class="mx-auto max-w-[1480px] px-5 py-20 sm:px-8 lg:px-10 lg:py-28"
+    >
+
+      <div
+        class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end"
+      >
+
+        <div>
+
+          <div
+            class="mb-4 inline-flex rounded-full bg-white px-3 py-2 text-[9px] font-semibold shadow-sm"
+          >
+            Pricing
+          </div>
+
+
+          <h2
+            class="text-[48px] font-medium leading-[.9] tracking-[-.06em] sm:text-[68px]"
+          >
+            Pick your<br />
+            sprint.
+          </h2>
+
+        </div>
+
+
+        <p
+          class="max-w-[330px] text-[11px] leading-[1.6] text-black/45"
+        >
+          Flexible engagement models for teams that need speed without unnecessary overhead.
+        </p>
+
+      </div>
+
+
+      <div class="grid gap-4 lg:grid-cols-3">
+
+
+        <!-- Starter -->
+
+        <article
+          class="rounded-[28px] bg-white p-7 shadow-soft"
+        >
+
+          <div
+            class="flex items-center justify-between"
+          >
+
+            <span
+              class="text-[10px] font-semibold uppercase tracking-widest text-black/45"
+            >
+              Starter
+            </span>
+
+
+            <i
+              data-lucide="arrow-up-right"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="mt-14 text-5xl font-medium tracking-[-.06em]"
+          >
+            $4.9K
+          </div>
+
+
+          <p
+            class="mt-2 text-[10px] text-black/40"
+          >
+            2-week focused sprint
+          </p>
+
+
+          <div
+            class="my-7 h-px bg-black/10"
+          ></div>
+
+
+          <ul
+            class="space-y-3 text-[11px] text-black/65"
+          >
+            <li>Discovery workshop</li>
+            <li>AI opportunity map</li>
+            <li>Interactive prototype</li>
+          </ul>
+
+        </article>
+
+
+
+        <!-- Popular -->
+
+        <article
+          class="rounded-[28px] bg-[#ff3008] p-7 text-white shadow-soft"
+        >
+
+          <div
+            class="flex items-center justify-between"
+          >
+
+            <span
+              class="text-[10px] font-semibold uppercase tracking-widest text-white/70"
+            >
+              Most popular
+            </span>
+
+
+            <i
+              data-lucide="sparkles"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="mt-14 text-5xl font-medium tracking-[-.06em]"
+          >
+            $9.8K
+          </div>
+
+
+          <p
+            class="mt-2 text-[10px] text-white/65"
+          >
+            4-week product sprint
+          </p>
+
+
+          <div
+            class="my-7 h-px bg-white/20"
+          ></div>
+
+
+          <ul
+            class="space-y-3 text-[11px] text-white/80"
+          >
+            <li>Everything in Starter</li>
+            <li>Production-ready build</li>
+            <li>Analytics + iteration plan</li>
+          </ul>
+
+        </article>
+
+
+
+        <!-- Embedded -->
+
+        <article
+          class="rounded-[28px] bg-[#171717] p-7 text-white shadow-soft"
+        >
+
+          <div
+            class="flex items-center justify-between"
+          >
+
+            <span
+              class="text-[10px] font-semibold uppercase tracking-widest text-white/45"
+            >
+              Embedded
+            </span>
+
+
+            <i
+              data-lucide="infinity"
+              class="h-4 w-4"
+            ></i>
+
+          </div>
+
+
+          <div
+            class="mt-14 text-5xl font-medium tracking-[-.06em]"
+          >
+            Custom
+          </div>
+
+
+          <p
+            class="mt-2 text-[10px] text-white/40"
+          >
+            For larger product teams
+          </p>
+
+
+          <div
+            class="my-7 h-px bg-white/10"
+          ></div>
+
+
+          <ul
+            class="space-y-3 text-[11px] text-white/60"
+          >
+            <li>Dedicated senior team</li>
+            <li>Ongoing product delivery</li>
+            <li>Flexible monthly capacity</li>
+          </ul>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+      id="contact"
+      class="px-5 pb-5 sm:px-8 lg:px-10 lg:pb-10"
+    >
+
+      <div
+        class="noise relative mx-auto max-w-[1480px] overflow-hidden rounded-[30px] bg-[#ff3008] p-8 text-white sm:p-12 lg:p-20"
+      >
+
+        <div
+          class="relative z-10 max-w-[850px]"
+        >
+
+          <div
+            class="mb-5 inline-flex rounded-full bg-white px-3 py-2 text-[9px] font-semibold text-black"
+          >
+            Start a Project
+          </div>
+
+
+          <h2
+            class="text-[52px] font-medium leading-[.9] tracking-[-.06em] sm:text-[76px]"
+          >
+            Have an AI idea?<br />
+            Let’s make it obvious.
+          </h2>
+
+
+          <a
+            href="mailto:hello@leonai.example"
+            class="mt-8 inline-flex items-center gap-2 rounded-full bg-[#171717] px-6 py-4 text-[11px] font-semibold shadow-dark"
+          >
+            hello@leonai.example
+
+            <i
+              data-lucide="arrow-up-right"
+              class="h-4 w-4"
+            ></i>
+          </a>
+
+        </div>
+
+
+        <div
+          class="pointer-events-none absolute -bottom-32 -right-10 text-[250px] font-semibold leading-none tracking-[-.12em] text-white/[.055] sm:text-[360px]"
+        >
+          AI
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer
+    class="mx-auto flex max-w-[1480px] flex-col gap-4 px-5 py-8 text-[10px] text-black/45 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10"
+  >
+
+    <span>
+      © 2026 LeonAI. All rights reserved.
+    </span>
+
+
+    <div class="flex gap-5">
+
+      <a
+        href="#top"
+        class="hover:text-black"
+      >
+        Back to top
+      </a>
+
+      <a
+        href="#services"
+        class="hover:text-black"
+      >
+        Services
+      </a>
+
+      <a
+        href="#contact"
+        class="hover:text-black"
+      >
+        Contact
+      </a>
+
+    </div>
+
+  </footer>
+
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    lucide.createIcons();
+
+
+    const menuBtn =
+      document.getElementById('menuBtn');
+
+    const mobileMenu =
+      document.getElementById('mobileMenu');
+
+
+    menuBtn?.addEventListener('click', () => {
+
+      mobileMenu.classList.toggle('hidden');
+
+    });
+
+
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+
+      link.addEventListener('click', () => {
+
+        mobileMenu.classList.add('hidden');
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
