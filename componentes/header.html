@@ -1,0 +1,208 @@
+<style>
+  .minimal .user-content-box, .minimal #logo{
+  display: none;
+  }
+  
+</style>
+ 
+  <!-- <header class="md:absolute md:top-0 md:left-0 md:w-full md:z-40 "> -->
+  <div id="headerContainer" class="absolute  ">
+     
+    <div class="text-left">
+      <!-- <div id="userMenuName" class="font-semibold text-sm">
+        </div> -->
+      <div id="userMenuMail" class="text-xs text-zinc-500 ">
+      </div>
+    </div>
+    </button>
+  </div>
+ 
+  <div class="flex items-center justify-between h-20 px-4">
+    <!-- Menu mobile -->
+  
+  <!-- Menu mobile -->
+    <button
+      onclick="toggleSidebar()"
+      class="xl:hidden flex flex h-10 w-10 items-center justify-center rounded-xl bg-white hover:bg-slate-100 lg:hidden"
+      >
+    <i data-lucide="menu"></i>
+    </button>
+    <div id="logo" class="flex  justify-center xl:justify-start flex items-center">
+      <a class="">
+      <img
+        class="hidden h-12 "
+        src="assets/images/ft-logo.png"
+        alt="Logo"
+        >
+        INSPEÇÃO
+      </a>
+    </div>
+    <!-- Menu Desktop -->
+    <nav id="horizontal-nav" class="hidden xl:flex  items-center gap-8  ">
+        <button
+      onclick="toggleSidebar()"
+      class="rounded-lg hover:bg-slate-800 transition"
+      >
+    <i id="sidebarToggleIcon" data-lucide="menu"></i>
+   
+    </button>
+      <button onclick="toggleTheme()  " class="bg-theme hidden ">
+    <i id="themeIcon" data-lucide="moon"></i>
+</button>
+  <a href="/hub" class="relative hover:text-[#5864be]">
+       OMDA Tracker
+      <span class="absolute -top-3 right-5
+        rounded-full
+        bg-emerald-500/20 border border-emerald-500/40
+        text-emerald-400
+        px-1 py-0
+        text-[8px] font-semibold
+        leading-3">
+      Novo
+      </span> 
+      </a>
+      <a href="#" class="relative hover:text-[#5864be]">
+      Home 
+      
+      </a>
+      <a href="#" class="hover:text-[#5864be]">
+      Fansubs
+      </a>
+
+      <a href="#" class="hover:text-[#5864be]  ">
+      Torrents
+
+      </a>
+     
+         <a href="#" class="hover:text-[#5864be]  ">
+      Mangas
+
+      </a>
+      <a href="#" class="hover:text-[#5864be]  ">
+      Conquistas
+
+      </a>
+     
+
+      
+       <a href="#" class="hover:text-[#5864be]">
+      TOP 10
+
+      </a>
+
+
+
+
+    </nav>
+    <!-- Busca desktop -->
+    <div class=" hidden  relative w-96 ml-6 mr-6">
+      <input
+        class="input"
+        placeholder="Buscar torrents, animes, filmes..."
+        >
+    </div>
+    <div class="hidden   items-center gap-6 text-sm">
+      <div>
+        <div class="text-green-400 font-semibold">
+          3.4 TB
+        </div>
+        <div class="text-xs opacity-60">
+          Download
+        </div>
+      </div>
+      <div>
+        <div class="text-blue-400 font-semibold">
+          1.9 TB
+        </div>
+        <div class="text-xs opacity-60">
+          Upload
+        </div>
+      </div>
+      <div>
+        <div class="text-[#5864be] font-semibold">
+          1.82
+        </div>
+        <div class="text-xs opacity-60">
+          Ratio
+        </div>
+      </div>
+    </div>
+    <!-- Botões -->
+    <div class=" hidden xl:flex items-center justify-center gap-3 md:ml-6 md:mr-6">
+      <button class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-purple hover:bg-slate-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search h-5 w-5"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+            </button>
+      <button id="fullscreenToggle" class="fullscreen-btn hidden">
+      <i id="iconMaximize" data-lucide="maximize-2"></i>
+      <i id="iconMinimize" data-lucide="minimize-2" style="display:none;"></i>
+      </button>
+     
+      <!-- <div class="relative hidden"> -->
+      <div class="  ">
+
+    <!-- Botão notificações -->
+    <button id="notificatixonBtn"
+        class="relative p-2 rounded-lg hover:bg-slate-800 transition ">
+
+        <i data-lucide="bell"></i>
+
+        <!-- contador -->
+        <span id="notificationCount"
+            class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-2">
+            0
+        </span>
+
+    </button>
+
+
+    <!-- Dropdown -->
+    <div id="notificationDropdown"
+        class="hidden absolute right-0 mt-3 w-80 
+        g-[#171717] rounded-[24px] p-4 xl:p-6 border border-white/10
+        z-50
+        max-h-[calc(100vh-100px)]
+        overflow-y-auto">
+
+
+        <h3 class="font-bold mb-3 text-white">
+            Notificações
+        </h3>
+
+
+        <div id="notificationList" class="space-y-3">
+
+            <!-- notificações entram aqui -->
+
+        </div>
+
+
+    </div>
+
+</div>
+    </div>
+    <!-- User -->
+  <div
+    id="userMenuBtn"
+    class=" xl:flex items-center gap-3 px-2 py-2 rounded-2xl cursor-pointer transition-all duration-200 hover:bg-white/5 hover:scale-[1.02] active:scale-95">
+
+    <img
+        src="assets/images/cover.webp"
+        class="   w-9 h-9 rounded-full border border-white/10 object-cover">
+
+    <i
+        data-lucide="chevrons-right hidden"
+        class="w-4 h-4 text-slate-500 transition-transform duration-200">
+    </i>
+
+</div>
+  </div>
+  <!-- Busca mobile -->
+  <div class="hidden pt-0 mt-3 ">
+    <input
+      class="input"
+      placeholder="Buscar torrents..."
+      >
+  </div>
+ <script>
+ 
+  </script>
