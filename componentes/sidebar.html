@@ -1,145 +1,74 @@
 <!-- SIDEBAR -->
 <aside
-  id="sidebar"
-  class="
-  z-50
-  fixed xl:sticky
-  xl:top-0
-  xl:self-start
-  xl:h-full
-  w-[90%]
-  mycard
-  
-  border-r
-  -translate-x-full
-  xl:translate-x-0
-  transition-all
-  duration-300"
-  
-collapsed
-  >
-  
-  <div onclick="toggleSidebar()" class="sidebar-header flex items-center justify-center p-4 border-b border-theme">
- 
-   <!-- Ícone -->
-    <img
-      class="sidebar-logo-icon h-11 transition-all duration-300 hidden xl:block m-auto"
-      src="assets/images/icon-omda1.png"
-      alt="Logo">
- 
-    <img
-      class="hidden sidebar-logo-full h-11 transition-all duration-300 xl:hidden m-auto"
-      src="assets/images/ft-logo.png"
-      alt="Logo">
-    INSPEÇÃO
-  </div>
+    id="sidebar"
+    class="z-50 fixed xl:sticky xl:top-0 xl:self-start xl:h-full w-[90%] mycard border-r -translate-x-full xl:translate-x-0 transition-all duration-300"
+    collapsed
+>
+    <div onclick="toggleSidebar()" class="sidebar-header flex items-center justify-center p-4 border-b border-theme">
+        <!-- Ícone -->
+        <img
+            class="sidebar-logo-icon h-11 transition-all duration-300 hidden xl:block m-auto"
+            src="assets/images/icon-omda1.png"
+            alt="Logo"
+        />
 
- 
-  <!-- MENU -->
-<nav class="p-3 space-y-1.5">
+        <img
+            class="hidden sidebar-logo-full h-11 transition-all duration-300 xl:hidden m-auto"
+            src="assets/images/ft-logo.png"
+            alt="Logo"
+        />
+        INSPEÇÃO
+    </div>
 
-    <!-- Home -->
-    <a href="#" data-page="home"
-        class="sidebar-item group flex items-center gap-3 px-3 py-3 rounded-xl
-        text-slate-400 hover:text-white hover:bg-slate-800/70
-        transition-all duration-200">
+    <!-- MENU -->
+    <nav class="p-3 space-y-1.5">
+        <!-- Home -->
+        <a
+            href="#"
+            data-page="home"
+            class="sidebar-item group flex items-center gap-3 px-3 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/70 transition-all duration-200"
+        >
+            <i data-lucide="house" class="w-5 h-5 shrink-0 stroke-[1.8]"></i>
 
-        <i data-lucide="house"
-            class="w-5 h-5 shrink-0 stroke-[1.8]"></i>
+            <span class="sidebar-text text-sm font-medium"> Home </span>
+        </a>
 
-        <span class="sidebar-text text-sm font-medium">
-            Home
+        <!-- Timeline -->
+        <a
+            href="#"
+            data-page="timeline"
+            class="sidebar-item group flex items-center gap-3 px-3 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/70 transition-all duration-200"
+        >
+            <i data-lucide="timeline" class="w-5 h-5 shrink-0 stroke-[1.8]"></i>
+
+            <span class="sidebar-text text-sm font-medium"> Timeline </span>
+        </a>
+
+        <!-- Semanal -->
+        <a
+            href="#"
+            data-page="semanal"
+            class="sidebar-item group flex items-center gap-3 px-3 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/70 transition-all duration-200"
+        >
+            <i data-lucide="calendar-days" class="w-5 h-5 shrink-0 stroke-[1.8]"></i>
+
+            <span class="sidebar-text text-sm font-medium"> Semanal </span>
+        </a>
+
+        <!-- ADM -->
+        <a
+            href="/hub"
+            class="sidebar-item group flex items-center gap-3 px-3 py-3 mt-3 rounded-xl bg-black/40 border border-slate-800/80 hover:border-lime-400/30 hover:bg-slate-900/70 transition-all duration-300"
+        >
+            <span class="sidebar-text flex-1 text-sm font-semibold tracking-wide text-slate-200"> ADM </span>
+        </a>
+    </nav>
+    <div class="sidebar-header flex items-center justify-between p-4 border-b border-theme">
+        <span class="sidebar-logo text-lg font-bold">
+            <div class="flex-1 flex justify-center block"></div>
         </span>
-    </a>
-
-
-    <!-- Timeline -->
-    <a href="#" data-page="timeline"
-        class="sidebar-item group flex items-center gap-3 px-3 py-3 rounded-xl
-        text-slate-400 hover:text-white hover:bg-slate-800/70
-        transition-all duration-200">
-
-        <i data-lucide="timeline"
-            class="w-5 h-5 shrink-0 stroke-[1.8]"></i>
-
-        <span class="sidebar-text text-sm font-medium">
-            Timeline
-        </span>
-    </a>
-
-
-    <!-- Semanal -->
-    <a href="#" data-page="semanal"
-        class="sidebar-item group flex items-center gap-3 px-3 py-3 rounded-xl
-        text-slate-400 hover:text-white hover:bg-slate-800/70
-        transition-all duration-200">
-
-        <i data-lucide="calendar-days"
-            class="w-5 h-5 shrink-0 stroke-[1.8]"></i>
-
-        <span class="sidebar-text text-sm font-medium">
-            Semanal
-        </span>
-    </a>
-
-
-    <!-- Conquistas -->
-    <a href="#" data-page="conquistas"
-        class="sidebar-item group flex items-center gap-3 px-3 py-3 rounded-xl
-        text-slate-400 hover:text-white hover:bg-slate-800/70
-        transition-all duration-200">
-
-        <i data-lucide="trophy"
-            class="w-5 h-5 shrink-0 stroke-[1.8]"></i>
-
-        <span class="sidebar-text text-sm font-medium">
-            Conquistas
-        </span>
-    </a>
-
- 
-
-
-    <!-- OMDA Tracker -->
-    <a href="/hub"
-        class="sidebar-item group flex items-center gap-3 px-3 py-3 mt-3 rounded-xl
-        bg-black/40 border border-slate-800/80
-        hover:border-lime-400/30 hover:bg-slate-900/70
-        transition-all duration-300">
-
-        <span class="flex items-center justify-center w-9 h-9 rounded-lg
-            bg-lime-400/10 shrink-0">
-
-            <img
-                src="assets/images/omda-icon-darXk.png"
-                alt="OMDA"
-                class="w-6 h-6 object-contain">
-
-        </span>
-
-        <span class="sidebar-text flex-1 text-sm font-semibold tracking-wide text-slate-200">
-           ADM
-        </span>
-
-        <i
-            data-lucide="arrow-up-right"
-            class="sidebar-text w-4 h-4 text-slate-600
-            group-hover:text-lime-400 transition-colors">
-        </i>
-
-    </a>
-
-</nav>
-  <div class="sidebar-header flex items-center justify-between p-4 border-b border-theme  ">
-    <span class="sidebar-logo text-lg font-bold">
-      <div class="flex-1 flex justify-center block">
-      </div>
-    </span>
-    <button
-      onclick="toggleSidebar()"
-      class="rounded-lg hover:bg-slate-800 transition"
-      >
-    <i id="sidebarToggleIcon" data-lucide="menu"></i>
-    </button>
-  </div>
+        <button onclick="toggleSidebar()" class="rounded-lg hover:bg-slate-800 transition">
+            <i id="sidebarToggleIcon" data-lucide="menu"></i>
+        </button>
+    </div>
 </aside>

@@ -446,7 +446,7 @@ notificationCount.classList.remove("hidden");
 }
 
 
-await loadPage("build");
+await loadPage("home");
 // await loadPage("build");
 
 

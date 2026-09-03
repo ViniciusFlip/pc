@@ -345,63 +345,7 @@
       import { initSession } from "./services/sessionService.js";
 
       initSession();
-    </script>
-    <!-- <script type="module">
-      import { initSession, logout } from "/services/sessionService.js";
-      console.log('init session')
-      initSession((user) => {
-      
-          const userMenuBtn = document.getElementById("userMenuBtn");
-          const userMenuName = document.getElementById("userMenuName");
-          const logoutBtn = document.getElementById("logoutBtn");
-          const userMenuMail = document.getElementById("userMenuMail");
-          const userMenuRole = document.getElementById("userMenuRole");
-      
-         //  user header
-          const userHeaderName = document.getElementById("userHeaderName");
-          const userHeaderRole = document.getElementById("userHeaderRole");
-      
-      
-        
-      
-          if (user) {
-      
-      
-            //   userMenuBtn.hidden = false;
-            //   userMenuName.textContent = user.name;
-            //   userMenuMail.textContent = user.email;
-            //   userMenuRole.textContent = user.role;
-      
-               //   userMenuBtn.hidden = false;
-            //   userHeaderName.textContent = user.name;
-          
-            //   userHeaderRole.textContent = user.role;
-      
-              logoutBtn.onclick = async () => {
-                  await logout();
-              };
-      
-              const roleClient='client'
-               if(user.role==roleClient){
-                  console.log('go client')
-                //   document.getElementById('horizontal-nav').style.cssText="display:none"
-                //   document.getElementById('route-uploads').style.cssText="display:none"
-                //   document.getElementById('route-settings').style.cssText="display:none"
-                //   document.getElementById('route-users').style.cssText="display:none"
-                //   document.getElementById('banner').style.cssText="display:none"
-                //   document.getElementById('data-highlights').style.cssText="display:none"
-                  
-               }else{
-                  // console.log('go other')
-                    
-               }
-          } else {
-             
-            //   userMenuBtn.hidden = true;
-          }
-      
-      });
-    </script> -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    </script> 
+     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </body>
 </html>
