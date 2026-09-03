@@ -6,8 +6,9 @@ import {
     onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-import { db } from "../../firebase/config.js";
-import { logout } from "../../services/sessionService.js";
+const { db } = await import("../firebase/config.js"); 
+const { logout } = await import("../services/sessionService.js");
+
 
 console.log('rheme')
 function toggleTheme() {

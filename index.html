@@ -340,11 +340,11 @@
       type="module"
       src="js/guard.js"></script>
 
-      <script type="module">
-    import "/services/notification.service.js";
-import { initSession } from "/services/sessionService.js";
+     <script type="module">
+      import "./services/notification.service.js";
+      import { initSession } from "./services/sessionService.js";
 
-initSession();
+      initSession();
     </script>
     <!-- <script type="module">
       import { initSession, logout } from "/services/sessionService.js";
