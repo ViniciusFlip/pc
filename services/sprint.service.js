@@ -10,11 +10,13 @@ import {
 import { db } from "../firebase/config.js";
 
 
-const sprintCollection = collection(db, "sprints");
-
-
+// ==========================================
 // LISTAR SPRINTS
+// ==========================================
+
 export async function listarSprints() {
+
+  const sprintCollection = collection(db, "sprints");
 
   const snapshot = await getDocs(sprintCollection);
 
@@ -26,8 +28,13 @@ export async function listarSprints() {
 }
 
 
+// ==========================================
 // CRIAR SPRINT
+// ==========================================
+
 export async function criarSprint(nome) {
+
+  const sprintCollection = collection(db, "sprints");
 
   const docRef = await addDoc(sprintCollection, {
 
@@ -42,8 +49,13 @@ export async function criarSprint(nome) {
 }
 
 
+// ==========================================
 // EXCLUIR SPRINT
+// ==========================================
+
 export async function excluirSprint(id) {
+
+  const sprintCollection = collection(db, "sprints");
 
   await deleteDoc(
     doc(sprintCollection, id)

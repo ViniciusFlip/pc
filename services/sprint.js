@@ -14,17 +14,12 @@ const { db } = await import("../firebase/config.js");
 
 
 // ==========================================
-// COLLECTION
-// ==========================================
-
-const sprintsRef = collection(db, "sprints");
-
-
-// ==========================================
 // LISTAR
 // ==========================================
 
 export async function listarSprints() {
+
+    const sprintsRef = collection(db, "sprints");
 
     const q = query(
         sprintsRef,
@@ -46,6 +41,8 @@ export async function listarSprints() {
 // ==========================================
 
 export async function criarSprint(nome) {
+
+    const sprintsRef = collection(db, "sprints");
 
     const docRef = await addDoc(
         sprintsRef,
