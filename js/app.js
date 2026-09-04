@@ -8,8 +8,7 @@ import {
 
 const { db } = await import("../firebase/config.js"); 
 const { logout } = await import("../services/sessionService.js");
-const { criarSprint, listarSprints, atualizarSprint } =
-    await import("../services/sprintService.js");
+const { criarSprint, listarSprints, atualizarSprint } =  await import("../services/sprint.service.js");
 
 console.log('rheme');
 
