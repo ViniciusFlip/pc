@@ -5,7 +5,7 @@ import {
 
 import {
     auth
-} from "../../firebase/config.js"
+} from "../firebase/config.js"
 
 
 
