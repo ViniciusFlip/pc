@@ -8,7 +8,7 @@ import {
 
 const { db } = await import("../firebase/config.js"); 
 const { logout } = await import("../services/sessionService.js");
-
+const { criarSprint } = await import("../services/sprintService.js");
 
 console.log('rheme');
 
@@ -370,13 +370,29 @@ function initSprintModal() {
 
 
     // IMPEDE O REFRESH DA PÁGINA
-    formSprint.addEventListener("submit", (event) => {
+    formSprint.addEventListener("submit", async (event) => {
 
-        event.preventDefault();
+    event.preventDefault();
 
-        console.log("Submit da Sprint interceptado");
+    const nome = inputNomeSprint.value.trim();
 
-    });
+    if (!nome) return;
+
+    try {
+
+        await criarSprint(nome);
+
+        fecharModal();
+
+        console.log("Sprint criada:", nome);
+
+    } catch (error) {
+
+        console.error("Erro ao criar sprint:", error);
+
+    }
+
+});
 
 
     modalSprint.addEventListener("click", (event) => {
