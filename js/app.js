@@ -10,12 +10,14 @@ const { db } = await import("../firebase/config.js");
 const { logout } = await import("../services/sessionService.js");
 
 
-console.log('rheme')
+console.log('rheme');
+
 function toggleTheme() {
 
     document.documentElement.classList.toggle("light");
 
 }
+
 document.addEventListener("click", function (e) {
 
     const button = e.target.closest(".dropdown-toggle");
@@ -26,45 +28,48 @@ document.addEventListener("click", function (e) {
 
 });
  
-      function toggleSidebar() {
+function toggleSidebar() {
       
-      const sidebar = document.getElementById('sidebar');
-      const header = document.getElementById('header');
-      const icon = document.getElementById('sidebarToggleIcon');
+    const sidebar = document.getElementById('sidebar');
+    const header = document.getElementById('header');
+    const icon = document.getElementById('sidebarToggleIcon');
       
-      // Mobile
-      if (window.innerWidth < 1280) {
-      sidebar.classList.toggle('-translate-x-full');
+    // Mobile
+    if (window.innerWidth < 1280) {
+
+        sidebar.classList.toggle('-translate-x-full');
       
-      const isOpen = !sidebar.classList.contains('-translate-x-full');
+        const isOpen = !sidebar.classList.contains('-translate-x-full');
       
-      icon.setAttribute(
-          "data-lucide",
-          isOpen ? "x-square" : "menu"
-      );
+        icon.setAttribute(
+            "data-lucide",
+            isOpen ? "x-square" : "menu"
+        );
       
-      lucide.createIcons();
+        lucide.createIcons();
       
-      return;
-      }
+        return;
+
+    }
       
-      // Desktop
+    // Desktop
  
-      sidebar.classList.toggle('collapsed');
-    //   header.classList.toggle('minimal');
+    sidebar.classList.toggle('collapsed');
       
-      const collapsed = sidebar.classList.contains('collapsed');
+    const collapsed = sidebar.classList.contains('collapsed');
       
-      icon.setAttribute(
-      "data-lucide",
-      collapsed ? "menu" : "x-square"
-      );
+    icon.setAttribute(
+        "data-lucide",
+        collapsed ? "menu" : "x-square"
+    );
       
-      lucide.createIcons();
-      }
+    lucide.createIcons();
+
+}
        
   
 function initUserMenu() {
+
     const userMenuBtn = document.getElementById("userMenuBtn");
     const userSidebar = document.getElementById("user-sidebar");
 
@@ -73,22 +78,26 @@ function initUserMenu() {
     userMenuBtn.addEventListener("click", () => {
         userSidebar.classList.toggle("hidden");
     });
+
 }
  
-function checkHeader() {
-    const headerContainer = document.getElementById("header");
 
+function checkHeader() {
+
+    const headerContainer = document.getElementById("header");
 
     if (window.innerWidth > 1000) {
     
-
-    // headerContainer.style.cssText="position:absolute;z-index:999;width:80%;";
+        // headerContainer.style.cssText="position:absolute;z-index:999;width:80%;";
 
     }
+
 }
 
 checkHeader();
+
 window.addEventListener("resize", checkHeader);
+
 
 function initSwiper() {
 
@@ -157,7 +166,7 @@ function initSwiper() {
 
         new Swiper(".latestSwiper", {
 
-            loop: false, // importante
+            loop: false,
 
             slidesPerView: 1.2,
 
@@ -187,23 +196,24 @@ function initSwiper() {
 async function carregarUsuarios() {
 
     const usersList = document.getElementById("usersList");
+
     if (!usersList) {
-        // console.error("Elemento 'usersList' não encontrado.");
         return;
-    }else{
+    } else {
+
         console.log("Elemento 'usersList' encontrado.");
         
-    usersList.innerHTML = "";
+        usersList.innerHTML = "";
 
-    const snapshot = await getDocs(collection(db, "users"));
+        const snapshot = await getDocs(collection(db, "users"));
 
-    snapshot.forEach((doc) => {
+        snapshot.forEach((doc) => {
 
-        const user = doc.data();
+            const user = doc.data();
  
- const inicial = (user.name || user.email).charAt(0).toUpperCase();
+            const inicial = (user.name || user.email).charAt(0).toUpperCase();
 
-usersList.innerHTML += `
+            usersList.innerHTML += `
 <tr class="hover:bg-white/5 transition">
 
     <td class="px-6 py-4">
@@ -265,39 +275,131 @@ usersList.innerHTML += `
 
 </tr>
 `;
-    });
+        });
 
     }
 }
 
+
 function setActiveMenu(page) {
+
     document.querySelectorAll("[data-page]").forEach(el => {
         el.classList.remove("bg-[#5864be]", "text-white");
     });
 
     const active = document.querySelector(`[data-page="${page}"]`);
+
     if (active) {
         active.classList.add("bg-[#5864be]", "text-white");
     }
+
 }
 
+
 async function include(id, file) {
+
     const html = await fetch(file).then(r => r.text());
 
     const el = document.getElementById(id);
+
     el.innerHTML = html;
+
 }
 
+
 function bindNavigation() {
+
     document.querySelectorAll("[data-page]").forEach(el => {
+
         el.addEventListener("click", () => {
             loadPage(el.dataset.page);
         });
+
     });
+
 }
 
+
+/* ==========================================
+   MODAL — NOVA SPRINT
+========================================== */
+
+function initSprintModal() {
+
+    const btnNovaSprint = document.getElementById("btnNovaSprint");
+    const btnCancelarSprint = document.getElementById("btnCancelarSprint");
+    const modalSprint = document.getElementById("modalSprint");
+    const inputNomeSprint = document.getElementById("inputNomeSprint");
+
+    if (
+        !btnNovaSprint ||
+        !btnCancelarSprint ||
+        !modalSprint
+    ) {
+        return;
+    }
+
+
+    function abrirModal() {
+
+        modalSprint.classList.remove("hidden");
+        modalSprint.classList.add("flex");
+
+        inputNomeSprint?.focus();
+
+    }
+
+
+    function fecharModal() {
+
+        modalSprint.classList.add("hidden");
+        modalSprint.classList.remove("flex");
+
+        if (inputNomeSprint) {
+            inputNomeSprint.value = "";
+        }
+
+    }
+
+
+    btnNovaSprint.addEventListener("click", abrirModal);
+
+    btnCancelarSprint.addEventListener("click", fecharModal);
+
+
+    modalSprint.addEventListener("click", (event) => {
+
+        if (event.target === modalSprint) {
+            fecharModal();
+        }
+
+    });
+
+
+    document.addEventListener("keydown", function fecharComEsc(event) {
+
+        if (
+            event.key === "Escape" &&
+            !modalSprint.classList.contains("hidden")
+        ) {
+
+            fecharModal();
+
+        }
+
+    });
+
+}
+
+
+/* ==========================================
+   CARREGAR PÁGINA
+========================================== */
+
 async function loadPage(page) {
+
     try {
+
         const response = await fetch(`./pages/${page}.html`);
 
         if (!response.ok) {
@@ -305,63 +407,91 @@ async function loadPage(page) {
         }
 
         const html = await response.text();
+
         document.getElementById("content").innerHTML = html;
+
         document.getElementById("sidebar").classList.toggle('collapsed');
-        carregarUsuarios()
-  
+
+        carregarUsuarios();
+
 
         if (window.lucide) {
+
             lucide.createIcons();
+
             setActiveMenu(page); 
+
         }
 
-         if(page === "home"){
 
-                requestAnimationFrame(() => {
-                    initSwiper();
-                });
+        if (page === "home") {
 
-            }
-      
+            requestAnimationFrame(() => {
+                initSwiper();
+            });
+
+        }
+
+
+        /* ==========================================
+           INICIALIZA MODAL DA SPRINT
+        ========================================== */
+
+        if (page === "sprints") {
+
+            initSprintModal();
+
+        }
+
 
     } catch (error) {
+
         console.error(error);
+
         document.getElementById("content").innerHTML = `
             <div class="p-6 text-red-400">
                 Erro ao carregar a página <strong>${page}</strong>.
             </div>
         `;
+
     }
+
 }
- 
  
 
 await include("header", "./componentes/header.html");
+
 await include("footer", "./componentes/footer.html");
+
 await include("box-sidebar", "./componentes/sidebar.html");
 
 
-   const notificationBtn = document.getElementById("notificationBtn");
+const notificationBtn = document.getElementById("notificationBtn");
+
 const notificationDropdown = document.getElementById("notificationDropdown");
 
- 
-notificationBtn?.addEventListener("click",()=>{
+
+notificationBtn?.addEventListener("click", () => {
 
     notificationDropdown.classList.toggle("hidden");
 
 });
-function loadNotifications(){
-const notificationCount = document.getElementById("notificationCount");
+
+
+function loadNotifications() {
+
+    const notificationCount = document.getElementById("notificationCount");
     const notificationList = document.getElementById("notificationList");
 
 
-    if(!notificationList){
+    if (!notificationList) {
+
         console.log("notificationList não encontrado");
+
         return;
+
     }
-    // const q = query(
-    //     collection(db, "notifications")
-    // );
+
 
     const q = query(
         collection(db, "notifications"),
@@ -369,85 +499,78 @@ const notificationCount = document.getElementById("notificationCount");
     );
 
 
-    onSnapshot(q, (snapshot)=>{
+    onSnapshot(q, (snapshot) => {
 
+        notificationCount.textContent = snapshot.size;
 
-    
+        notificationCount.classList.remove("hidden");
 
-notificationCount.textContent = snapshot.size;
-notificationCount.classList.remove("hidden");
         notificationList.innerHTML = "";
 
 
-        snapshot.forEach((doc)=>{
-
+        snapshot.forEach((doc) => {
 
             const data = doc.data();
 
 
+            const loginDate = data.createdAt?.toDate 
+                ? data.createdAt.toDate() 
+                : new Date(data.createdAt);
 
-        const loginDate = data.createdAt?.toDate 
-            ? data.createdAt.toDate() 
-            : new Date(data.createdAt);
 
-
-        const formattedDate = loginDate.toLocaleString("pt-BR", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit"
-        });
-            // console.log("Dados da notificação:", data);
+            const formattedDate = loginDate.toLocaleString("pt-BR", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
 
 
             notificationList.innerHTML += `
 
                 <div class="
-            p-3 
-            rounded-xl 
-            bg-slate-800 
-            border border-slate-700">
+                    p-3 
+                    rounded-xl 
+                    bg-slate-800 
+                    border border-slate-700
+                ">
 
-            <h4 class="text-white font-semibold text-sm">
-                ${data.title}
-            </h4>
-
-
-            <p class="text-slate-400 text-sm">
-                ${data.message}
-            </p>
+                    <h4 class="text-white font-semibold text-sm">
+                        ${data.title}
+                    </h4>
 
 
-            <div class="mt-2 flex items-center gap-2">
-
-                <i data-lucide="clock" 
-                   class="w-3 h-3 text-indigo-400">
-                </i>
+                    <p class="text-slate-400 text-sm">
+                        ${data.message}
+                    </p>
 
 
-                <span class="text-xs text-slate-500">
-                    ${formattedDate}
-                </span>
+                    <div class="mt-2 flex items-center gap-2">
 
-            </div>
+                        <i 
+                            data-lucide="clock" 
+                            class="w-3 h-3 text-indigo-400">
+                        </i>
 
 
-        </div>
+                        <span class="text-xs text-slate-500">
+                            ${formattedDate}
+                        </span>
+
+                    </div>
+
+                </div>
             `;
-
 
         });
 
-
     });
-
 
 }
 
 
 await loadPage("home");
-// await loadPage("build");
 
 
 function initLogout() {
@@ -467,8 +590,14 @@ function initLogout() {
     });
 
 }
+
+
 loadNotifications();
-bindNavigation(); 
- initUserMenu();
+
+bindNavigation();
+
+initUserMenu();
+
 initLogout();
+
 window.toggleSidebar = toggleSidebar;
