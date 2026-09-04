@@ -330,11 +330,13 @@ function initSprintModal() {
     const btnCancelarSprint = document.getElementById("btnCancelarSprint");
     const modalSprint = document.getElementById("modalSprint");
     const inputNomeSprint = document.getElementById("inputNomeSprint");
+    const formSprint = document.getElementById("formSprint");
 
     if (
         !btnNovaSprint ||
         !btnCancelarSprint ||
-        !modalSprint
+        !modalSprint ||
+        !formSprint
     ) {
         return;
     }
@@ -365,6 +367,16 @@ function initSprintModal() {
     btnNovaSprint.addEventListener("click", abrirModal);
 
     btnCancelarSprint.addEventListener("click", fecharModal);
+
+
+    // IMPEDE O REFRESH DA PÁGINA
+    formSprint.addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        console.log("Submit da Sprint interceptado");
+
+    });
 
 
     modalSprint.addEventListener("click", (event) => {
