@@ -1,5 +1,173 @@
+<main class="mx-auto w-full max-w-[1200px] 2xl:max-w-[1300px]">
+
+  <div class="bg-black p-6">
+
+    <div class="w-full">
 
 
-<div class="mycard">
-   Sprints
-</div>
+      <!-- ==========================================
+           HEADER
+      =========================================== -->
+
+      <div class="flex items-center justify-between gap-4">
+
+        <div>
+
+          <p class="mb-1 text-xs font-medium uppercase tracking-wider text-zinc-500">
+            Projeto
+          </p>
+
+          <h1 class="text-2xl font-semibold text-white">
+            Sprints
+          </h1>
+
+        </div>
+
+
+        <!-- NOVA SPRINT -->
+
+        <button
+          id="btnNovaSprint"
+          type="button"
+          class="flex h-10 items-center gap-2 rounded-xl bg-white px-4 text-sm font-medium text-black transition active:scale-95"
+        >
+
+          <i
+            data-lucide="plus"
+            class="h-4 w-4"
+          ></i>
+
+          Nova Sprint
+
+        </button>
+
+      </div>
+
+
+
+      <!-- ==========================================
+           LISTA DE SPRINTS
+      =========================================== -->
+
+      <section
+        id="listaSprints"
+        class="mt-6 space-y-4"
+      >
+
+        <!--
+          As sprints serão renderizadas aqui
+          pelo js/app.js
+        -->
+
+      </section>
+
+
+
+      <!-- ==========================================
+           ESTADO VAZIO
+      =========================================== -->
+
+      <div
+        id="estadoVazio"
+        class="mt-6 flex flex-col items-center justify-center rounded-2xl border border-dashed border-zinc-800 px-6 py-16 text-center"
+      >
+
+        <i
+          data-lucide="layers-3"
+          class="mb-4 h-8 w-8 text-zinc-600"
+        ></i>
+
+        <h2 class="mb-1 text-sm font-medium text-zinc-300">
+          Nenhuma sprint cadastrada
+        </h2>
+
+        <p class="text-sm text-zinc-600">
+          Crie sua primeira sprint para começar.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ============================================
+       MODAL — NOVA SPRINT
+  ============================================= -->
+
+  <div
+    id="modalSprint"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4"
+  >
+
+    <div
+      class="w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-950 p-5 shadow-2xl"
+    >
+
+
+      <!-- HEADER -->
+
+      <div class="mb-5">
+
+        <h2 class="text-lg font-semibold text-white">
+          Nova Sprint
+        </h2>
+
+        <p class="mt-1 text-sm text-zinc-500">
+          Defina um nome para sua sprint.
+        </p>
+
+      </div>
+
+
+
+      <!-- FORM -->
+
+      <form id="formSprint">
+
+
+        <input
+          id="inputNomeSprint"
+          type="text"
+          maxlength="100"
+          autocomplete="off"
+          placeholder="Ex: Estrutura inicial"
+          class="mb-4 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-zinc-600"
+        >
+
+
+        <!-- AÇÕES -->
+
+        <div class="flex justify-end gap-2">
+
+          <button
+            id="btnCancelarSprint"
+            type="button"
+            class="rounded-xl px-4 py-2.5 text-sm text-zinc-400 transition hover:bg-zinc-900 hover:text-white"
+          >
+            Cancelar
+          </button>
+
+
+          <button
+            id="btnCriarSprint"
+            type="submit"
+            class="rounded-xl bg-white px-4 py-2.5 text-sm font-medium text-black transition active:scale-95"
+          >
+            Criar Sprint
+          </button>
+
+        </div>
+
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+</main>
