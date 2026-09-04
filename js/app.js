@@ -8,7 +8,8 @@ import {
 
 const { db } = await import("../firebase/config.js"); 
 const { logout } = await import("../services/sessionService.js");
-const { criarSprint } = await import("../services/sprintService.js");
+const { criarSprint, listarSprints, atualizarSprint } =
+    await import("../services/sprintService.js");
 
 console.log('rheme');
 
@@ -419,7 +420,79 @@ function initSprintModal() {
 
 }
 
+async function carregarSprints() {
 
+    const lista = document.getElementById("listaSprints");
+    const estadoVazio = document.getElementById("estadoVazio");
+
+    if (!lista || !estadoVazio) return;
+
+    try {
+
+        const sprints = await listarSprints();
+
+        lista.innerHTML = "";
+
+        estadoVazio.classList.toggle(
+            "hidden",
+            sprints.length > 0
+        );
+
+        sprints.forEach(sprint => {
+
+           lista.innerHTML += `
+    <div class="flex items-center justify-between rounded-2xl border border-zinc-800 bg-zinc-950 p-5">
+        <h3 class="font-medium text-white">
+            ${sprint.nome}
+        </h3>
+
+        <button
+            type="button"
+            class="btnEditarSprint rounded-lg px-3 py-2 text-sm text-zinc-400 hover:bg-zinc-900 hover:text-white"
+            data-id="${sprint.id}"
+            data-nome="${sprint.nome}"
+        >
+            Editar
+        </button>
+    </div>
+`;
+
+        });
+
+
+            document.querySelectorAll(".btnEditarSprint").forEach(button => {
+
+    button.addEventListener("click", async () => {
+
+        const id = button.dataset.id;
+        const nomeAtual = button.dataset.nome;
+
+        const novoNome = prompt("Novo nome da sprint:", nomeAtual);
+
+        if (!novoNome || !novoNome.trim()) return;
+
+        try {
+
+            await atualizarSprint(id, novoNome.trim());
+
+            await carregarSprints();
+
+        } catch (error) {
+
+            console.error("Erro ao atualizar sprint:", error);
+
+        }
+
+    });
+
+});
+    } catch (error) {
+
+        console.error("Erro ao carregar sprints:", error);
+
+    }
+
+}
 /* ==========================================
    CARREGAR PÁGINA
 ========================================== */
@@ -465,9 +538,10 @@ async function loadPage(page) {
            INICIALIZA MODAL DA SPRINT
         ========================================== */
 
-        if (page === "sprints") {
+       if (page === "sprints") {
 
             initSprintModal();
+            carregarSprints();
 
         }
 
